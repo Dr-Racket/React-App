@@ -1,4 +1,5 @@
 # React-App
+
 -1. Inicializamos cmd.
 0. Nos situamos en la carpeta uoh-frontend.
 1. Creamos la imagen con: docker build -t uoh-frontend . (NOTA: El punto es el PATH)
