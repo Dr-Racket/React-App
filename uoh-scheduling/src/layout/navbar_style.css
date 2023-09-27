@@ -1,0 +1,48 @@
+/* NavBar style*/
+.NavBar {
+
+	background-color: #C4B9B7;
+	display: flex;
+	position: absolute;
+	top: 0;
+	left: 0;
+	max-width: 100vw;
+	width: 100%;
+	margin: 0 auto;
+	height: 4vw;
+}
+
+.img_margin {
+
+	margin: 0 5px 0 0;
+
+}
+
+.UOH {
+	
+	display: block;
+	float: left;
+	margin: 0 5px 0 0;
+}
+
+.sep {
+
+	width: 55%;
+}
+
+.Link {
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #000;
+	font-size: 1.2vw;
+	font-weight: bold;
+	margin: 0 2vw 0 0;
+}
+
+.Link:hover {
+
+	background-color: #B8B0AE;
+	color: #000;
+}

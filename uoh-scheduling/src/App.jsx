@@ -1,14 +1,14 @@
-import {BrowserRouter, Routes, Route} from "react-router-dom"
+import { BrowserRouter,  Routes, Route} from "react-router-dom"
+import Navbar from "./layout/navbar.jsx"
 import Login from "./Views/Login"
 import React from 'react'
 function App() {  
   return (
-    <BrowserRouter>
-    <Routes>
-      <Route path = "/login" element={<Login/>}/>
-    </Routes>
-    </BrowserRouter>
-   
+	  <>
+		  <BrowserRouter>
+				<Login />
+		  </BrowserRouter>
+	  </>
   )
 }
 export default App

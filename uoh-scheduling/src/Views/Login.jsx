@@ -12,23 +12,27 @@ export default function Login(){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const disptach = useDispatch();
+    const dispatch = useDispatch();
 
     const userLogin = useSelector(state => state.userLogin);
     const {error, loading, userInfo} = userLogin;
 
     const navigate = useNavigate();
-    const path = '/';
+	const path = '/';
+	/* Navegacion al path definido
+	* en caso de que userInfo corresponda
+    * al valor 
+	*/
 
     useEffect(() => {
         if (!(userInfo)) {
-          navigate(path);
+	            navigate(path);
         }
       }, [userInfo]);
 
     const submitHandler = (e) => {
         e.preventDefault()
-        disptach(login(email, password))
+        dispatch(login(email, password))
     }
 
 return (
