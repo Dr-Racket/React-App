@@ -5,7 +5,6 @@ import {
     USER_LOGIN_REQUEST,
     USER_LOGIN_SUCCESS,
     USER_LOGIN_FAIL,
-
     USER_LOGOUT,
 
 
@@ -29,7 +28,7 @@ export const login = (email, password) => async (dispatch) => {
         }
 
         const { data } = await axios.post(
-            'http://127.0.0.1:8000/users/login/',
+            'http://127.0.0.1:8000/login/',
             { 'email': email, 'password': password }, config
         )
 
