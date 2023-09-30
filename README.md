@@ -37,5 +37,6 @@
 2. Mejorar Ruteo.
 3. Comenzar con la vista de login.
 4. Implementar tailwind.
+5. Agregar onClick a categorías para llevar a vistas respectivas.
 
 
