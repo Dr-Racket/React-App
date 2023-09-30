@@ -17,9 +17,9 @@
 
 ## UPDATE
 
-Creación de NavBar y Sidebar
+### Creación de NavBar y Sidebar
 
-Nuevos elementos: 
+#### Nuevos elementos: 
 
 0. .contentDistribution en index.css: Finalidad: Organización de sidebar y las vistas.
 1. App.jsx: Se volvió a agregar el control de rutas en App.jsx debido a: falta implementación login.
