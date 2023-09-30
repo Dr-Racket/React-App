@@ -1,0 +1,99 @@
+/* Sidebar style */
+.Sidebar {
+
+	height: 100vw;
+	width: 18vw;
+	background-color: #C4B9B7;
+	margin: 0;
+	padding: 0;
+	border: 1px solid black;
+}
+
+.SidebarList {
+
+	height: auto;
+	width: 100%;
+	padding: 0;
+}
+
+.SidebarList .row {
+
+	color: black;
+	font-weight: bold;
+}
+
+.SidebarList .title {
+
+	display: flex;
+	justify-content: center;
+	font-weight: bold;
+	font-size: larger;
+	background-color: #a59e9c;
+	height: 2.2vw;
+}
+
+.SidebarList .subRow {
+
+	background-color: #C4B9B7;
+	display: flex;
+	font-weight: normal;
+	height: 2.2vw;
+	justify-content: center;
+	color: black;
+}
+
+.SidebarList .subRow:hover {
+
+	background-color: #B8B0AE;
+}
+
+/* NavBar style */
+.NavBar {
+
+	background-color: #C4B9B7;
+	display: flex;
+	position: fixed;
+	top: 0;
+	left: 0;
+	max-width: 100vw;
+	width: 100%;
+	margin: 0 auto;
+	height: 4vw;
+	border: 1px solid black;
+}
+
+/* Extras Style */
+.img_margin {
+
+	margin: 0 5px 0 0;
+
+}
+
+.UOH {
+	
+	display: block;
+	float: left;
+	margin: 0 5px 0 0;
+}
+
+.sep {
+
+	width: 55%;
+}
+
+.Link {
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #000;
+	font-size: 1.2vw;
+	font-weight: bold;
+	margin: 0 2vw 0 0;
+}
+
+.Link:hover {
+
+	background-color: #B8B0AE;
+	color: #000;
+}

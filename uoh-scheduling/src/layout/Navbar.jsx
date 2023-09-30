@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
-import './navbar_style.css';
+import './component_styles.css';
 import UOHname from '../media/UOHname.png';
 
 

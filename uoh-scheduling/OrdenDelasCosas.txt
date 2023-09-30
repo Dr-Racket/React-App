@@ -1,0 +1,45 @@
+" Press ? for help
+
+.. (up a dir)
+/home/nicoa/Desktop/PSoftware/React-App2/React-App/uoh-scheduling/
+▸ node_modules/
+▾ public/
+    vite.svg
+▾ src/
+  ▾ actions/
+      userActions.jsx
+  ▾ assets/
+      react.svg
+  ▾ constants/
+      userConstants.jsx
+  ▾ css/
+      Home.css
+      Login.css
+  ▾ layout/
+      component_styles.css
+      Navbar.jsx
+      Sidebar.jsx
+      SidebarData.jsx
+  ▾ media/
+      uoh.png
+      UOHname.png
+  ▾ reducers/
+      userReducers.jsx
+  ▾ Views/
+      Home.jsx
+      Loader.jsx
+      Login.jsx
+      Messages.jsx
+      views_styles.css
+    App.jsx
+    index.css
+    main.jsx
+    store.jsx
+  docker-compose.yml
+  Dockerfile
+  index.html
+  package-lock.json
+  package.json
+  README.md
+  tailwind.config.js
+  vite.config.js

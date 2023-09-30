@@ -28,7 +28,9 @@ const Login = ({ onLogin }) => {
 
 	return (
 		<>
+		<div className='MAIN'>
 			<button onClick={onLogin} className="button">Login</button>
+		</div>
 		</>
 	);
 };
