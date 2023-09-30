@@ -1,0 +1,76 @@
+.agregar-profe-container {
+	margin: 20px;
+	padding: 20px;
+	border: 1px solid #000000;
+	border-radius: 5px;
+	background-color: #C4B9B7;
+  }
+  
+  .input-container {
+	margin-bottom: 0px;
+	color: #000;
+	padding: 10px;
+  }
+  
+  .label {
+	font-weight: bold;
+	font-size: 20px;
+	color: #000;
+  }
+  
+  .horario-container {
+	margin-bottom: 20px;
+	color: #000;
+  }
+  
+  .horario-wrapper {
+	display: flex;
+	align-items: flex-end; /* Alinea la columna de horas con la tabla en la parte inferior */
+  }
+  
+  .horario-horas {
+	width: 10%; /* Ancho para la columna de horas */
+	padding-right: 20px; /* Espacio a la derecha de las horas */
+	color: #000;
+  }
+
+  .horario-horas .hora-nombre {
+	height: 29px; /* Cambia la altura de las celdas de la columna de horas a 50px (ajusta el valor según sea necesario) */
+  }
+  
+  .horario-table {
+	width: 90%; /* Ancho para la tabla de horario */
+	border-collapse: collapse;
+  }
+  
+  .horario-table td {
+	width: 20%;
+	padding: 10px;
+	text-align: center;
+	background-color: #ffffff;
+	cursor: pointer;
+	border: 1px solid #000; /* Borde de 1px sólido de color negro en cada celda */
+	height: 8px;
+  }
+
+  .horario-table th {
+	color: #000;
+  }
+  
+  .horario-table td.seleccionado {
+	background-color: #a59e9c;
+  }
+  
+  .aplicar-button {
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	padding: 10px 20px;
+	cursor: pointer;
+  }
+  
+  .aplicar-button:hover {
+	background-color: #0056b3;
+  }
+  
