@@ -28,6 +28,7 @@
 4. css/Home.css: Testeo vistas luego del diseño de sidebar.
 5. component_styles.css: Cambio de nombre a navbar_styles.css.
 6. Cambio de nombre a navbar -> Navbar
+7. index.css: Se quitó la implementación de tailwind y se aplicó la original.
 
 ### Ideas y Siguientes pasos:
 
@@ -35,5 +36,6 @@
 1. Implementación vistas creadas por el equipo.
 2. Mejorar Ruteo.
 3. Comenzar con la vista de login.
+4. Implementar tailwind.
 
 
