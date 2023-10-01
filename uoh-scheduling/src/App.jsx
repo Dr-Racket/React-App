@@ -1,11 +1,7 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 import React, { useState, useEffect, useNavigate } from 'react'
 import { BrowserRouter,  Routes, Route} from "react-router-dom"
-import Navbar from "./layout/Navbar.jsx"
-import Sidebar from './layout/Sidebar.jsx'
-import Home from './Views/Home.jsx'
-import Login from "./Views/Login"
-import Agregarprofe from "./Views/Agregarprofe.jsx"
+import Vistas from './Vistas';
 import './index.css'
 
 function App() {  
@@ -35,9 +31,9 @@ function App() {
 		  <main>
 		{/* Rutas */}
 			<Routes>
-				<Route exact path = "/" element={<Home/>}/>
-				<Route path="/login" element={<Login/>}/>
-				<Route path="/Agregarprofe" element={<Agregarprofe/>}/>
+				<Route exact path = "/" element={<Vistas.Home/>}/>
+				<Route path="/login" element={<Vistas.Login/>}/>
+				<Route path="/Agregarprofe" element={<Vistas.Agregarprofe/>}/>
 			</Routes>
 		  </main>
 		</div>
