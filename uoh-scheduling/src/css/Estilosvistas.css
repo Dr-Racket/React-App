@@ -1,0 +1,107 @@
+.agregar-estilo-container {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    background-color: #C4B9B7;
+  }
+  
+  /* Estilo para inputs de texto */
+.input-container {
+    margin-bottom: 10px;
+    color: #000;
+    padding: 0px;
+  }
+  
+  
+  .input-container input[type="text"] {
+    margin: 8px;
+    width: 30%; /* Ocupar todo el ancho disponible */
+    padding: 5px;
+    border: 1px solid #000;
+    border-radius: 5px;
+  }
+  
+  
+  /* Estilo para el combobox (select) */
+  .semestre-select {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .semestre-select label {
+    font-size: 16px;
+    margin-right: 10px;
+    color: #000;
+  }
+  
+  .semestre-select select {
+    padding: 5px;
+    border: 1px solid #000;
+    border-radius: 5px;
+  }
+  
+  .semestre-select select:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  .horario-container {
+    margin-bottom: 20px;
+    color: #000;
+  }
+  
+  .horario-wrapper {
+    display: flex;
+    align-items: flex-end;
+  }
+  
+  .horario-horas {
+    width: 10%;
+    padding-right: 20px;
+    color: #000;
+  }
+  
+  .horario-horas .hora-nombre {
+    height: 29px;
+  }
+  
+  .horario-table {
+    width: 90%;
+    border-collapse: collapse;
+  }
+  
+  .horario-table td {
+    width: 20%;
+    padding: 10px;
+    text-align: center;
+    background-color: #ffffff;
+    cursor: pointer;
+    border: 1px solid #000;
+    height: 8px;
+  }
+  
+  .horario-table th {
+    color: #000;
+  }
+  
+  .horario-table td.seleccionado {
+    background-color: #a59e9c;
+  }
+  
+  .aplicar-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .aplicar-button:hover {
+    background-color: #0056b3;
+  }
+  .input-container input[type="text"]::placeholder {
+    color: #ffffff; /* Cambiar el color del placeholder a rojo (#FF0000) */
+  }
