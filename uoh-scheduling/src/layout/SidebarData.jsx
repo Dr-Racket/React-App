@@ -8,7 +8,7 @@ export const SidebarData = [
 		title: "Cursos",
 		link: "/cursos",
 		options: [
-			{title: "Agregar", link: "/login"},
+			{title: "Agregar", link: "/Agregarcurso"},
 			{title: "Editar", link: "/"},
 			{title: "Eliminar", link: ""}
 		]
@@ -32,4 +32,3 @@ export const SidebarData = [
 	}
 
 ]
-
