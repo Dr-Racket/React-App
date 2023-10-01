@@ -20,12 +20,12 @@ function App() {
 		  <BrowserRouter>
 			{/* Navigation */}
 		  <nav>
-			<Navbar/>
+			<Vistas.Navbar/>
 		  </nav>
 			{/* Content Distribution for column order with sidebar and screens*/}
 		<div className='contentDistribution'>
 		  <nav>
-			<Sidebar/>
+			<Vistas.Sidebar/>
 		  </nav>
 
 		  <main>
