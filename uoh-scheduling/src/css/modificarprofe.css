@@ -1,0 +1,85 @@
+.container-mprofe{
+    background-color: #C4B9B7;
+    margin: 20px;
+	padding: 20px;
+	border: 1px solid #000000;
+	border-radius: 5px;
+	text-align: center;
+}
+
+/*Scroll Bar*/
+.container-scroll {
+    height: 300px;
+    overflow-y: scroll;
+}
+
+.container-scroll::-webkit-scrollbar {
+    width: 20px;
+}
+
+.container-scroll::-webkit-scrollbar-thumb{
+    background-color: #007bff;
+    border-radius: 6px;
+}
+.container-scroll::-webkit-scrollbar-track{
+    background-color: black;
+}
+
+.content{
+    width: 100%;
+    height: 800px;
+
+}
+/*Barra busqueda*/
+.container-search{
+	margin-bottom: 0px;
+	color: #000;
+    max-width: 1200px;
+    margin: 20px auto;
+    border-radius: 20px;
+}
+
+input[type="text"]{
+    flex: 1;
+    width: 80%;
+    height: 40px;
+    padding: 5px;
+}
+
+/*Lista*/
+ul{
+    list-style: none;
+    padding: 0;
+}
+
+/*Fondo para elementos pares*/
+li:nth-child(odd){
+    background-color: white;
+}
+
+/*Fondo para elementos impares*/
+li:nth-child(even){
+    background-color: rgb(204, 200, 200);
+}
+
+li::before {
+    content: "* ";
+    font-size: 1.5em;
+    color: black;
+    margin-right: 10px;
+}
+
+/*Boton*/
+.aplicar-button {
+    margin-left: 15px;
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	padding: 10px 20px;
+	cursor: pointer;
+}
+  
+.aplicar-button:hover {
+	background-color: #0056b3;
+}
