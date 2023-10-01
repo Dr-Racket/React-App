@@ -6,6 +6,8 @@ import Agregarprofe from "./Views/Agregarprofe.jsx"
 import Agregarcurso from "./Views/Agregarcurso.jsx"
 import ModificarProfe from "./Views/Modificarprofe.jsx"
 import ModificarCurso from "./Views/Modificarcurso.jsx"
+import EliminarCurso from "./Views/EliminarCurso.jsx"
+import EliminarProfesor from "./Views/EliminarProfesor.jsx"
 
 export default {
     Navbar,
@@ -16,5 +18,7 @@ export default {
     Agregarcurso,
     ModificarProfe,
     ModificarCurso,
+    EliminarCurso,
+    EliminarProfesor,
 }
 

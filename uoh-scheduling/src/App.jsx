@@ -37,6 +37,8 @@ function App() {
 				<Route path="/Agregarcurso" element={<Vistas.Agregarcurso/>}/>
 				<Route path="/Modificarprofe" element={<Vistas.ModificarProfe/>}/>
 				<Route path="/Modificarcurso" element={<Vistas.ModificarCurso/>}/>
+				<Route path="/Eliminarprofe" element={<Vistas.EliminarProfesor/>}/>
+				<Route path="/Eliminarcurso" element={<Vistas.EliminarCurso/>}/>
 
 			</Routes>
 		  </main>

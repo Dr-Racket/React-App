@@ -10,7 +10,7 @@ export const SidebarData = [
 		options: [
 			{title: "Agregar", link: "/Agregarcurso"},
 			{title: "Editar", link: "/Modificarcurso"},
-			{title: "Eliminar", link: ""}
+			{title: "Eliminar", link: "/Eliminarcurso"}
 		]
 	},
 	{
@@ -19,7 +19,7 @@ export const SidebarData = [
 		options: [
 			{title: "Agregar", link: "/Agregarprofe"},
 			{title: "Editar", link: "/Modificarprofe"},
-			{title: "Eliminar", link: ""}
+			{title: "Eliminar", link: "/Eliminarprofe"}
 		]
 	},
 	{
