@@ -25,7 +25,6 @@ function Agregarprofe() {
   const [nombre, setNombre] = useState(''); // Estado para el nombre
   const [curso, setCurso] = useState('');   // Estado para el curso
   const [mensaje, setMensaje] = useState(''); // Estado para el mensaje
-  const []
 
   const aplicarCambios = () => {
     if (!nombre && !curso) {
