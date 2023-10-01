@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import '../css/Agregarprofe.css'
+import '../css/Estilosvistas.css'
 
 function Agregarprofe() {
   const [horario, setHorario] = useState([
