@@ -34,7 +34,10 @@ function App() {
 				<Route exact path = "/" element={<Vistas.Home/>}/>
 				<Route path="/login" element={<Vistas.Login/>}/>
 				<Route path="/Agregarprofe" element={<Vistas.Agregarprofe/>}/>
+				<Route path="/Agregarcurso" element={<Vistas.Agregarcurso/>}/>
 				<Route path="/Modificarprofe" element={<Vistas.ModificarProfe/>}/>
+				<Route path="/Modificarcurso" element={<Vistas.ModificarCurso/>}/>
+
 			</Routes>
 		  </main>
 		</div>

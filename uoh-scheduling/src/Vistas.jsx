@@ -3,7 +3,9 @@ import Sidebar from './layout/Sidebar.jsx'
 import Home from './Views/Home.jsx'
 import Login from "./Views/Login.jsx"
 import Agregarprofe from "./Views/Agregarprofe.jsx"
+import Agregarcurso from "./Views/Agregarcurso.jsx"
 import ModificarProfe from "./Views/Modificarprofe.jsx"
+import ModificarCurso from "./Views/Modificarcurso.jsx"
 
 export default {
     Navbar,
@@ -11,6 +13,8 @@ export default {
     Home,
     Login,
     Agregarprofe,
+    Agregarcurso,
     ModificarProfe,
+    ModificarCurso,
 }
 

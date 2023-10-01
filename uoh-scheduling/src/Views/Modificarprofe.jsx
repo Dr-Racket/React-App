@@ -26,7 +26,7 @@ function ModificarProfe() {
           <ul>
             {NProfes.map((elemento, index) =>(
               <li key={index}>
-                <a href={elemento.url}>{elemento.nombre}</a>
+                <a class= "link" href={elemento.url}>{elemento.nombre}</a>
               </li>
             ))}
           </ul>
