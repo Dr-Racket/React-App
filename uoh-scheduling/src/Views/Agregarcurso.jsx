@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Navbar from "../layout/Navbar.jsx"
 import Login from "./Login.jsx"
 
-import '../css/Agregarcurso.css'
+import '../css/Estilosvistas.css'
 
 function Agregarcurso() {
   const [horario, setHorario] = useState([
