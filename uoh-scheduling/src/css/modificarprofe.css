@@ -84,3 +84,47 @@ li::before {
 .aplicar-button:hover {
 	background-color: #0056b3;
 }
+
+
+/*De aqui en adelante es el css de cambiarprofe*/
+.container-cprofe{
+    background-color: #C4B9B7;
+    margin: 20px;
+	padding: 20px;
+	border: 1px solid #000000;
+	border-radius: 5px;
+	text-align: center;
+    overflow-y: scroll;
+}
+
+/*Scroll Bar Modificar prof*/
+.container-scroll-mp {
+    height: 200px;
+    overflow-y: scroll;
+}
+
+.container-scroll-mp::-webkit-scrollbar {
+    width: 20px;
+}
+
+.container-scroll-mp::-webkit-scrollbar-thumb{
+    background-color: #007bff;
+    border-radius: 6px;
+}
+.container-scroll-mp::-webkit-scrollbar-track{
+    background-color: black;
+}
+
+.aplicar-buttonmd{
+    margin-top: 15px;
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	padding: 10px 20px;
+	cursor: pointer;
+}  
+
+.aplicar-buttonmd:hover{
+    background-color: #0056b3;
+}

@@ -40,6 +40,12 @@ function App() {
 				<Route path="/Eliminarprofe" element={<Vistas.EliminarProfesor/>}/>
 				<Route path="/Eliminarcurso" element={<Vistas.EliminarCurso/>}/>
 
+				{/*Rutas de nuevas asignaciones o modificaciones en si*/}
+				<Route path="/Cambiarcurso" element={<Vistas.CambiarCurso/>}/>
+				<Route path="/Cambiarprofe" element={<Vistas.CambiarProfe/>}/>
+
+
+
 			</Routes>
 		  </main>
 		</div>

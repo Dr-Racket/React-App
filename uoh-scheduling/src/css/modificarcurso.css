@@ -54,3 +54,20 @@ input[type="text"]{
 .link{
     color: black;
 }
+
+
+/*De aca para abajo es netamente de CambiarCurso*/
+
+.container-cc{
+    margin: 20px;
+	padding: 20px;
+	border: 1px solid #000000;
+	border-radius: 5px;
+	background-color: #C4B9B7;
+    text-align: center;
+}
+
+.texto-mostrar{
+    color: black;
+    font-size: 20px;
+}
