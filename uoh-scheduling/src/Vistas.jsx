@@ -4,7 +4,9 @@ import Home from './Views/Home.jsx'
 import Login from "./Views/Login.jsx"
 import Agregarprofe from "./Views/Agregarprofe.jsx"
 
-export default { 
+export default {
+    Navbar,
+    Sidebar,
     Home,
     Login,
     Agregarprofe,
