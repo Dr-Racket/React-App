@@ -3,17 +3,18 @@
 
 	height: 100vw;
 	width: 18vw;
-	background-color: #C4B9B7;
+	background-color: #2a2a2a;
 	margin: 0;
 	padding: 0;
-	border: 1px solid black;
 }
 
 .SidebarList {
 
 	height: auto;
-	width: 100%;
-	padding: 0;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
 }
 
 .SidebarList .row {
@@ -25,41 +26,49 @@
 .SidebarList .title {
 
 	display: flex;
-	justify-content: center;
-	font-weight: bold;
-	font-size: larger;
-	background-color: #a59e9c;
-	height: 2.2vw;
+    justify-content: center;
+	align-items: center;
+    font-weight: bold;
+    font-size: 1vw;
+    background-color: #676767;
+    color: white;
+    height: 2.2vw;
+	
 }
 
 .SidebarList .subRow {
 
-	background-color: #C4B9B7;
-	display: flex;
-	font-weight: normal;
-	height: 2.2vw;
-	justify-content: center;
-	color: black;
+	background-color: #2a2a2a;
+    display: flex;
+	align-items: center;
+    font-weight: bold;
+    font-size: 0.8vw;
+    height: 2.2vw;
+    justify-content: center;
+    color: #bacde1;
 }
 
 .SidebarList .subRow:hover {
 
-	background-color: #B8B0AE;
+	background-color: #333333;
 }
 
 /* NavBar style */
 .NavBar {
 
-	background-color: #C4B9B7;
-	display: flex;
-	position: fixed;
-	top: 0;
-	left: 0;
-	max-width: 100vw;
-	width: 100%;
-	margin: 0 auto;
-	height: 4vw;
-	border: 1px solid black;
+	background-color: #375a7f;
+    display: flex;
+    position: fixed;
+    top: 0;
+    max-width: 100vw;
+    width: 100%;
+    margin: 0 auto;
+    max-height: 2.5vw;
+    height: 100%;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    align-items: stretch;
+	
 }
 
 /* Extras Style */
@@ -86,14 +95,13 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	color: #000;
-	font-size: 1.2vw;
+	color: #bacdd1;
+	font-size: 0.85vw;
 	font-weight: bold;
 	margin: 0 2vw 0 0;
 }
 
 .Link:hover {
 
-	background-color: #B8B0AE;
-	color: #000;
+	color: white;
 }

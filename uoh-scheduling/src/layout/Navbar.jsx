@@ -21,7 +21,7 @@ function Navbar()
 				<div className='sep'/>
 
 				<Link to='/login' className='Link'>
-					Login
+					Log out
 				</Link>
 			</div>
 		</>

@@ -1,13 +1,20 @@
+/*Archivo que contiene todas las rutas de las vistas creadas*/
+
 import Navbar from "./layout/Navbar.jsx"
 import Sidebar from './layout/Sidebar.jsx'
+
 import Home from './Views/Home.jsx'
 import Login from "./Views/Login.jsx"
+
 import Agregarprofe from "./Views/Agregarprofe.jsx"
 import Agregarcurso from "./Views/Agregarcurso.jsx"
+
 import ModificarProfe from "./Views/Modificarprofe.jsx"
 import ModificarCurso from "./Views/Modificarcurso.jsx"
+
 import EliminarCurso from "./Views/EliminarCurso.jsx"
 import EliminarProfesor from "./Views/EliminarProfesor.jsx"
+
 import CambiarCurso from "./Views/Cambiocurso.jsx"
 import CambiarProfe from "./Views/Cambioprofe.jsx"
 

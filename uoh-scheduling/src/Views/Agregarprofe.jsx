@@ -48,8 +48,8 @@ function Agregarprofe() {
 
 
   return (
-    <div className="agregar-profe-container">
-      <h1>Agregar profesor</h1>
+    <div className="agregar-estilo-container">
+      <h2>Agregar Profesor</h2>
       <div className="input-container">
         <label>Nombre:</label>
         <input
@@ -60,7 +60,7 @@ function Agregarprofe() {
         />
       </div>
       <div className="horario-container">
-        <h2>Horario:</h2>
+        <h2>Seleccione las Preferencias de los horarios del profesor:</h2>
         <div className="horario-wrapper">
           <div className="horario-horas">
             {horas.map((hora, index) => (
@@ -108,10 +108,12 @@ function Agregarprofe() {
           onChange={(e) => setCurso(e.target.value)}
         />
       </div>
-      <button className="aplicar-button" onClick={aplicarCambios}>
-        Aplicar
-      </button>
-      {mensaje && <div className="mensaje">{mensaje}</div>}
+      <div className='conten-button'>
+        <button className="aplicar-button" onClick={aplicarCambios}>
+          Aplicar
+        </button>
+        {mensaje && <div className="mensaje">{mensaje}</div>}
+      </div>
     </div>
   );
 }

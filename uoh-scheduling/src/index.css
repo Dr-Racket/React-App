@@ -79,16 +79,16 @@ button:focus-visible {
 .contentDistribution nav {
 	
 	position: fixed;
-	top: 4vw;
+	top: 2.5vw;
 	background-color: #fff;
 }
 
 .contentDistribution main {
 
 	position: fixed;
-	top: 4vw;
+	top: 2.5vw;
 	left: 18vw;
 	right: 0;
 	bottom: 0;
-	background-color: #fff;
+	background-color: #222222;
 }

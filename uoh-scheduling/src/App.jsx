@@ -31,20 +31,25 @@ function App() {
 		  <main>
 		{/* Rutas */}
 			<Routes>
+				
 				<Route exact path = "/" element={<Vistas.Home/>}/>
 				<Route path="/login" element={<Vistas.Login/>}/>
+
+				{/*Rutas Agregar*/}
 				<Route path="/Agregarprofe" element={<Vistas.Agregarprofe/>}/>
 				<Route path="/Agregarcurso" element={<Vistas.Agregarcurso/>}/>
+
+				{/*Rutas Modificar*/}
 				<Route path="/Modificarprofe" element={<Vistas.ModificarProfe/>}/>
 				<Route path="/Modificarcurso" element={<Vistas.ModificarCurso/>}/>
+
+				{/*Rutas Eliminar*/}
 				<Route path="/Eliminarprofe" element={<Vistas.EliminarProfesor/>}/>
 				<Route path="/Eliminarcurso" element={<Vistas.EliminarCurso/>}/>
 
 				{/*Rutas de nuevas asignaciones o modificaciones en si*/}
 				<Route path="/Cambiarcurso" element={<Vistas.CambiarCurso/>}/>
 				<Route path="/Cambiarprofe" element={<Vistas.CambiarProfe/>}/>
-
-
 
 			</Routes>
 		  </main>

@@ -1,78 +1,116 @@
+/*Contiene los estilos de Agregar Profesores y Agregar Cursos*/
 .agregar-estilo-container {
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid #000000;
-    border-radius: 5px;
-    background-color: #C4B9B7;
+
+  color: white;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #2d3338;
+  text-align: center;
+  font-size: 1vw;
+
   }
   
   /* Estilo para inputs de texto */
 .input-container {
-    margin-bottom: 10px;
-    color: #000;
-    padding: 0px;
+
+  display: flex;
+  margin-bottom: 0px;
+  color: white;
+  padding: 0px;
+  height: 6vw;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+
   }
   
   
   .input-container input[type="text"] {
-    margin: 8px;
-    width: 30%; /* Ocupar todo el ancho disponible */
+
+    margin: 11px;
+    height: 2vw;
+    font-size: 1vw;
+    width: 70%;
     padding: 5px;
-    border: 1px solid #000;
-    border-radius: 5px;
+    border-radius: 12px;
+
   }
-  
   
   /* Estilo para el combobox (select) */
   .semestre-select {
+
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+
   }
   
   .semestre-select label {
-    font-size: 16px;
+
     margin-right: 10px;
-    color: #000;
+    color: white;
+
   }
   
   .semestre-select select {
+
     padding: 5px;
     border: 1px solid #000;
     border-radius: 5px;
+
   }
   
   .semestre-select select:focus {
+
     outline: none;
     border-color: #007bff;
+
   }
   
   .horario-container {
+
     margin-bottom: 20px;
-    color: #000;
+    color: white;
+
   }
   
   .horario-wrapper {
+
     display: flex;
     align-items: flex-end;
+
   }
   
   .horario-horas {
+
     width: 10%;
     padding-right: 20px;
-    color: #000;
+    color: white;
+    font-size: 1vw;
+
   }
   
   .horario-horas .hora-nombre {
-    height: 29px;
+
+    height: 32px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
+
   }
   
   .horario-table {
+
     width: 90%;
-    border-collapse: collapse;
+    border-collapse: separate;
+
   }
   
   .horario-table td {
+
     width: 20%;
     padding: 10px;
     text-align: center;
@@ -80,28 +118,56 @@
     cursor: pointer;
     border: 1px solid #000;
     height: 8px;
+    border-radius: 25px;
+
   }
   
   .horario-table th {
-    color: #000;
+
+    color: white;
+
   }
   
   .horario-table td.seleccionado {
+
     background-color: #a59e9c;
   }
   
   .aplicar-button {
+
+    margin-left: 68vw;
     background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
     cursor: pointer;
+
+  }
+
+  .aplicar-button button {
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
   }
   
   .aplicar-button:hover {
+
     background-color: #0056b3;
+
   }
   .input-container input[type="text"]::placeholder {
+
     color: #ffffff; /* Cambiar el color del placeholder a rojo (#FF0000) */
+
+  }
+
+  .conten-button {
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
   }

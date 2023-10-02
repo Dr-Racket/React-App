@@ -1,7 +1,4 @@
-import {BrowserRouter, Routes, Route} from "react-router-dom"
 import React, { useState } from 'react';
-import Navbar from "../layout/Navbar.jsx"
-import Login from "./Login.jsx"
 
 import '../css/Estilosvistas.css'
 
@@ -16,6 +13,8 @@ function Agregarcurso() {
   ]);
 
   const [semestre, setSemestre] = useState('');
+  const [curso, setCurso] = useState('');   // Estado para el curso
+  const [mensaje, setMensaje] = useState(''); // Estado para el mensaje
 
   const horas = [
     '08:30 - 10:00',
@@ -30,9 +29,21 @@ function Agregarcurso() {
     setSemestre(e.target.value); // Actualiza el estado del semestre seleccionado
   };
 
+  const aplicarCambios = () => {
+    if (!curso) {
+      // Si no se proporciona nombre o curso, muestra el mensaje de error
+      setMensaje('Por favor, ingrese un nombre para el curso');
+    }
+    else {
+      // Aquí puedes agregar la lógica para aplicar los cambios al profesor
+      // Por ahora, simplemente establecemos el mensaje de éxito
+      setMensaje('Aplicado exitosamente');
+    }
+  };
+
   return (
-    <div className="agregar-curso-container">
-      <h1>Agregar Curso</h1>
+    <div className="agregar-estilo-container">
+      <h2>Agregar Curso</h2>
       {/* Combobox para seleccionar el semestre */}
 
       <div className="semestre-select">
@@ -45,7 +56,12 @@ function Agregarcurso() {
 
       <div className="input-container">
         <label>Nombre:</label>
-        <input type="text" placeholder="Introduce el nombre del Curso" />
+        <input 
+          type="text"
+          placeholder="Introduce el nombre del Curso"
+          value={curso}
+          onChange={(e) => setCurso(e.target.value)}
+        />
       </div>
       <div className="horario-container">
         <h2>Seleccione las preferencias de los horarios del curso:</h2>
@@ -87,7 +103,12 @@ function Agregarcurso() {
           </table>
         </div>
       </div>
-      
+      <div className='conten-button'>
+        <button className="aplicar-button" onClick={aplicarCambios}>
+          Aplicar
+        </button>
+        {mensaje && <div className="mensaje">{mensaje}</div>}
+      </div>
     </div>
   );
 }

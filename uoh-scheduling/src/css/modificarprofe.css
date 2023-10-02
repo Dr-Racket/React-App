@@ -1,10 +1,11 @@
 .container-mprofe{
-    background-color: #C4B9B7;
+
+    background-color: #2d3338;
     margin: 20px;
-	padding: 20px;
-	border: 1px solid #000000;
-	border-radius: 5px;
-	text-align: center;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    
 }
 
 /*Scroll Bar*/
