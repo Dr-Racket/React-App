@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
 import "../css/LoginForm.css";
 import AuthContext from "../AuthContext";
-const [email, setEmail] = useState("")
-const [password, setPassword] = useState("")
-const [token, setToken] = useState("")
 const Login = () => {
-  
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [token, setToken] = useState("")
+ 
   //let {loginUser} = useContext(AuthContext)
   return (
     <div id="login-form">

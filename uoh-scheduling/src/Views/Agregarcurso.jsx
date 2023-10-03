@@ -13,7 +13,7 @@ function Agregarcurso() {
   ]);
 
   const [semestre, setSemestre] = useState('');
-  const [curso, setCurso] = useState('');   // Estado para el curso
+  const [nombreCurso, setNombreCurso] = useState('');   // Estado para el curso
   const [mensaje, setMensaje] = useState(''); // Estado para el mensaje
 
   const horas = [
@@ -30,7 +30,7 @@ function Agregarcurso() {
   };
 
   const aplicarCambios = () => {
-    if (!curso) {
+    if (!nombreCurso) {
       // Si no se proporciona nombre o curso, muestra el mensaje de error
       setMensaje('Por favor, ingrese un nombre para el curso');
     }
@@ -59,7 +59,7 @@ function Agregarcurso() {
         <input 
           type="text"
           placeholder="Introduce el nombre del Curso"
-          value={curso}
+          value={nombreCurso}
           onChange={(e) => setCurso(e.target.value)}
         />
       </div>

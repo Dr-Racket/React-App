@@ -4,6 +4,18 @@ import React, { useState } from 'react';
 import '../css/modificarprofe.css'
 
 function CambiarProfe() {
+    const [search, setSearch] = useState("");
+    const [button, setButton] = useState(false);
+
+    const handleButton = () => {
+        if (search) {
+              setButton(true);
+        }else {
+        setButton(false);
+        }
+    };
+
+
     const [horario, setHorario] = useState([
         [false, false, false, false, false],
         [false, false, false, false, false],

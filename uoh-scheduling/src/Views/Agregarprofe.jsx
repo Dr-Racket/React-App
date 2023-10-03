@@ -21,7 +21,6 @@ function Agregarprofe() {
     '18:00 - 19:30',
   ];
 
-
   const [nombre, setNombre] = useState(''); // Estado para el nombre
   const [curso, setCurso] = useState('');   // Estado para el curso
   const [mensaje, setMensaje] = useState(''); // Estado para el mensaje

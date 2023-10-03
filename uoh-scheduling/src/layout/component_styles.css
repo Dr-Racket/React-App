@@ -40,7 +40,7 @@
 
 	background-color: #2a2a2a;
     display: flex;
-	align-items: center;
+    align-items: center;
     font-weight: bold;
     font-size: 0.8vw;
     height: 2.2vw;
@@ -56,7 +56,7 @@
 /* NavBar style */
 .NavBar {
 
-	background-color: #375a7f;
+    background-color: #2d3338;
     display: flex;
     position: fixed;
     top: 0;
@@ -68,7 +68,6 @@
     justify-content: space-around;
     flex-wrap: nowrap;
     align-items: stretch;
-	
 }
 
 /* Extras Style */
@@ -95,7 +94,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	color: #bacdd1;
+	color: black;
 	font-size: 0.85vw;
 	font-weight: bold;
 	margin: 0 2vw 0 0;
@@ -103,5 +102,6 @@
 
 .Link:hover {
 
-	color: white;
+	color: #A8B0AE;
+  color: #000;
 }
