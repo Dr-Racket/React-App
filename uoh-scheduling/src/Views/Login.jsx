@@ -1,42 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Link, Router, Route } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../actions/userActions';
-import { useNavigate } from 'react-router';
-import Messages from './Messages';
-import Loader from './Loader';
-import { LockClosedIcon } from '@heroicons/react/20/solid';
-import uoh from '../media/uoh.png';
-import Home from '../Views/Home.jsx';
-import './views_styles.css';
-
-const Login = ({ onLogin }) => {
-
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
-
-	const dispatch = useDispatch();
-
-	const userLogin = useSelector(state => state.userLogin);
-	const {error, loading, userInfo} = userLogin;
-
-	const submitHandler = (e) => {
-		e.preventDefault()
-		dispatch(login(email, password))
-	}
-
-
-	return (
-		<>
-		<div className='MAIN'>
-			<div className='LoginContain'>
-				<div className='rectangulito'>
-					<button onClick={onLogin} className="button">Login</button>
-				</div>
-			</div>
-		</div>
-		</>
-	);
+import React, { useContext, useState } from "react";
+import "../css/LoginForm.css";
+import AuthContext from "../AuthContext";
+const [email, setEmail] = useState("")
+const [password, setPassword] = useState("")
+const [token, setToken] = useState("")
+const Login = () => {
+  
+  //let {loginUser} = useContext(AuthContext)
+  return (
+    <div id="login-form">
+      <h1>Login</h1>
+      <form>
+        <label htmlFor="username">email:</label>
+        <input type="text" id="username" name="username" />
+        <label htmlFor="password">Password:</label>
+        <input type="password" id="password" name="password" />
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+  );
 };
 
 export default Login;
