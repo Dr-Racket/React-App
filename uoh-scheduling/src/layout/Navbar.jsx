@@ -2,10 +2,13 @@ import React from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import './component_styles.css';
 import UOHname from '../media/UOHname.png';
-
+import { useState, useContext } from 'react';
+import AuthContext from '../AuthContext';
 
 function Navbar()
 {
+
+	let { user, logoutUser } = useContext(AuthContext)
 	return(
 		<>
 			<div className='NavBar'>
@@ -19,10 +22,12 @@ function Navbar()
 				</Link>
 
 				<div className='sep'/>
-
-				<Link to='/login' className='Link'>
-					Log out
-				</Link>
+				{user ? (
+                <button onClick={logoutUser}>Logout</button>
+            ) : (
+                <Link to="/login" >Login</Link>
+            )}
+            {user && <p>Hello {user.username}!</p>}
 			</div>
 		</>
 	)

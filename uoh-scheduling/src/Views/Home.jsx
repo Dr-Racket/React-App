@@ -1,28 +1,19 @@
-import {BrowserRouter, Routes, Route} from "react-router-dom"
-import Navbar from "../layout/Navbar.jsx"
-import Login from "../Views/Login"
-import React from 'react'
-import '../css/Home.css'
+import React, { useContext } from 'react'
+import AuthContext from '../AuthContext';
 
-function Home() {  
-  return (
-	  <>
-	  <div className='test'>
-	  	<h1> HOLA </h1>
-	  </div>
-	  {/*
-    <BrowserRouter>
-	  <nav>
-	  	<Navbar/>
-	  </nav>
-	  <main>
-		<Routes>
-			<Route exact path = "/" element={<Home/>}/>
-			<Route path="/login" element={<Messages/>}/>
-		</Routes>
-	  </main>
-    </BrowserRouter>
-  */} </>
-  )
+const Home = () => {
+    const { user } = useContext(AuthContext);
+
+    return (user ? (
+        <div>
+            <p>You are logged in to the homepage!</p>
+        </div>
+        ):(
+        <div>
+            <p>You are not logged in, redirecting...</p>
+        </div>
+        )
+    )
 }
-export default Home;
+
+export default Home

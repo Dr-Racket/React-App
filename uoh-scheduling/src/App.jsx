@@ -3,11 +3,13 @@ import { BrowserRouter, Routes, Route, Router } from 'react-router-dom';
 import { AuthProvider, } from './AuthContext'
 import Vistas from './Vistas';
 import './index.css';
+import PrivateRoute from './Views/PrivateRoute';
 
 function App() {
   return (
     <>
       <BrowserRouter>
+      <AuthProvider>
         <nav>
           <Vistas.Navbar />
         </nav>
@@ -18,26 +20,27 @@ function App() {
           <main>
             <Routes>
               {/* Ruta de inicio sin Sidebar */}
-              <Route exact path="/" element={<Vistas.Home />} />
+              <Route exact path="/" element={<PrivateRoute><Vistas.Home /></PrivateRoute>} />
 
               {/* Ruta de login sin Sidebar */}
               <Route path="/login" element={<Vistas.Login />} />
 
               {/* Rutas con Sidebar */}
                       {/* Rutas con Sidebar */}
-                <Route path="/Agregarprofe" element={<Vistas.Agregarprofe />} />
-                <Route path="/Agregarcurso" element={<Vistas.Agregarcurso />} />
-                <Route path="/Modificarprofe" element={<Vistas.ModificarProfe />} />
-                <Route path="/Modificarcurso" element={<Vistas.ModificarCurso />} />
-                <Route path="/Eliminarprofe" element={<Vistas.EliminarProfesor />} />
-                <Route path="/Eliminarcurso" element={<Vistas.EliminarCurso />} />
+                <Route path="/Agregarprofe" element={<PrivateRoute><Vistas.Agregarprofe/></PrivateRoute>} />
+                <Route path="/Agregarcurso" element={<PrivateRoute><Vistas.Agregarcurso /> </PrivateRoute>} />
+                <Route path="/Modificarprofe" element={<PrivateRoute><Vistas.ModificarProfe /></PrivateRoute>} />
+                <Route path="/Modificarcurso" element={<PrivateRoute><Vistas.ModificarCurso /></PrivateRoute>} />
+                <Route path="/Eliminarprofe" element={<PrivateRoute><Vistas.EliminarProfesor /></PrivateRoute>} />
+                <Route path="/Eliminarcurso" element={<PrivateRoute><Vistas.EliminarCurso /></PrivateRoute>} />
                 {/* Otras rutas con Sidebar */}
-                <Route path="/Cambiarcurso" element={<Vistas.CambiarCurso />} />
-                <Route path="/Cambiarprofe" element={<Vistas.CambiarProfe />} />
-				<Route path="/postProfesor" element={<Vistas.AgregarProfeAdmin />} />
+                <Route path="/Cambiarcurso" element={<PrivateRoute><Vistas.CambiarCurso /></PrivateRoute>} />
+                <Route path="/Cambiarprofe" element={<PrivateRoute><Vistas.CambiarProfe /></PrivateRoute>} />
+				<Route path="/postProfesor" element={<PrivateRoute><Vistas.AgregarProfeAdmin /></PrivateRoute>}/>
             </Routes>
           </main>
         </div>
+        </AuthProvider>
       </BrowserRouter>
     </>
   );
