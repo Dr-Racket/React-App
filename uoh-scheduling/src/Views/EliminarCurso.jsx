@@ -27,13 +27,7 @@ function EliminarCurso() {
       });
   }, []); // El segundo argumento vacío [] asegura que la solicitud se realice solo una vez
 
-    const handleButton = () => {
-        if (search) {
-            setButton(true);
-        }else {
-            setButton(false);
-        }
-    };
+    
 
       const filteredCursos = NCursos.filter((curso, index) => {
           if(button){
@@ -47,6 +41,10 @@ function EliminarCurso() {
               </li>
             ));
       };
+
+      const handleButton = () => {
+        return renderCursos()
+    };
 
     return(
         <div className="Container-Cursos">
@@ -63,7 +61,7 @@ function EliminarCurso() {
             <div className="Container-Scroll">
                 <div className="Content-Cursos">
                     <ul>
-                        {renderCursos()}
+                        {button ? <></> : renderCursos()}
                     </ul>
                 </div>
             </div>

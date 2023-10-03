@@ -23,16 +23,21 @@ export const AuthProvider = ({children}) => {
             },
             body: JSON.stringify({email: e.target.email.value, password: e.target.password.value })
         });
-
+        
         let data = await response.json();
-
-        if(data){
-            localStorage.setItem('authTokens', JSON.stringify(data));
-            setAuthTokens()
-            setUser(jwtDecode(data.access))
-            navigate('/')
-        } else {
-            alert('Something went wrong while logging in the user!')
+        if (response.status === 400){alert("Algún campo quedó en blanco")}
+        else if(response.status === 401){alert("Credenciales incorrectas")}
+        else{
+            if(data){
+            
+                localStorage.setItem('authTokens', JSON.stringify(data));
+                setAuthTokens()
+                setUser(jwtDecode(data.access))
+                navigate('/')
+            } else {
+                alert('Something went wrong while logging in the user!')
+        }
+        
         }
     }
 

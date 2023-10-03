@@ -64,7 +64,7 @@ function AgregarCursoAdmin() {
           <label>Nombre:</label>
           <input
             type="text"
-            placeholder="Introduce el nombre del profesor"
+            placeholder="Introduce el nombre del curso"
             value={nombre}
             onChange={(e) => setNombre(e.target.value)}
           />
