@@ -4,6 +4,10 @@ import axios from "axios"
 import '../css/modificarprofe.css'
 
 function ModificarProfe() {
+  // Barra Busqueda Hooks
+  const [search, setSearch] = useState("");
+  const [button, setButton] = useState(false);
+
   const [profesores, setProfesores] = useState([]);
 
   // Función para realizar la solicitud a la API
@@ -24,24 +28,46 @@ function ModificarProfe() {
       });
   }, []); // El segundo argumento vacío [] asegura que la solicitud se realice solo una vez
 
+  const handleButton = () => {
+      if (search) {
+            setButton(true);
+      }else {
+      setButton(false);
+      }
+  };
+
+
+  const filteredProfes = profesores.filter((profesor, index) => {
+      if(button){
+          return profesor.name.toLowerCase().includes(String(search).toLowerCase());
+      }else{ return profesor.name}
+  });
+
+  const renderProfes = () => {
+      return filteredProfes.map((profesor, index) => (
+        <li key={index}>
+            <a href="#">{profesor.name}</a>
+          </li>
+        ));
+  };
+
+  
   return (
     <div className="container-mprofe">
       <h2>Modificar Profesores</h2>
       <div className="container-search">
         <input
           type="text"
-          placeholder="Buscar el profesor a modificar"
+          placeholder="Buscar"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
         />
-        <button className="aplicar-button" type="submit">Buscar</button>
+        <button onClick={handleButton} className="aplicar-button" type="submit">Buscar</button>
       </div>
       <div className="container-scroll">
         <div className="content">
           <ul>
-            {profesores.map((elemento, index) =>(
-              <li key={index}>
-                <a className= "link" href={elemento.name}> {elemento.name}</a>
-              </li>
-            ))}
+            {renderProfes()}
           </ul>
         </div>
       </div>
