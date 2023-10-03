@@ -1,6 +1,9 @@
-import React,{ useState } from 'react';
+import React,{ useState, ErrorBoundary } from 'react';
 
 function EliminarProfesor() {
+    const [search, setSearch] = useState("");
+    const [button, setButton] = useState(false);
+
     const NProfes = [
         //agregar más de ser necesarios (tengo esos de ejemplo), cambiar url de ser necesario
         {nombre: "Gonzalo", url: "www.google.com"},
@@ -8,30 +11,50 @@ function EliminarProfesor() {
         {nombre: "Paula", url: "/"},
         {nombre: "Paula", url: "/"},
         {nombre: "Paula", url: "/"},
-      ]
+     
+    ]
+
+    const handleButton = () => {
+        if (search) {
+              setButton(true);
+        }else {
+        setButton(false);
+        }
+    };
+
+      const filteredProfes = NProfes.filter((profesor, index) => {
+          if(button){
+            return profesor.nombre.toLowerCase().includes(String(search).toLowerCase());
+          }else{ return profesor.nombre }
+      });
+      const renderProfes = () => {
+          return filteredProfes.map((profesor, index) => (
+            <li key={index}>
+                <a href={profesor.url}>{profesor.nombre}</a>
+              </li>
+            ));
+      };
+
       return (
-        <div class="container-mprofe">
+        <div className="container-mprofe">
           <h2>Eliminar Profesores</h2>
           <div className="container-search">
             <input
               type="text"
-              placeholder="Buscar el profesor a eliminar"
+              placeholder="Buscar"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
             />
-            <button class="aplicar-button" type="submit">Buscar</button>
+            <button onClick={handleButton} className="aplicar-button" type="submit">Buscar</button>
           </div>
-          <div class="container-scroll">
-            <div class="content">
+          <div className="container-scroll">
+            <div className="content">
               <ul>
-                {NProfes.map((elemento, index) =>(
-                  <li key={index}>
-                    <a class= "link" href={elemento.url}>{elemento.nombre}</a>
-                  </li>
-                ))}
+                    {renderProfes()}
               </ul>
             </div>
           </div>
         </div>
       );
-}
-
+    }
 export default EliminarProfesor;
