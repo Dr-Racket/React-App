@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Outlet } from 'react-router-dom';
 import './component_styles.css';
 import { SidebarData } from './SidebarData.jsx';
 
@@ -14,6 +14,7 @@ function Sidebar(){
 
 	return (
 		<>
+		
 		<div className='Sidebar'>
 			{/* Orden Categorias */}
 			<ul className='SidebarList'>
@@ -37,6 +38,7 @@ function Sidebar(){
 				})}	
 			</ul>
 		</div>
+		
 		</>
 	);
 };

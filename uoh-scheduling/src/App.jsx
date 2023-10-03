@@ -1,62 +1,45 @@
-/* eslint-disable no-mixed-spaces-and-tabs */
-import React, { useState, useEffect, useNavigate } from 'react'
-import { BrowserRouter,  Routes, Route} from "react-router-dom"
+import React from 'react';
+import { BrowserRouter, Routes, Route, Router } from 'react-router-dom';
+import { AuthProvider, } from './AuthContext'
 import Vistas from './Vistas';
-import './index.css'
+import './index.css';
 
-function App() {  
+function App() {
+  return (
+    <>
+      <BrowserRouter>
+        <nav>
+          <Vistas.Navbar />
+        </nav>
+        <div className="contentDistribution">
+          <nav>
+            <Vistas.Sidebar />
+          </nav>
+          <main>
+            <Routes>
+              {/* Ruta de inicio sin Sidebar */}
+              <Route exact path="/" element={<Vistas.Home />} />
 
+              {/* Ruta de login sin Sidebar */}
+              <Route path="/login" element={<Vistas.Login />} />
 
-	// Hook para conocer estado sesion usuario
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-	// Funcion modificacion valor hook
-	const handleLogin = () => {
-		setIsLoggedIn(true);
-	};
-	return (
-		<>
-		{/* Orden Rutas */}
-		  <BrowserRouter>
-			{/* Navigation */}
-		  <nav>
-			<Vistas.Navbar/>
-		  </nav>
-			{/* Content Distribution for column order with sidebar and screens*/}
-		<div className='contentDistribution'>
-		  <nav>
-			<Vistas.Sidebar/>
-		  </nav>
-
-		  <main>
-		{/* Rutas */}
-			<Routes>
-				
-				<Route exact path = "/" element={<Vistas.Home/>}/>
-				<Route path="/login" element={<Vistas.Login/>}/>
-
-				{/*Rutas Agregar*/}
-				<Route path="/Agregarprofe" element={<Vistas.Agregarprofe/>}/>
-				<Route path="/Agregarcurso" element={<Vistas.Agregarcurso/>}/>
-
-				{/*Rutas Modificar*/}
-				<Route path="/Modificarprofe" element={<Vistas.ModificarProfe/>}/>
-				<Route path="/Modificarcurso" element={<Vistas.ModificarCurso/>}/>
-
-				{/*Rutas Eliminar*/}
-				<Route path="/Eliminarprofe" element={<Vistas.EliminarProfesor/>}/>
-				<Route path="/Eliminarcurso" element={<Vistas.EliminarCurso/>}/>
-
-				{/*Rutas de nuevas asignaciones o modificaciones en si*/}
-				<Route path="/Cambiarcurso" element={<Vistas.CambiarCurso/>}/>
-				<Route path="/Cambiarprofe" element={<Vistas.CambiarProfe/>}/>
-
-			</Routes>
-		  </main>
-		</div>
-		  </BrowserRouter>
-		</>
-	);
-};
+              {/* Rutas con Sidebar */}
+                      {/* Rutas con Sidebar */}
+                <Route path="/Agregarprofe" element={<Vistas.Agregarprofe />} />
+                <Route path="/Agregarcurso" element={<Vistas.Agregarcurso />} />
+                <Route path="/Modificarprofe" element={<Vistas.ModificarProfe />} />
+                <Route path="/Modificarcurso" element={<Vistas.ModificarCurso />} />
+                <Route path="/Eliminarprofe" element={<Vistas.EliminarProfesor />} />
+                <Route path="/Eliminarcurso" element={<Vistas.EliminarCurso />} />
+                {/* Otras rutas con Sidebar */}
+                <Route path="/Cambiarcurso" element={<Vistas.CambiarCurso />} />
+                <Route path="/Cambiarprofe" element={<Vistas.CambiarProfe />} />
+            </Routes>
+          </main>
+        </div>
+      </BrowserRouter>
+    </>
+  );
+}
 
 export default App;

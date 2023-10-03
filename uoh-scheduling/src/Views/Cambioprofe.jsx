@@ -31,18 +31,18 @@ function CambiarProfe() {
     ])
 
     return(
-        <div class="container-cprofe">
+        <div className="container-cprofe">
             <h1>Editar Profesor</h1>
-            <h3 class="texto-mostrar">Nombre: Ejemplo</h3> {/*<-- ACA EL NOMBRE DEBERIA VENIR DE LA BASE DE DATOS*/}
+            <h3 className="texto-mostrar">Nombre: Ejemplo</h3> {/*<-- ACA EL NOMBRE DEBERIA VENIR DE LA BASE DE DATOS*/}
             {/*Reutilizo el css de modificar profesor*/}
-            <div class="container-search">
+            <div className="container-search">
             <input
                     type='text'
                     placeholder='Nuevo Nombre'
                 />
-                <button class="aplicar-button" type="submit">Cambiar</button>
+                <button className="aplicar-button" type="submit">Cambiar</button>
             </div>
-            <h3 class="texto-mostrar">Modificar las preferencias del profesor</h3>
+            <h3 className="texto-mostrar">Modificar las preferencias del profesor</h3>
             <div className="horario-container">
                 <div className="horario-wrapper">
                 <div className="horario-horas">
@@ -84,10 +84,10 @@ function CambiarProfe() {
             </div>
             {/*SCROLL BAR */}
             
-            <div class="container-scroll-mp">
-                <div class="content">
+            <div className="container-scroll-mp">
+                <div className="content">
                     <h2>Cursos a impartir</h2>
-                    <ul class="Lista">
+                    <ul className="Lista">
                         {cursos.map((elemento, index) => (
                             <li>
                                 {elemento.nombre} - {elemento.codigo}-{elemento.semestre}
@@ -98,7 +98,7 @@ function CambiarProfe() {
             </div>
             
             {/*BOTON*/}
-            <button type="submit" class="aplicar-buttonmd">
+            <button type="submit" className="aplicar-buttonmd">
                 Aplicar
             </button>
 
