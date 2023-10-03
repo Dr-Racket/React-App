@@ -16,6 +16,7 @@ function ModificarProfe() {
       .then((response) => {
         // Actualizar el estado con los datos de los profesores
         setProfesores(response.data);
+        console.log(response)
       })
       .catch((error) => {
         // Manejar errores si la solicitud falla
@@ -38,7 +39,7 @@ function ModificarProfe() {
           <ul>
             {profesores.map((elemento, index) =>(
               <li key={index}>
-                <a className= "link" href={elemento.url}>{elemento.nombre}</a>
+                <a className= "link" href={elemento.name}> {elemento.name}</a>
               </li>
             ))}
           </ul>
