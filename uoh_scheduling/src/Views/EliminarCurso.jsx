@@ -4,9 +4,9 @@ import axios from "axios"
 import '../css/modificarcurso.css'
 
 
-function ModificarCurso() {
+function EliminarCurso() {
     const [search, setSearch] = useState("");
-    const [button, setButton] = useState(false);
+
     const [NCursos, setNCursos] = useState([]);
 
   // Función para realizar la solicitud a la API
@@ -27,16 +27,9 @@ function ModificarCurso() {
       });
   }, []); // El segundo argumento vacío [] asegura que la solicitud se realice solo una vez
 
-    const handleButton = () => {
-        if (search) {
-            setButton(true);
-        }else {
-            setButton(false);
-        }
-    };
 
       const filteredCursos = NCursos.filter((curso, index) => {
-          if(button){
+          if(search){
             return curso.name.toLowerCase().includes(String(search).toLowerCase());
           }else{ return curso.name }
       });
@@ -48,9 +41,13 @@ function ModificarCurso() {
             ));
       };
 
+      const handleButton = () => {
+        return renderCursos()
+    };
+
     return(
         <div className="Container-Cursos">
-            <h2>Modificar Cursos</h2>
+            <h2>Eliminar Cursos</h2>
             <div className="Container-Cursos-Search">
                 <input
                     type='text'
@@ -58,7 +55,6 @@ function ModificarCurso() {
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                 />
-                <button onClick={handleButton} className="aplicar-button" type="submit">Buscar</button>
             </div>
             <div className="Container-Scroll">
                 <div className="Content-Cursos">
@@ -73,4 +69,5 @@ function ModificarCurso() {
 }
 
 
-export default ModificarCurso;
+export default EliminarCurso;
+

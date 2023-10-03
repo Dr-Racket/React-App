@@ -4,9 +4,9 @@ import axios from "axios"
 import '../css/modificarcurso.css'
 
 
-function EliminarCurso() {
+function ModificarCurso() {
     const [search, setSearch] = useState("");
-    const [button, setButton] = useState(false);
+
     const [NCursos, setNCursos] = useState([]);
 
   // Función para realizar la solicitud a la API
@@ -20,6 +20,7 @@ function EliminarCurso() {
         // Actualizar el estado con los datos de los cursos
         setNCursos(response.data);
         console.log(response)
+        setButton(false);
       })
       .catch((error) => {
         // Manejar errores si la solicitud falla
@@ -27,10 +28,8 @@ function EliminarCurso() {
       });
   }, []); // El segundo argumento vacío [] asegura que la solicitud se realice solo una vez
 
-    
-
-      const filteredCursos = NCursos.filter((curso, index) => {
-          if(button){
+          const filteredCursos = NCursos.filter((curso, index) => {
+          if(search){
             return curso.name.toLowerCase().includes(String(search).toLowerCase());
           }else{ return curso.name }
       });
@@ -42,13 +41,9 @@ function EliminarCurso() {
             ));
       };
 
-      const handleButton = () => {
-        return renderCursos()
-    };
-
     return(
         <div className="Container-Cursos">
-            <h2>Eliminar Cursos</h2>
+            <h2>Modificar Cursos</h2>
             <div className="Container-Cursos-Search">
                 <input
                     type='text'
@@ -56,12 +51,11 @@ function EliminarCurso() {
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                 />
-                <button onClick={handleButton} className="aplicar-button" type="submit">Buscar</button>
             </div>
             <div className="Container-Scroll">
                 <div className="Content-Cursos">
                     <ul>
-                        {button ? <></> : renderCursos()}
+                        {renderCursos()}
                     </ul>
                 </div>
             </div>
@@ -71,5 +65,4 @@ function EliminarCurso() {
 }
 
 
-export default EliminarCurso;
-
+export default ModificarCurso;

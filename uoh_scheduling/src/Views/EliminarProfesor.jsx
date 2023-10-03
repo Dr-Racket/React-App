@@ -6,7 +6,6 @@ import '../css/modificarprofe.css'
 function EliminarProfesor() {
   // Barra Busqueda Hooks
   const [search, setSearch] = useState("");
-  const [button, setButton] = useState(false);
 
   const [profesores, setProfesores] = useState([]);
 
@@ -28,17 +27,8 @@ function EliminarProfesor() {
       });
   }, []); // El segundo argumento vacío [] asegura que la solicitud se realice solo una vez
 
-  const handleButton = () => {
-      if (search) {
-            setButton(true);
-      }else {
-      setButton(false);
-      }
-  };
-
-
   const filteredProfes = profesores.filter((profesor, index) => {
-      if(button){
+      if(search){
           return profesor.name.toLowerCase().includes(String(search).toLowerCase());
       }else{ return profesor.name}
   });
@@ -62,7 +52,6 @@ function EliminarProfesor() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <button onClick={handleButton} className="aplicar-button" type="submit">Buscar</button>
       </div>
       <div className="container-scroll">
         <div className="content">
