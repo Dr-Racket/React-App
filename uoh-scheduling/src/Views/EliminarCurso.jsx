@@ -14,7 +14,7 @@ function EliminarCurso() {
             <div class="Container-Cursos-Search">
                 <input
                     type='text'
-                    placeholder='Buscar'
+                    placeholder='Buscar el curso a borrar'
                 />
                 <button class="aplicar-button" type="submit">Buscar</button>
             </div>
