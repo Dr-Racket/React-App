@@ -15,7 +15,7 @@ function EliminarProfesor() {
           <div className="container-search">
             <input
               type="text"
-              placeholder="Buscar"
+              placeholder="Buscar el profesor a eliminar"
             />
             <button class="aplicar-button" type="submit">Buscar</button>
           </div>
