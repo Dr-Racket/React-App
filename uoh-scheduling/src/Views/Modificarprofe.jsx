@@ -30,7 +30,7 @@ function ModificarProfe() {
       <div className="container-search">
         <input
           type="text"
-          placeholder="Buscar"
+          placeholder="Buscar el profesor a modificar"
         />
         <button className="aplicar-button" type="submit">Buscar</button>
       </div>
