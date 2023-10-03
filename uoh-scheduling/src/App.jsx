@@ -37,6 +37,7 @@ function App() {
                 <Route path="/Cambiarcurso" element={<PrivateRoute><Vistas.CambiarCurso /></PrivateRoute>} />
                 <Route path="/Cambiarprofe" element={<PrivateRoute><Vistas.CambiarProfe /></PrivateRoute>} />
 				<Route path="/postProfesor" element={<PrivateRoute><Vistas.AgregarProfeAdmin /></PrivateRoute>}/>
+        <Route path="/postCurso" element={<PrivateRoute><Vistas.AgregarCursoAdmin /></PrivateRoute>}/>
             </Routes>
           </main>
         </div>

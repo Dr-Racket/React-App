@@ -3,15 +3,6 @@ import axios from "axios"
 
 import '../css/modificarcurso.css'
 
-function ModificarCurso() {
-
-
-
-export default ModificarCurso;
-
-import React,{ useState } from 'react';
-
-import '../css/modificarcurso.css'
 
 function ModificarCurso() {
     const [search, setSearch] = useState("");
@@ -46,13 +37,13 @@ function ModificarCurso() {
 
       const filteredCursos = NCursos.filter((curso, index) => {
           if(button){
-            return curso.nombre.toLowerCase().includes(String(search).toLowerCase());
-          }else{ return curso.nombre }
+            return curso.name.toLowerCase().includes(String(search).toLowerCase());
+          }else{ return curso.name }
       });
       const renderCursos = () => {
           return filteredCursos.map((curso, index) => (
             <li key={index}>
-                <a href={curso.url}>{curso.nombre}</a>
+                <a href={curso.url}>{curso.name} {curso.code} \ semestre {curso.semester}</a>
               </li>
             ));
       };
@@ -83,4 +74,3 @@ function ModificarCurso() {
 
 
 export default ModificarCurso;
-

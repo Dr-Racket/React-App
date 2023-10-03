@@ -213,3 +213,22 @@
     color: #fff;
   
   }
+
+  .input-container-colum{
+
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+
+  }
+
+  .input-container-fila{
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+
+  }

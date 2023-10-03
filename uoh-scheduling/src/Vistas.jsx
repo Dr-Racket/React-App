@@ -19,6 +19,7 @@ import CambiarCurso from "./Views/Cambiocurso.jsx"
 import CambiarProfe from "./Views/Cambioprofe.jsx"
 
 import AgregarProfeAdmin from "./Views/Agregarprofeadmin.jsx"
+import AgregarCursoAdmin from "./Views/Agregarcursoadmin.jsx"
 
 export default {
     Navbar,
@@ -34,5 +35,6 @@ export default {
     EliminarCurso,
     EliminarProfesor,
     AgregarProfeAdmin,
+    AgregarCursoAdmin,
 }
 

@@ -65,9 +65,10 @@
     margin: 0 auto;
     max-height: 2.5vw;
     height: 100%;
-    justify-content: space-around;
     flex-wrap: nowrap;
+    justify-content: space-between;
     align-items: stretch;
+    flex-direction: row;
 	
 }
 
@@ -81,8 +82,8 @@
 .UOH {
 	
 	display: block;
-	float: left;
-	margin: 0 5px 0 0;
+    float: left;
+    margin: 0 4vw 0 0;
 }
 
 .sep {

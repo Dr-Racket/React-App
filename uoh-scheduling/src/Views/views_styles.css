@@ -21,21 +21,6 @@
 
 }
 
-.rectangulito{
-
-	height: 50%;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: center;
-    background: black;
-    border: solid white;
-    border-radius: 20px;
-
-}
-
 .button {
 
 }
