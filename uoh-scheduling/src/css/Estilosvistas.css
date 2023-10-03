@@ -133,7 +133,31 @@
 
     background-color: #a59e9c;
   }
-  
+
+  .aplicar-button2 {
+    margin-left: 68vw;
+    background-color: #af3621;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+
+  .aplicar-button2 button {
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+  }
+
+  .aplicar-button2:hover {
+
+    background-color: #c44c3d;
+
+  }
+
   .aplicar-button {
 
     margin-left: 68vw;
