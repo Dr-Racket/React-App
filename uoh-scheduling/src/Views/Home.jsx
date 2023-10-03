@@ -5,7 +5,7 @@ const Home = () => {
     const { user } = useContext(AuthContext);
 
     return (user ? (
-        <div>
+        <div className='rectangulito'>
             <p>You are logged in to the homepage!</p>
         </div>
         ):(
