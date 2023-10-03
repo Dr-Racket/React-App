@@ -16,7 +16,7 @@ function ModificarCurso() {
             <div class="Container-Cursos-Search">
                 <input
                     type='text'
-                    placeholder='Buscar'
+                    placeholder='Buscar el curso a modificar'
                 />
                 <button class="aplicar-button" type="submit">Buscar</button>
             </div>
