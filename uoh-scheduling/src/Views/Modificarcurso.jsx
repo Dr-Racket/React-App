@@ -1,3 +1,14 @@
+import React, { useState, useEffect } from 'react';
+import axios from "axios"
+
+import '../css/modificarcurso.css'
+
+function ModificarCurso() {
+
+
+
+export default ModificarCurso;
+
 import React,{ useState } from 'react';
 
 import '../css/modificarcurso.css'
@@ -5,15 +16,25 @@ import '../css/modificarcurso.css'
 function ModificarCurso() {
     const [search, setSearch] = useState("");
     const [button, setButton] = useState(false);
+    const [NCursos, setNCursos] = useState([]);
 
+  // Función para realizar la solicitud a la API
+  useEffect(() => {
+    // URL de la API que devuelve la lista de cursos
+    const apiUrl = 'http://127.0.0.1:8000/api/getCourses/';
 
-    const NCursos =[
-        //agregar más de ser necesarios (tengo esos de ejemplo), cambiar url de ser necesario
-        {nombre: "Computación Gráfica", codigo:"C1", semestre:"1" ,url: "/"},
-        {nombre: "Teoria de la Computación", codigo:"C2", semestre:"2" ,url: "/"},
-        {nombre: "Matematicas Discretas", codigo:"C3", semestre:"1" ,url: "/"},
-        {nombre: "Ciencias e Ingenieria Computacional", codigo:"C4", semestre:"4" ,url: "/"},
-    ]
+    // Realizar la solicitud GET utilizando Axios
+    axios.get(apiUrl)
+      .then((response) => {
+        // Actualizar el estado con los datos de los cursos
+        setNCursos(response.data);
+        console.log(response)
+      })
+      .catch((error) => {
+        // Manejar errores si la solicitud falla
+        console.error('Error al obtener la lista de cursos:', error);
+      });
+  }, []); // El segundo argumento vacío [] asegura que la solicitud se realice solo una vez
 
     const handleButton = () => {
         if (search) {
