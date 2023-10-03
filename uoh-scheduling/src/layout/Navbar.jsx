@@ -20,10 +20,10 @@ function Navbar()
 				<Link to='/' className='Link'>
 					Main Page
 				</Link>
-			{user && <p className='Text-Inicio'>Hello {user.username}!</p>}
+			{user && <p className='Text-Inicio'>Hello,{user.username}!</p>}
 				<div className='sep'/>
 				{user ? (
-                <button onClick={logoutUser}>Logout</button>
+                <button onClick={logoutUser} className='aplicar-button2'>Logout</button>
             ) : (
                 <Link to="/login" >Login</Link>
             )}

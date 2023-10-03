@@ -6,7 +6,7 @@ const Home = () => {
 
     return (user ? (
         <div className='rectangulito'>
-            <p>You are logged in to the homepage!</p>
+            <h1>You are logged in to the homepage!</h1>
         </div>
         ):(
         <div>
