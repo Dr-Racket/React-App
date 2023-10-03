@@ -14,7 +14,7 @@
     padding: 20px 0;
     font-size: 28px;
     font-weight: bold;
-    color: white;
+    color: black;
   }
   
   #login-form form {
@@ -28,14 +28,24 @@
     display: block;
     margin-bottom: 8px;
     font-size: 14px;
-    color: gray;
+    color: black;
     font-family: "Poppins", sans-serif;
   }
   
-  #login-form form input[type="text"],
-  #login-form form input[type="password"] {
+  #login-form form input[type="text"]{
     width: 100%;
     padding: 12px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-left: 0;
+    bottom: 10px;
+    position: relative;
+  }
+  #login-form form input[type="password"] {
+    width: 100%;
+    padding: 4px;
     border: 1px solid lightgray;
     border-radius: 5px;
     font-size: 16px;

@@ -34,6 +34,7 @@
     width: 70%;
     padding: 5px;
     border-radius: 12px;
+    border: 1px solid rgb(133 133 133);
 
   }
   
@@ -43,7 +44,7 @@
     display: flex;
     align-items: center;
     margin-bottom: 10px;
-
+    
   }
   
   .semestre-select label {
@@ -56,8 +57,8 @@
   .semestre-select select {
 
     padding: 5px;
-    border: 1px solid #000;
     border-radius: 5px;
+    border: 1px solid rgb(127, 115, 115);
 
   }
   
