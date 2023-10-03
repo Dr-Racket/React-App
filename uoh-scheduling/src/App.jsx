@@ -34,7 +34,8 @@ function App() {
                 {/* Otras rutas con Sidebar */}
                 <Route path="/Cambiarcurso" element={<Vistas.CambiarCurso />} />
                 <Route path="/Cambiarprofe" element={<Vistas.CambiarProfe />} />
-				<Route path="/postProfesor" element={<Vistas.AgregarProfeAdmin />} />
+				        <Route path="/postProfesor" element={<Vistas.AgregarProfeAdmin />} />
+                <Route path="/postCurso" element={<Vistas.AgregarCursoAdmin />} />
             </Routes>
           </main>
         </div>

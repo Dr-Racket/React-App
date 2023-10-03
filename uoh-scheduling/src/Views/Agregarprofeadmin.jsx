@@ -48,7 +48,7 @@ function AgregarProfeAdmin() {
         />
       </div>
       <div className="horario-container">
-        <h2>Es responsabilidad de usted que el nombre del profesor sea correcto. By: Andrés Zuñiga</h2>
+        <h2>Es responsabilidad de usted que el nombre del profesor sea correcto.</h2>
         <div className="horario-wrapper">
           <div className="horario-horas">
           </div>
