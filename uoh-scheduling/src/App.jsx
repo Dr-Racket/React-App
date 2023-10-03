@@ -8,7 +8,7 @@ function App() {
 
 
 	// Hook para conocer estado sesion usuario
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [isLoggedIn, setIsLoggedIn] = useState(true);
 
 	// Funcion modificacion valor hook
 	const handleLogin = () => {
@@ -17,44 +17,44 @@ function App() {
 	return (
 		<>
 		{/* Orden Rutas */}
-		  <BrowserRouter>
-			{/* Navigation */}
-		  <nav>
-			<Vistas.Navbar/>
-		  </nav>
-			{/* Content Distribution for column order with sidebar and screens*/}
-		<div className='contentDistribution'>
-		  <nav>
-			<Vistas.Sidebar/>
-		  </nav>
+		<BrowserRouter>
+				{/* Navigation */}
+			<nav>
+				<Vistas.Navbar/>
+			</nav>
+				{/* Content Distribution for column order with sidebar and screens*/}
+			<div className='contentDistribution'>
+			<nav>
+				<Vistas.Sidebar/>
+			</nav>
 
-		  <main>
-		{/* Rutas */}
-			<Routes>
-				
-				<Route exact path = "/" element={<Vistas.Home/>}/>
-				<Route path="/login" element={<Vistas.Login/>}/>
+			<main>
+			{/* Rutas */}
+				<Routes>
+					
+					<Route exact path = "/" element={<Vistas.Home/>}/>
+					<Route path="/login" element={<Vistas.Login/>}/>
 
-				{/*Rutas Agregar*/}
-				<Route path="/Agregarprofe" element={<Vistas.Agregarprofe/>}/>
-				<Route path="/Agregarcurso" element={<Vistas.Agregarcurso/>}/>
+					{/*Rutas Agregar*/}
+					<Route path="/Agregarprofe" element={<Vistas.Agregarprofe/>}/>
+					<Route path="/Agregarcurso" element={<Vistas.Agregarcurso/>}/>
 
-				{/*Rutas Modificar*/}
-				<Route path="/Modificarprofe" element={<Vistas.ModificarProfe/>}/>
-				<Route path="/Modificarcurso" element={<Vistas.ModificarCurso/>}/>
+					{/*Rutas Modificar*/}
+					<Route path="/Modificarprofe" element={<Vistas.ModificarProfe/>}/>
+					<Route path="/Modificarcurso" element={<Vistas.ModificarCurso/>}/>
 
-				{/*Rutas Eliminar*/}
-				<Route path="/Eliminarprofe" element={<Vistas.EliminarProfesor/>}/>
-				<Route path="/Eliminarcurso" element={<Vistas.EliminarCurso/>}/>
+					{/*Rutas Eliminar*/}
+					<Route path="/Eliminarprofe" element={<Vistas.EliminarProfesor/>}/>
+					<Route path="/Eliminarcurso" element={<Vistas.EliminarCurso/>}/>
 
-				{/*Rutas de nuevas asignaciones o modificaciones en si*/}
-				<Route path="/Cambiarcurso" element={<Vistas.CambiarCurso/>}/>
-				<Route path="/Cambiarprofe" element={<Vistas.CambiarProfe/>}/>
+					{/*Rutas de nuevas asignaciones o modificaciones en si*/}
+					<Route path="/Cambiarcurso" element={<Vistas.CambiarCurso/>}/>
+					<Route path="/Cambiarprofe" element={<Vistas.CambiarProfe/>}/>
 
-			</Routes>
-		  </main>
-		</div>
-		  </BrowserRouter>
+				</Routes>
+			</main>
+			</div>
+		</BrowserRouter>
 		</>
 	);
 };

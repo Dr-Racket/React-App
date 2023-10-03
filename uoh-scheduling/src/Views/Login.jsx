@@ -29,7 +29,11 @@ const Login = ({ onLogin }) => {
 	return (
 		<>
 		<div className='MAIN'>
-			<button onClick={onLogin} className="button">Login</button>
+			<div className='LoginContain'>
+				<div className='rectangulito'>
+					<button onClick={onLogin} className="button">Login</button>
+				</div>
+			</div>
 		</div>
 		</>
 	);
