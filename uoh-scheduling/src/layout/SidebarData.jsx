@@ -17,7 +17,7 @@ export const SidebarData = [
 		title: "Profesores",
 		link: "/profesores",
 		options: [
-			{title: "Agregar", link: "/Agregarprofe"},
+			{title: "Agregar", link: "/postProfesor"},
 			{title: "Editar", link: "/Modificarprofe"},
 			{title: "Eliminar", link: "/Eliminarprofe"}
 		]
