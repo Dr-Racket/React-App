@@ -56,7 +56,7 @@
 /* NavBar style */
 .NavBar {
 
-	background-color: #375a7f;
+    background-color: #375a7f;
     display: flex;
     position: fixed;
     top: 0;
@@ -88,12 +88,14 @@
 
 .sep {
 
-	width: 55%;
+    position: relative;
+    width: 30%;
 }
 
 .Link {
 
 	display: flex;
+  position: relative;
 	justify-content: center;
 	align-items: center;
 	color: #bacdd1;
@@ -106,6 +108,38 @@
 
 	color: white;
 }
-.Text-Inicio{
+
+
+/* EXTRA IMPLEMENTATIONS */
+.username-display{
+
+    position: relative;
+    display: flex;
+    align-items: center;
     color: black;
+    font-weight: bold;
+    padding: 0 2vw 0 2rem;
+}
+
+.cerrarSesion {
+
+    background-color: #af3621;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.cerrarSesion button {
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.cerrarSesion:hover {
+
+    background-color: #c44c3d;
 }

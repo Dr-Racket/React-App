@@ -70,6 +70,7 @@ button:focus-visible {
 /* Ordenamiento con contentDistribution para sidebar y vistas*/
 .contentDistribution {
 	
+  position: relative;
 	display: flex;
 	flex-direction: column;
 	height: 100vh;
@@ -86,6 +87,7 @@ button:focus-visible {
 .contentDistribution main {
 
 	position: fixed;
+  display:flex;
 	top: 2.5vw;
 	left: 18vw;
 	right: 0;

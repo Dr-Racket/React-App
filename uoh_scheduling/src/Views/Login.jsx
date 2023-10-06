@@ -5,14 +5,18 @@ const Login = () => {
   let {loginUser} = useContext(AuthContext)
   //let {loginUser} = useContext(AuthContext)
   return (
-    <div id="login-form">
-      <h1>Login</h1>
+    <div className="login-form">
+      <h1>Iniciar Sesión</h1>
       <form onSubmit={loginUser}>
-        <label htmlFor="email">email:</label>
-        <input type="text" id="email" name="email" />
-        <label htmlFor="password">Password:</label>
-        <input type="password" id="password" name="password" />
-        <input type="submit" value="Submit" />
+        <div>
+          <label htmlFor="email">Email:</label>
+          <input type="text" className="email" name="email" />
+        </div>
+        <div>
+          <label htmlFor="password">Password:</label>
+          <input type="password" className="password" name="password" />
+        </div>
+        <input className="login-button" type="submit" value="Enviar"/>
       </form>
     </div>
   );

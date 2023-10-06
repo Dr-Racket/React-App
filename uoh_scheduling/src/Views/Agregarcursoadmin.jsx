@@ -62,7 +62,8 @@ function AgregarCursoAdmin() {
       <div className="input-container-columr">
         <div className="input-container-fila">
           <label>Nombre:</label>
-          <input
+          <input 
+            className='inputText'
             type="text"
             placeholder="Introduce el nombre del curso"
             value={nombre}
@@ -72,6 +73,7 @@ function AgregarCursoAdmin() {
         <div className="input-container-fila">
           <label>Codigo:</label>
           <input
+            className='inputText'
             type="text"
             placeholder="Introduce el codigo del curso"
             value={codigo}
@@ -81,6 +83,7 @@ function AgregarCursoAdmin() {
         <div className="input-container-fila">
           <label>Semestre:</label>
           <input
+            className='inputText'
             type="text"
             placeholder="Introduce el semestre del curso"
             value={semestre}
@@ -90,6 +93,7 @@ function AgregarCursoAdmin() {
         <div className="input-container-fila">
           <label>Catedras:</label>
           <input
+            className='inputText'
             type="text"
             placeholder="Introduce el numero de catedras del curso"
             value={catedra}
@@ -99,6 +103,7 @@ function AgregarCursoAdmin() {
           <div className="input-container-fila">
           <label>Ayudantias:</label>
           <input
+            className='inputText'
             type="text"
             placeholder="Introduce el numero de Ayudantias del curso"
             value={ayudantia}

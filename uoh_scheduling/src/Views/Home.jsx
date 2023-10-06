@@ -6,11 +6,14 @@ const Home = () => {
 
     return (user ? (
         <div className='rectangulito'>
-            <h1>You are logged in to the homepage!</h1>
+            <h1>¡Bienvenido/a!</h1>
+            <div className='someText'>
+               Para comenzar a administrar diríjase a la barra lateral del navegador.
+            </div>
         </div>
         ):(
         <div>
-            <p>You are not logged in, redirecting...</p>
+            <p>Redirigiendo, Sesión No Inciada</p>
         </div>
         )
     )

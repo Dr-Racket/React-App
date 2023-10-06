@@ -20,12 +20,12 @@ function Navbar()
 				<Link to='/' className='Link'>
 					Main Page
 				</Link>
-			{user && <p className='Text-Inicio'>Hello,{user.username}!</p>}
+				{user && <p className='username-display'>Bienvenido/a, {user.username}!</p>}
 				<div className='sep'/>
 				{user ? (
-                <button onClick={logoutUser} className='aplicar-button2'>Logout</button>
+                <button onClick={logoutUser} className='cerrarSesion'>Cerrar Sesión</button>
             ) : (
-                <Link to="/login" >Login</Link>
+                <Link className='Link' to="/login" >Iniciar Sesión</Link>
             )}
 			</div>
 		</>

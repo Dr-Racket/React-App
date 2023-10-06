@@ -1,38 +1,34 @@
-#login-form {
-    width: 400px;
-    max-width: 100%;
-    margin: 50px auto;
-    background-color: lightblue;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    font-family: "Poppins", sans-serif;
-  }
+.login-form {
+    display: block;
+    position: relative;
+    padding: 5vw 20vw 0px;
+    width: 60vw;
+}
   
-  #login-form h1 {
+.login-form h1 {
     text-align: center;
     margin: 0;
     padding: 20px 0;
     font-size: 28px;
     font-weight: bold;
-    color: black;
-  }
+    color: white;
+}
   
-  #login-form form {
+.login-form form {
     padding: 20px;
-    background-color: white;
-    border-radius: 10px;
     font-family: "Poppins", sans-serif;
   }
   
-  #login-form form label {
+  .login-form form label {
     display: block;
     margin-bottom: 8px;
     font-size: 14px;
-    color: black;
+    color: white;
+    font-weight: bold;
     font-family: "Poppins", sans-serif;
   }
   
-  #login-form form input[type="text"]{
+  .login-form form input[type="text"]{
     width: 100%;
     height: 9%;
     padding: 12px;
@@ -44,9 +40,9 @@
     bottom: 10px;
     position: relative;
   }
-  #login-form form input[type="password"] {
+  .login-form form input[type="password"] {
     width: 100%;
-    padding: 4px;
+    padding: 12px;
     border: 1px solid lightgray;
     border-radius: 5px;
     font-size: 16px;
@@ -55,7 +51,7 @@
     height: 1%;  
   }
   
-  #login-form form input[type="submit"] {
+  .login-form form input[type="submit"] {
     width: 100%;
     padding: 12px;
     background-color: dodgerblue;
@@ -69,7 +65,7 @@
     transition: background-color 0.3s ease;
   }
   
-  #login-form form input[type="submit"]:hover {
+  .login-form form input[type="submit"]:hover {
     background-color: deepskyblue;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   }
