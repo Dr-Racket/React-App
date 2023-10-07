@@ -33,7 +33,7 @@ function CambiarProfe() {
     return(
         <div className="container-cprofe">
             <h1>Editar Profesor</h1>
-            <h3 className="texto-mostrar">Nombre: Ejemplo</h3> {/*<-- ACA EL NOMBRE DEBERIA VENIR DE LA BASE DE DATOS*/}
+            <h3 className="texto-mostrar">Nombre: Ejemplo</h3> {/*TODO: <-- ACA EL NOMBRE DEBERIA VENIR DE LA BASE DE DATOS*/}
             {/*Reutilizo el css de modificar profesor*/}
             <div className="container-search">
             <input

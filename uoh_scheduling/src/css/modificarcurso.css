@@ -1,5 +1,7 @@
 .Container-Cursos{
 
+    position: relative;
+    width: 60vw;
     background-color: #2d3338;
     margin: 20px;
     padding: 20px;

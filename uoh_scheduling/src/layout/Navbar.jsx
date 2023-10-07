@@ -18,7 +18,7 @@ function Navbar()
 
 				{/* Links to paths */}
 				<Link to='/' className='Link'>
-					Main Page
+					Volver a Inicio
 				</Link>
 				{user && <p className='username-display'>Bienvenido/a, {user.username}!</p>}
 				<div className='sep'/>

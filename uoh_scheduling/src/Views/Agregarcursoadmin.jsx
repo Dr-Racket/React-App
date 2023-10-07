@@ -59,56 +59,65 @@ function AgregarCursoAdmin() {
   return (
     <div className="agregar-estilo-container">
       <h2>Agregar Curso</h2>
-      <div className="input-container-columr">
+      <div className="input-container-column">
         <div className="input-container-fila">
-          <label>Nombre:</label>
-          <input 
-            className='inputText'
-            type="text"
-            placeholder="Introduce el nombre del curso"
-            value={nombre}
-            onChange={(e) => setNombre(e.target.value)}
-          />
+          <label for="nombre">Nombre:</label>
+          <div className='inputText'>
+            <input id="nombre"
+              type="text"
+              placeholder="Introduce el nombre del curso"
+              value={nombre}
+              onChange={(e) => setNombre(e.target.value)}
+            />
+          </div>
         </div>
         <div className="input-container-fila">
-          <label>Codigo:</label>
-          <input
-            className='inputText'
-            type="text"
-            placeholder="Introduce el codigo del curso"
-            value={codigo}
-            onChange={(e) => setCodigo(e.target.value)}
-          />
+          <label for="codigo">Codigo:</label>
+          <div className='inputText'>
+            <input id="codigo"
+              className='inputText'
+              type="text"
+              placeholder="Introduce el codigo del curso"
+              value={codigo}
+              onChange={(e) => setCodigo(e.target.value)}
+            />
+          </div>
         </div>
         <div className="input-container-fila">
-          <label>Semestre:</label>
-          <input
-            className='inputText'
-            type="text"
-            placeholder="Introduce el semestre del curso"
-            value={semestre}
-            onChange={(e) => setSemestre(e.target.value)}
-          />
+          <label for="semestre">Semestre:</label>
+          <div className='inputText'>
+            <input id="semestre"
+              className='inputText'
+              type="text"
+              placeholder="Introduce el semestre del curso"
+              value={semestre}
+              onChange={(e) => setSemestre(e.target.value)}
+            />
+          </div>
         </div>
         <div className="input-container-fila">
-          <label>Catedras:</label>
-          <input
-            className='inputText'
-            type="text"
-            placeholder="Introduce el numero de catedras del curso"
-            value={catedra}
-            onChange={(e) => setCatedra(e.target.value)}
-          />
+          <label for="catedras">Catedras:</label>
+          <div className='inputText'>
+            <input id="catedras"
+              className='inputText'
+              type="text"
+              placeholder="Introduce el numero de catedras del curso"
+              value={catedra}
+              onChange={(e) => setCatedra(e.target.value)}
+            />
+          </div>
           </div>
           <div className="input-container-fila">
-          <label>Ayudantias:</label>
-          <input
-            className='inputText'
-            type="text"
-            placeholder="Introduce el numero de Ayudantias del curso"
-            value={ayudantia}
-            onChange={(e) => setAyudantia(e.target.value)}
-          />
+          <label for="ayudantias">Ayudantias:</label>
+          <div className='inputText'>
+            <input id="ayudantias"
+              className='inputText'
+              type="text"
+              placeholder="Introduce el numero de Ayudantias del curso"
+              value={ayudantia}
+              onChange={(e) => setAyudantia(e.target.value)}
+            />
+          </div>
           </div>
       </div>
       <div className="horario-container">

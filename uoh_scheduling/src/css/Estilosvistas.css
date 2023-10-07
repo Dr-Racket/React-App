@@ -4,6 +4,7 @@
   color: white;
   margin: 20px;
   padding: 20px;
+  width: 60vw;
   border-radius: 5px;
   background-color: #2d3338;
   text-align: center;
@@ -216,10 +217,11 @@
     color: #fff;
   }
 
-  .input-container-colum{
+  .input-container-column{
 
     display: flex;
     align-items: stretch;
+    width: 50vw;
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: space-evenly;
@@ -229,6 +231,7 @@
   .input-container-fila{
 
     display: flex;
+    justify-content: space-between;
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
