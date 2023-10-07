@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 //Vista en la cuál se modifican los cursos 
 
-import '../css/modificarcurso.css'
+import '../css/Cursos.css'
 
-function CambiarCurso() {
+function Editarprefcurso() {
     const [horario, setHorario] = useState([
         [false, false, false, false, false],
         [false, false, false, false, false],
@@ -84,4 +84,4 @@ function CambiarCurso() {
     );
 }
 
-export default CambiarCurso;
+export default Editarprefcurso;

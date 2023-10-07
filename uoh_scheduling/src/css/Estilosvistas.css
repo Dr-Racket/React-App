@@ -4,7 +4,7 @@
   color: white;
   margin: 20px;
   padding: 20px;
-  width: 60vw;
+  width: 80vw;
   border-radius: 5px;
   background-color: #2d3338;
   text-align: center;
@@ -233,9 +233,15 @@
     display: flex;
     justify-content: space-between;
     flex-direction: row;
+    width: 50vw;
     flex-wrap: nowrap;
     align-items: center;
 
+  }
+
+  .inputText{
+    width: 80%;
+    padding: 10px; 
   }
 /* EXTRAS */
 .someText {

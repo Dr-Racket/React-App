@@ -34,10 +34,11 @@ function App() {
                 <Route path="/Eliminarprofe" element={<PrivateRoute><Vistas.EliminarProfesor /></PrivateRoute>} />
                 <Route path="/Eliminarcurso" element={<PrivateRoute><Vistas.EliminarCurso /></PrivateRoute>} />
                 {/* Otras rutas con Sidebar */}
-                <Route path="/Cambiarcurso" element={<PrivateRoute><Vistas.CambiarCurso /></PrivateRoute>} />
-                <Route path="/Cambiarprofe" element={<PrivateRoute><Vistas.CambiarProfe /></PrivateRoute>} />
-				<Route path="/postProfesor" element={<PrivateRoute><Vistas.AgregarProfeAdmin /></PrivateRoute>}/>
-        <Route path="/postCurso" element={<PrivateRoute><Vistas.AgregarCursoAdmin /></PrivateRoute>}/>
+                <Route path="/EditarprefC" element={<PrivateRoute><Vistas.Editarprefcurso /></PrivateRoute>} />
+                <Route path="/EditarprefP" element={<PrivateRoute><Vistas.Editarprefprofe /></PrivateRoute>} />
+                {/*Rutas administrador*/}
+                <Route path="/postProfesor" element={<PrivateRoute><Vistas.AgregarProfeAdmin /></PrivateRoute>}/>
+                <Route path="/postCurso" element={<PrivateRoute><Vistas.AgregarCursoAdmin /></PrivateRoute>}/>
             </Routes>
           </main>
         </div>

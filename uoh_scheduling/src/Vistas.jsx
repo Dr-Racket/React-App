@@ -15,8 +15,8 @@ import ModificarCurso from "./Views/Modificarcurso.jsx"
 import EliminarCurso from "./Views/EliminarCurso.jsx"
 import EliminarProfesor from "./Views/EliminarProfesor.jsx"
 
-import CambiarCurso from "./Views/Cambiocurso.jsx"
-import CambiarProfe from "./Views/Cambioprofe.jsx"
+import Editarprefcurso from "./Views/EditarPrefCurso.jsx"
+import Editarprefprofe from "./Views/EditarPrefProfe.jsx"
 
 import AgregarProfeAdmin from "./Views/Agregarprofeadmin.jsx"
 import AgregarCursoAdmin from "./Views/Agregarcursoadmin.jsx"
@@ -30,8 +30,8 @@ export default {
     Agregarcurso,
     ModificarProfe,
     ModificarCurso,
-    CambiarCurso,
-    CambiarProfe,
+    Editarprefprofe,
+    Editarprefcurso,
     EliminarCurso,
     EliminarProfesor,
     AgregarProfeAdmin,

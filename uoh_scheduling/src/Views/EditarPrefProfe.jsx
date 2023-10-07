@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 //Vista en la cuál se modifican los profes
 
-import '../css/modificarprofe.css'
+import '../css/Profesores.css'
 
-function CambiarProfe() {
+function Editarprefprofe() {
     const [horario, setHorario] = useState([
         [false, false, false, false, false],
         [false, false, false, false, false],
@@ -107,4 +107,4 @@ function CambiarProfe() {
     );
 }
 
-export default CambiarProfe;
+export default Editarprefprofe;

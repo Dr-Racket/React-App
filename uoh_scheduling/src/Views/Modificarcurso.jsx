@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios"
 
-import '../css/modificarcurso.css'
+import '../css/Cursos.css'
 
 
 function ModificarCurso() {

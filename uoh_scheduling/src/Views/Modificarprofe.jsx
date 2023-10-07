@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios"
 
-import '../css/modificarprofe.css'
+import '../css/Profesores.css'
 
 function ModificarProfe() {
   // Barra Busqueda Hooks

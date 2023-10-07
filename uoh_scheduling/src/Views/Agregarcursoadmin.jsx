@@ -89,7 +89,7 @@ function AgregarCursoAdmin() {
             <input id="semestre"
               className='inputText'
               type="text"
-              placeholder="Introduce el semestre del curso"
+              placeholder="Introduce el semestre del curso (1 o 2)"
               value={semestre}
               onChange={(e) => setSemestre(e.target.value)}
             />
