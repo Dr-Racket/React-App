@@ -72,7 +72,7 @@ function AgregarCursoAdmin() {
           </div>
         </div>
         <div className="input-container-fila">
-          <label for="codigo">Codigo:</label>
+          <label for="codigo">Código:</label>
           <div className='inputText'>
             <input id="codigo"
               className='inputText'
@@ -96,7 +96,7 @@ function AgregarCursoAdmin() {
           </div>
         </div>
         <div className="input-container-fila">
-          <label for="catedras">Catedras:</label>
+          <label for="catedras">Cátedras:</label>
           <div className='inputText'>
             <input id="catedras"
               className='inputText'
@@ -108,7 +108,7 @@ function AgregarCursoAdmin() {
           </div>
           </div>
           <div className="input-container-fila">
-          <label for="ayudantias">Ayudantias:</label>
+          <label for="ayudantias">Ayudantías:</label>
           <div className='inputText'>
             <input id="ayudantias"
               className='inputText'
