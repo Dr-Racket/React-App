@@ -1,15 +1,27 @@
 import React, { useState } from 'react';
 import axios from "axios"
 
+import { ToastContainer, toast } from 'react-toastify'; //Mensajes emergentes
+import 'react-toastify/dist/ReactToastify.css';
+
 import '../css/Estilosvistas.css'
 
 function AgregarProfeAdmin() {
   const [nombre, setNombre] = useState(''); // Estado para el nombre
-  const [mensaje, setMensaje] = useState(''); // Estado para el mensaje
+  const [error, setError] = useState(
+    {
+      nombre: '',
+    }); //Estado para los errores
 
   const aplicarCambios = () => {
+    setError({
+      nombre: '',
+    });
     if (!nombre) {
-      setMensaje('Por favor, ingrese un nombre de profesor');
+      setError((prevState) => ({
+        ...prevState,
+        nombre: 'Por favor, ingrese el nombre del profesor',
+      }));
     } else {
       // Datos del profesor a enviar
       const datosProfesor = {
@@ -25,11 +37,21 @@ function AgregarProfeAdmin() {
         .then((response) => {
           // Manejar la respuesta del servidor
           console.log('Solicitud POST exitosa:', response.data);
-          setMensaje('Profesor agregado con éxito.');
+
+          //Limpiar datos
+          setNombre('');
+
+          // Mostrar la notificación emergente
+          toast.success('Profesor agregado con éxito', {
+            position: toast.POSITION.TOP_RIGHT,
+          });
         })
         .catch((error) => {
           // Manejar errores si la solicitud falla
           console.error('Error al realizar la solicitud POST:', error);
+          toast.error('Error al agregar el curso', {
+            position: toast.POSITION.TOP_RIGHT,
+          });
         });
     }
   };
@@ -39,14 +61,17 @@ function AgregarProfeAdmin() {
     <div className="agregar-estilo-container">
       <h2>Agregar Profesor</h2>
       <div className="input-container">
-        <label>Nombre:</label>
-        <input
-          type="text"
-          placeholder="Introduce el nombre del profesor"
-          value={nombre}
-          onChange={(e) => setNombre(e.target.value)}
-        />
+        <label htmlFor="nombre">Nombre:</label>
+        <div className="inputText">
+          <input
+            type="text"
+            placeholder="Introduce el nombre del profesor"
+            value={nombre}
+            onChange={(e) => setNombre(e.target.value)}
+          />
+        </div>
       </div>
+      {error.nombre && <div className="error">{error.nombre}</div>}
       <div className="horario-container">
         <h2>Es responsabilidad de usted que el nombre del profesor sea correcto.</h2>
         <div className="horario-wrapper">
@@ -60,8 +85,8 @@ function AgregarProfeAdmin() {
         <button className="aplicar-button" onClick={aplicarCambios}>
           Aplicar
         </button>
-        {mensaje && <div className="mensaje">{mensaje}</div>}
       </div>
+      <ToastContainer autoClose={3000} />
     </div>
   );
 }

@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import axios from "axios"
 
+import { ToastContainer, toast } from 'react-toastify'; //Mensajes emergentes
+import 'react-toastify/dist/ReactToastify.css';
+
 import '../css/Estilosvistas.css'
 
 function AgregarCursoAdmin() {
@@ -9,23 +12,58 @@ function AgregarCursoAdmin() {
   const [semestre, setSemestre] = useState(''); // Estado para el semestre
   const [catedra, setCatedra] = useState(''); // Estado para la catedra
   const [ayudantia, setAyudantia] = useState(''); // Estado para la ayudantia
-  const [mensaje, setMensaje] = useState(''); // Estado para el mensaje
+  const [errores, setErrores] = useState({ //Estado para los errores
+    nombre: '',
+    codigo: '',
+    semestre: '',
+    catedra: '',
+    ayudantia: '',
+  }); 
+  
   
   const aplicarCambios = () => {
-    if (!nombre) {
-      setMensaje('Por favor, ingrese el nombre del curso');
+    
+    setErrores({
+      nombre: '',
+      codigo: '',
+      semestre: '',
+      catedra: '',
+      ayudantia: '',
+    });
+    if (!nombre.trim()) {
+      setErrores((prevState) => ({
+        ...prevState,
+        nombre: 'Por favor, ingrese el nombre del curso',
+      }));
+      return;
     }
-    else if (!codigo) {
-      setMensaje('Por favor, ingrese un codigo');
+    else if (!codigo.trim()) {
+      setErrores((prevState) => ({
+        ...prevState,
+        codigo: 'Por favor, ingrese un código',
+      }));
+      return;
     }
-    else if (!semestre) {
-      setMensaje('Por favor, ingrese el semestre');
+    else if (semestre !== '1' && semestre !== '2') {
+      setErrores((prevState) => ({
+        ...prevState,
+        semestre: 'El semestre debe ser 1 o 2',
+      }));
+      return;
     }
-    else if (!catedra) {
-      setMensaje('Por favor, ingrese cantidad de catedra');
+    else if (!catedra.trim() || isNaN(catedra)) {
+      setErrores((prevState) => ({
+        ...prevState,
+        catedra: 'Por favor, ingrese la cantidad de cátedras como número',
+      }));
+      return;
     }
-    else if (!ayudantia) {
-      setMensaje('Por favor, ingrese cantidad de ayudantia');
+    else if (!ayudantia.trim() || isNaN(ayudantia)) {
+      setErrores((prevState) => ({
+        ...prevState,
+        ayudantia: 'Por favor, ingrese la cantidad de ayudantías como número',
+      }));
+      return;
     }
     else {
       // Datos del curso a enviar
@@ -46,12 +84,28 @@ function AgregarCursoAdmin() {
         .then((response) => {
           // Manejar la respuesta del servidor
           console.log('Solicitud POST exitosa:', response.data);
-          setMensaje('Curso agregado con éxito.');
+
+          //Limpiar los campos
+          setNombre('');
+          setCodigo('');
+          setSemestre('');
+          setCatedra('');
+          setAyudantia('');
+
+
+          // Mostrar la notificación emergente
+          toast.success('Curso agregado con éxito', {
+            position: toast.POSITION.TOP_RIGHT,
+          });
         })
         .catch((error) => {
-          // Manejar errores si la solicitud falla
           console.error('Error al realizar la solicitud POST:', error);
+          // Manejar errores si la solicitud falla
+          toast.error('Error al agregar el curso', {
+            position: toast.POSITION.TOP_RIGHT,
+          });
         });
+
     }
   };
 
@@ -61,80 +115,79 @@ function AgregarCursoAdmin() {
       <h2>Agregar Curso</h2>
       <div className="input-container-column">
         <div className="input-container-fila">
-          <label for="nombre">Nombre:</label>
-          <div className='inputText'>
-            <input id="nombre"
+          <label htmlFor="nombre">Nombre:</label>
+          <div className="inputText">
+            <input
+              id="nombre"
               type="text"
               placeholder="Introduce el nombre del curso"
               value={nombre}
               onChange={(e) => setNombre(e.target.value)}
             />
           </div>
+          {errores.nombre && <div className="error">{errores.nombre}</div>}
         </div>
         <div className="input-container-fila">
-          <label for="codigo">Código:</label>
-          <div className='inputText'>
-            <input id="codigo"
-              className='inputText'
+          <label htmlFor="codigo">Código:</label>
+          <div className="inputText">
+            <input
+              id="codigo"
               type="text"
-              placeholder="Introduce el codigo del curso"
+              placeholder="Introduce el código del curso"
               value={codigo}
               onChange={(e) => setCodigo(e.target.value)}
             />
           </div>
+          {errores.codigo && <div className="error">{errores.codigo}</div>}
         </div>
         <div className="input-container-fila">
-          <label for="semestre">Semestre:</label>
-          <div className='inputText'>
-            <input id="semestre"
-              className='inputText'
+          <label htmlFor="semestre">Semestre:</label>
+          <div className="inputText">
+            <input
+              id="semestre"
               type="text"
               placeholder="Introduce el semestre del curso (1 o 2)"
               value={semestre}
               onChange={(e) => setSemestre(e.target.value)}
             />
           </div>
+          {errores.semestre && <div className="error">{errores.semestre}</div>}
         </div>
         <div className="input-container-fila">
-          <label for="catedras">Cátedras:</label>
-          <div className='inputText'>
-            <input id="catedras"
-              className='inputText'
+          <label htmlFor="catedras">Cátedras:</label>
+          <div className="inputText">
+            <input
+              id="catedras"
               type="text"
-              placeholder="Introduce el numero de catedras del curso"
+              placeholder="Introduce la cantidad de cátedras del curso"
               value={catedra}
               onChange={(e) => setCatedra(e.target.value)}
             />
           </div>
-          </div>
-          <div className="input-container-fila">
-          <label for="ayudantias">Ayudantías:</label>
-          <div className='inputText'>
-            <input id="ayudantias"
-              className='inputText'
+          {errores.catedra && <div className="error">{errores.catedra}</div>}
+        </div>
+        <div className="input-container-fila">
+          <label htmlFor="ayudantias">Ayudantías:</label>
+          <div className="inputText">
+            <input
+              id="ayudantias"
               type="text"
-              placeholder="Introduce el numero de Ayudantias del curso"
+              placeholder="Introduce la cantidad de ayudantías del curso"
               value={ayudantia}
               onChange={(e) => setAyudantia(e.target.value)}
             />
           </div>
-          </div>
-      </div>
-      <div className="horario-container">
-        <h2>Es responsabilidad de usted que los datos del curso sean correctos.</h2>
-        <div className="horario-wrapper">
-          <div className="horario-horas">
-          </div>
+          {errores.ayudantia && (
+            <div className="error">{errores.ayudantia}</div>
+          )}
         </div>
       </div>
-      <div className="input-container">
-      </div>
-      <div className='conten-button'>
+      <div className="conten-button">
         <button className="aplicar-button" onClick={aplicarCambios}>
           Aplicar
         </button>
-        {mensaje && <div className="mensaje">{mensaje}</div>}
       </div>
+      <ToastContainer autoClose={3000} />
     </div>
   );
 }
