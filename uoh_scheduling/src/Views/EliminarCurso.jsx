@@ -12,7 +12,7 @@ function EliminarCurso() {
   // Función para realizar la solicitud a la API
   useEffect(() => {
     // URL de la API que devuelve la lista de cursos
-    const apiUrl = 'http://127.0.0.1:8000/api/getCourses/';
+    const apiUrl = 'http://localhost:8000/api/getCourses/';
 
     // Realizar la solicitud GET utilizando Axios
     axios.get(apiUrl)

@@ -16,7 +16,7 @@ const Home = () => {
             <p>Redirigiendo, Sesión No Inciada</p>
         </div>
         )
-    )
+    );
 }
 
-export default Home
+export default Home;

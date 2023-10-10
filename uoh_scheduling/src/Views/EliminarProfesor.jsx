@@ -1,21 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import axios from "axios"
+import axios from "axios";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-import '../css/Profesores.css'
+
+import '../css/Profesores.css';
 
 function EliminarProfesor() {
   // Barra Busqueda Hooks
   const [search, setSearch] = useState("");
-
   const [profesores, setProfesores] = useState([]);
+  const [profesorSeleccionado, setProfesorSeleccionado] = useState("");
+  const [showConfirmation, setShowConfirmation] = useState(false);
+
 
   // Función para realizar la solicitud a la API
   useEffect(() => {
+    cargarprofes();
+  }, []); // El segundo argumento vacío [] asegura que la solicitud se realice solo una vez
+
+  const cargarprofes = () => {
     // URL de la API que devuelve la lista de profesores
-    const apiUrl = 'http://127.0.0.1:8000/api/getTeachers/';
+    const apiUrl = 'http://localhost:8000/api/getTeachers/';
 
     // Realizar la solicitud GET utilizando Axios
-    axios.get(apiUrl)
+    axios
+      .get(apiUrl)
       .then((response) => {
         // Actualizar el estado con los datos de los profesores
         setProfesores(response.data);
@@ -25,7 +35,7 @@ function EliminarProfesor() {
         // Manejar errores si la solicitud falla
         console.error('Error al obtener la lista de profesores:', error);
       });
-  }, []); // El segundo argumento vacío [] asegura que la solicitud se realice solo una vez
+  }
 
   const filteredProfes = profesores.filter((profesor, index) => {
       if(search){
@@ -35,12 +45,58 @@ function EliminarProfesor() {
 
   const renderProfes = () => {
       return filteredProfes.map((profesor, index) => (
-        <li key={index}>
-            <a href="#">{profesor.name}</a>
+          <li key={index}>
+            {profesor.name}
+            <div style={ {textAlign: 'right'} }>
+              <button className='aplicar-button' onClick={() => handleEliminarProfesor(profesor)}>
+                Eliminar
+              </button>
+            </div>
           </li>
         ));
   };
 
+  const handleEliminarProfesor = (profesor) => {
+    setProfesorSeleccionado(profesor);
+    // Mostrar notificación emergente con botón de acción
+    toast.warn(`¿Está seguro de que desea eliminar al profesor ${profesor.name}?`, {
+      position: toast.POSITION.TOP_CENTER,
+      autoClose: false,
+      closeButton: false,
+      closeOnClick: false,
+      draggable: false,
+    });
+    setShowConfirmation(true);
+  };
+
+  const cancelarEliminacion = () => {
+    toast.dismiss(); // Cierra la notificación al cancelar
+    setShowConfirmation(false);
+  };
+
+  const eliminarProfesor = (nombre) => {
+    if(profesorSeleccionado){
+      const apiUrl = `http://localhost:8000/api/deleteTeacher/${profesorSeleccionado.id}`;
+      
+      axios
+      .delete(apiUrl)
+      .then((response) => {
+        console.log('Profesor eliminado con éxito:', response.data);
+        setProfesores((prevProfesores) => prevProfesores.filter((prof) => prof.id !== profesorSeleccionado.id));
+        setShowConfirmation(false);
+        setProfesorSeleccionado('');
+        toast.dismiss();
+        toast.success(`Profesor ${profesorSeleccionado.name} eliminado con éxito`, {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 3000, // 3 segundos
+        });
+      })
+      .catch((error) => {
+        console.error('Error al eliminar el profesor:', error);
+      });
+    }
+
+  };
   
   return (
     <div className="container-mprofe">
@@ -58,8 +114,21 @@ function EliminarProfesor() {
           <ul>
             {renderProfes()}
           </ul>
+          <ToastContainer />
         </div>
       </div>
+      {/* Mostrar mensaje de confirmación */}
+      {showConfirmation && (
+        <div className="confirmation">
+          <p>¿Está seguro de que desea eliminar al profesor {profesorSeleccionado?.name}?</p>
+          <button className="aplicar-button" onClick={eliminarProfesor}>
+            Eliminar
+          </button>
+          <button className="aplicar-button" onClick={cancelarEliminacion}>
+            Cancelar
+          </button>
+        </div>
+      )}
     </div>
   );
 }

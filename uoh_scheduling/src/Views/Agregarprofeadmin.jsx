@@ -43,14 +43,14 @@ function AgregarProfeAdmin() {
 
           // Mostrar la notificación emergente
           toast.success('Profesor agregado con éxito', {
-            position: toast.POSITION.TOP_RIGHT,
+            position: toast.POSITION.TOP_CENTER,
           });
         })
         .catch((error) => {
           // Manejar errores si la solicitud falla
           console.error('Error al realizar la solicitud POST:', error);
           toast.error('Error al agregar el curso', {
-            position: toast.POSITION.TOP_RIGHT,
+            position: toast.POSITION.TOP_CENTER,
           });
         });
     }
