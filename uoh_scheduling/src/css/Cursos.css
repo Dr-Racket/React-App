@@ -67,16 +67,18 @@ input[type="text"]{
 /*De aca para abajo es netamente de CambiarCurso*/
 
 .container-cc{
-    width: 80vw;
+
+    color: white;
     margin: 20px;
-	padding: 20px;
-	border: 1px solid #000000;
-	border-radius: 5px;
-	background-color: #C4B9B7;
+    padding: 20px;
+    width: 80vw;
+    border-radius: 5px;
+    background-color: #2d3338;
     text-align: center;
+    font-size: 1vw;
 }
 
 .texto-mostrar{
-    color: black;
+    color: white;
     font-size: 20px;
 }

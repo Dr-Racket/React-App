@@ -60,7 +60,8 @@ function AgregarProfeAdmin() {
   return (
     <div className="agregar-estilo-container">
       <h2>Agregar Profesor</h2>
-      <div className="input-container">
+      <div className="input-container-column">
+        <div className="input-container-fila">
         <label htmlFor="nombre">Nombre:</label>
         <div className="inputText">
           <input
@@ -72,6 +73,7 @@ function AgregarProfeAdmin() {
         </div>
       </div>
       {error.nombre && <div className="error">{error.nombre}</div>}
+      </div>
       <div className="horario-container">
         <h2>Es responsabilidad de usted que el nombre del profesor sea correcto.</h2>
         <div className="horario-wrapper">
