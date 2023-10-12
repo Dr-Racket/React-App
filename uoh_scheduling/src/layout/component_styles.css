@@ -81,7 +81,8 @@
 
 .UOH {
 	
-	display: block;
+    padding: 0.3vw;
+    display: block;
     float: left;
     margin: 0 4vw 0 0;
 }
@@ -113,6 +114,7 @@
 /* EXTRA IMPLEMENTATIONS */
 .username-display{
 
+    font-size: 0.9vw;
     position: relative;
     display: flex;
     align-items: center;
@@ -123,6 +125,7 @@
 
 .cerrarSesion {
 
+    font-size: 0.85vw;
     background-color: #af3621;
     color: #fff;
     border: none;
@@ -133,6 +136,7 @@
 
 .cerrarSesion button {
 
+    font-size: 0.85vw;
     position: relative;
     display: flex;
     align-items: center;

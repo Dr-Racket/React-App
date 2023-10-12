@@ -200,13 +200,14 @@
 
 .rectangulito{
 
-    position:relative;
+    font-size: 1vw;
+    position: relative;
     display: flex;
     top: 0.5vw;
     left: 0.5vw;
     bottom: 0.5vw;
-    height: 35vw;
-    width: 60vw;
+    height: 97%;
+    width: 98%;
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
@@ -247,5 +248,5 @@
 .someText {
 
   color: white;
-  font-size: 20px;
+  font-size: 1.5vw;
 }
