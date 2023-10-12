@@ -1,21 +1,24 @@
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
 import AuthContext from '../AuthContext';
 
 const Home = () => {
     const { user } = useContext(AuthContext);
 
-    return (user ? (
+    return (
         <div className='rectangulito'>
-            <h1>¡Bienvenido/a!</h1>
-            <div className='someText'>
-               Para comenzar a administrar diríjase a la barra lateral del navegador.
-            </div>
+            {user ? (
+                <div>
+                    <h1>¡Bienvenido{user.isAdmin ? ', Administrador' : ', Usuario'}!</h1>
+                    <div className='someText'>
+                        Para comenzar a{user.isAdmin ? ' administrar' : ' navegar'}, diríjase a la barra lateral del navegador.
+                    </div>
+                </div>
+            ) : (
+                <div>
+                    <p>Redirigiendo, Sesión No Iniciada</p>
+                </div>
+            )}
         </div>
-        ):(
-        <div>
-            <p>Redirigiendo, Sesión No Inciada</p>
-        </div>
-        )
     );
 }
 
