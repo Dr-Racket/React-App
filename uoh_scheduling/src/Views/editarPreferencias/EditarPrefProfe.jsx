@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 //Vista en la cuál se modifican los profes
 
 import '../../css/Profesores.css'
 
 function Editarprefprofe() {
+
+    // PARAMETRO NOMBRE PROFESOR
+    const { nombre } = useParams();
+
     const [horario, setHorario] = useState([
         [false, false, false, false, false],
         [false, false, false, false, false],
@@ -32,16 +37,8 @@ function Editarprefprofe() {
 
     return(
         <div className="container-cprofe">
-            <h1>Editar Profesor</h1>
-            <h3 className="texto-mostrar">Nombre: Ejemplo</h3> {/*TODO: <-- ACA EL NOMBRE DEBERIA VENIR DE LA BASE DE DATOS*/}
+            <h1>Preferencia Horario: { nombre }</h1>
             {/*Reutilizo el css de modificar profesor*/}
-            <div className="container-search">
-            <input
-                    type='text'
-                    placeholder='Nuevo Nombre'
-                />
-                <button className="aplicar-button" type="submit">Cambiar</button>
-            </div>
             <h3 className="texto-mostrar">Modificar las preferencias del profesor</h3>
             <div className="horario-container">
                 <div className="horario-wrapper">
@@ -84,12 +81,12 @@ function Editarprefprofe() {
             </div>
             {/*SCROLL BAR */}
             
+            <h2>Cursos a impartir</h2>
             <div className="container-scroll-mp">
                 <div className="content">
-                    <h2>Cursos a impartir</h2>
                     <ul className="Lista">
                         {cursos.map((elemento, index) => (
-                            <li>
+                            <li key={index} style={{color:'black'}}>
                                 {elemento.nombre} - {elemento.codigo}-{elemento.semestre}
                             </li>
                         ))}
