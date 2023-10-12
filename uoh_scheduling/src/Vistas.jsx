@@ -21,6 +21,9 @@ import Editarprefprofe from "./Views/editarPreferencias/EditarPrefProfe.jsx"
 import AgregarProfeAdmin from "./Views/agregar/Agregarprofeadmin.jsx"
 import AgregarCursoAdmin from "./Views/agregar/Agregarcursoadmin.jsx"
 
+import ModificarCursoAdmin from "./Views/modificar/Modificarcursoadmin.jsx"
+import ModificarProfeAdmin from "./Views/modificar/Modificarprofeadmin.jsx"
+
 export default {
     Navbar,
     Sidebar,
@@ -36,5 +39,7 @@ export default {
     EliminarProfesor,
     AgregarProfeAdmin,
     AgregarCursoAdmin,
+    ModificarCursoAdmin,
+    ModificarProfeAdmin,
 }
 
