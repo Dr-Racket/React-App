@@ -38,6 +38,8 @@ function App() {
                 {/*Rutas administrador*/}
                 <Route path="/postProfesor" element={<PrivateRoute><Vistas.AgregarProfeAdmin /></PrivateRoute>}/>
                 <Route path="/postCurso" element={<PrivateRoute><Vistas.AgregarCursoAdmin /></PrivateRoute>}/>
+                <Route path="/Modificarprofeadmin" element={<PrivateRoute><Vistas.ModificarProfeAdmin /></PrivateRoute>} />
+                <Route path="/Modificarcursoadmin" element={<PrivateRoute><Vistas.ModificarCursoAdmin /></PrivateRoute>} />
             </Routes>
           </main>
         </div>
