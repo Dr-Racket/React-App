@@ -1,0 +1,14 @@
+Barras de Navegacion:
+
+	Para Usuario
+		Eliminar: LocalStorage
+		Agregar: Preferencias de Horario
+		Modificar: Preferencias de Horario
+		Ver Horarios
+		ModificarHorarios
+		
+		----IDEAS: Boton general Submit para enviar a base de datos----
+
+	Para Admin
+		Agregar: Base de Datos
+		Eliminar: Base de Datos
