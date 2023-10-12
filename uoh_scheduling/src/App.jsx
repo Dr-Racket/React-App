@@ -30,8 +30,6 @@ function App() {
                 <Route path="/Agregarcurso" element={<PrivateRoute><Vistas.Agregarcurso /> </PrivateRoute>} />
                 <Route path="/Modificarprofe" element={<PrivateRoute><Vistas.ModificarProfe /></PrivateRoute>} />
                 <Route path="/Modificarcurso" element={<PrivateRoute><Vistas.ModificarCurso /></PrivateRoute>} />
-                <Route path="/Eliminarprofe" element={<PrivateRoute><Vistas.EliminarProfesor /></PrivateRoute>} />
-                <Route path="/Eliminarcurso" element={<PrivateRoute><Vistas.EliminarCurso /></PrivateRoute>} />
                 {/* Otras rutas con Sidebar */}
               <Route path="/EditarprefC/:curso" element={<PrivateRoute><Vistas.Editarprefcurso /></PrivateRoute>} />
               <Route path="/EditarprefP/:nombre" element={<PrivateRoute><Vistas.Editarprefprofe /></PrivateRoute>} />
@@ -40,6 +38,8 @@ function App() {
                 <Route path="/postCurso" element={<PrivateRoute><Vistas.AgregarCursoAdmin /></PrivateRoute>}/>
                 <Route path="/Modificarprofeadmin" element={<PrivateRoute><Vistas.ModificarProfeAdmin /></PrivateRoute>} />
                 <Route path="/Modificarcursoadmin" element={<PrivateRoute><Vistas.ModificarCursoAdmin /></PrivateRoute>} />
+                <Route path="/Eliminarprofe" element={<PrivateRoute><Vistas.EliminarProfesor /></PrivateRoute>} />
+                <Route path="/Eliminarcurso" element={<PrivateRoute><Vistas.EliminarCurso /></PrivateRoute>} />
             </Routes>
           </main>
         </div>

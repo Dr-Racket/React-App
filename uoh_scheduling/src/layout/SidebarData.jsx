@@ -1,17 +1,12 @@
-import React, { useContext } from 'react';
-import AuthContext from '../AuthContext';
 
-const { user } = useContext(AuthContext);
-
-/* CONTROL RUTAS SIDEBAR */
 export const SidebarData = [
 
 	{
 		title: "Cursos",
 		link: "/cursos",
 		options: [
-			{ title: userIsAdmin ? "Agregar" : "AgregarCurso", link: userIsAdmin ? "/postCurso" : "/AgregarCurso" },
-			{ title: "Editar", link: "/Modificarcurso" },
+			{ title: "Agregar", link: "/Agregarcurso" },
+			{ title: "Editar", link: "Modificarcurso" },
 			{ title: "Eliminar", link: "/Eliminarcurso" }
 		]
 	},
@@ -19,7 +14,7 @@ export const SidebarData = [
 		title: "Profesores",
 		link: "/profesores",
 		options: [
-			{ title: userIsAdmin ? "Agregar" : "AgregarProfesor", link: userIsAdmin ? "/postProfesor" : "/AgregarProfesor" },
+			{ title: "Agregar", link: "/Agregarprofe" },
 			{ title: "Editar", link: "/Modificarprofe" },
 			{ title: "Eliminar", link: "/Eliminarprofe" }
 		]
