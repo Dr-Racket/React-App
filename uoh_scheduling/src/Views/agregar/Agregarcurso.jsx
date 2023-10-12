@@ -54,7 +54,7 @@ function Agregarcurso() {
         </select>
       </div>
 
-      <div className="input-container">
+      <div className="input-container-colum">
         <label>Nombre:</label>
         <input 
           type="text"

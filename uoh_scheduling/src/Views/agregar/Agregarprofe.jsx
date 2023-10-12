@@ -50,7 +50,7 @@ function Agregarprofe() {
   return (
     <div className="agregar-estilo-container">
       <h2>Agregar Profesor</h2>
-      <div className="input-container">
+      <div className="input-container-colum">
         <label>Nombre:</label>
         <input
           type="text"
@@ -99,7 +99,7 @@ function Agregarprofe() {
           </table>
         </div>
       </div>
-      <div className="input-container">
+      <div className="input-container-colum">
         <label>Curso a impartir:</label>
         <input
           type="text"
