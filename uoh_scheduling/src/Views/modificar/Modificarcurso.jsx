@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import axios from "axios"
+import { useNavigate } from 'react-router-dom';
+import axios from "axios";
 
 import '../../css/Cursos.css'
 
 
 function ModificarCurso() {
-    const [search, setSearch] = useState("");
+    
+  const navigate = useNavigate();
 
-    const [NCursos, setNCursos] = useState([]);
+  const [search, setSearch] = useState("");
+
+  const [NCursos, setNCursos] = useState([]);
 
   // Función para realizar la solicitud a la API
   useEffect(() => {
@@ -27,18 +31,30 @@ function ModificarCurso() {
       });
   }, []); // El segundo argumento vacío [] asegura que la solicitud se realice solo una vez
 
-          const filteredCursos = NCursos.filter((curso, index) => {
-          if(search){
-            return curso.name.toLowerCase().includes(String(search).toLowerCase());
-          }else{ return curso.name }
-      });
-      const renderCursos = () => {
-          return filteredCursos.map((curso, index) => (
-            <li key={index}>
-                <a href={curso.url} style={{color:'black'}}>{curso.name} {curso.code} \ semestre {curso.semester}</a>
-              </li>
-            ));
-      };
+    const handleModificarClick = (nombre) => {
+      // Utiliza navigate para redirigir a la página Editarprefprofe con el nombre como parámetro
+      navigate(`/EditarprefC/${nombre}`);
+    };
+
+      
+    // FOR SEARCH BAR MECH
+    const filteredCursos = NCursos.filter((curso, index) => {
+        if(search){
+          return curso.name.toLowerCase().includes(String(search).toLowerCase());
+        }else{ return curso.name }
+    });
+
+    // RENDERING CURSOS
+    const renderCursos = () => {
+      return filteredCursos.map((curso, index) => (
+           <li key={index} style={{color:'black'}}>
+              {curso.name} {curso.code} \ semestre {curso.semester}
+               <div style={ {textAlign: 'right'}}>
+                 <button className='aplicar-button' onClick={() => handleModificarClick(curso.name)}>Modificar</button>
+               </div>
+           </li>
+         ));
+    };
 
     return(
         <div className="Container-Cursos">
