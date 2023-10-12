@@ -9,8 +9,6 @@ import '../../css/Cursos.css'
 function EliminarCurso() {
     const [search, setSearch] = useState("");
     const [NCursos, setNCursos] = useState([]);
-    const [cursoSeleccionado, setCursoSeleccionado] = useState("");
-    const [showConfirmation, setShowConfirmation] = useState("");
 
   // Función para realizar la solicitud a la API
   useEffect(() => {
@@ -53,44 +51,27 @@ function EliminarCurso() {
   };
 
   const handleEliminarCurso = (curso) => {
-    setCursoSeleccionado(curso);
-    toast.warn(`¿Está seguro de que desea eliminar el curso ${curso.name}?`, {
-      position: toast.POSITION.TOP_CENTER,
-      autoClose: false,
-      closeButton: false,
-      closeOnClick: false,
-      draggable: false,
-    });
-    setShowConfirmation(true);
-  };
-
-  const cancelarEliminacion = () => {
-    toast.dismiss(); //Cierra la notificación de cancelar
-    setShowConfirmation(false);
-  }
-
-  const eliminarCurso = (nombre) => {
-    if(cursoSeleccionado){
-      const apiUrl = `http://localhost:8000/api/deleteCourse/${cursoSeleccionado.id}`;
-      
-      axios
-        .delete(apiUrl)
-        .then((response) => {
-          console.log('Curso eliminado con éxito:', response.data);
-          setNCursos((prevNCursos) => prevNCursos.filter((cur) => cur.id !== cursoSeleccionado.id));
-          setShowConfirmation(false);
-          setCursoSeleccionado('');
-          toast.dismiss();
-          toast.success(`Curso ${cursoSeleccionado.name} eliminado con éxito`, {
-            position: toast.POSITION.TOP_CENTER,
-            autoClose: 3000, // 3 segundos
+    const confirmar = window.confirm(`¿Estás seguro de que deseas eliminar el curso ${curso.name}?`);
+    if(confirmar){
+      if(curso){
+        const apiUrl = `http://localhost:8000/api/deleteCourse/${curso.id}`;
+        
+        axios
+          .delete(apiUrl)
+          .then((response) => {
+            console.log('Curso eliminado con éxito:', response.data);
+            setNCursos((prevNCursos) => prevNCursos.filter((cur) => cur.id !== curso.id));
+            toast.success(`Curso ${curso.name} eliminado con éxito`, {
+              position: toast.POSITION.TOP_CENTER,
+              autoClose: 3000, // 3 segundos
+            });
+          })
+          .catch((error) => {
+            console.error('Error al eliminar el curso:', error);
           });
-        })
-        .catch((error) => {
-          console.error('Error al eliminar el curso:', error);
-        });
-    } else {
-      console.error('Cursos seleccionado no es válido');
+      } else {
+        console.error('Cursos seleccionado no es válido');
+      }
     }
   };
 
@@ -113,18 +94,6 @@ function EliminarCurso() {
                     <ToastContainer />
                 </div>
             </div>
-            {/* Mostrar mensaje de confirmación */}
-            {showConfirmation && (
-              <div className="confirmation">
-                <p>¿Está seguro de que desea eliminar el curso {cursoSeleccionado?.name}?</p>
-                <button className="aplicar-button" onClick={eliminarCurso}>
-                  Eliminar
-                </button>
-                <button className="aplicar-button" onClick={cancelarEliminacion}>
-                  Cancelar
-                </button>
-              </div>
-            )}
         </div>
 
   );

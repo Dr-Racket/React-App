@@ -10,8 +10,6 @@ function EliminarProfesor() {
   // Barra Busqueda Hooks
   const [search, setSearch] = useState("");
   const [profesores, setProfesores] = useState([]);
-  const [profesorSeleccionado, setProfesorSeleccionado] = useState("");
-  const [showConfirmation, setShowConfirmation] = useState(false);
 
 
   // Función para realizar la solicitud a la API
@@ -56,46 +54,28 @@ function EliminarProfesor() {
         ));
   };
 
+
   const handleEliminarProfesor = (profesor) => {
-    setProfesorSeleccionado(profesor);
-    // Mostrar notificación emergente con botón de acción
-    toast.warn(`¿Está seguro de que desea eliminar al profesor ${profesor.name}?`, {
-      position: toast.POSITION.TOP_CENTER,
-      autoClose: false,
-      closeButton: false,
-      closeOnClick: false,
-      draggable: false,
-    });
-    setShowConfirmation(true);
-  };
-
-  const cancelarEliminacion = () => {
-    toast.dismiss(); // Cierra la notificación al cancelar
-    setShowConfirmation(false);
-  };
-
-  const eliminarProfesor = (nombre) => {
-    if(profesorSeleccionado){
-      const apiUrl = `http://localhost:8000/api/deleteTeacher/${profesorSeleccionado.id}`;
-      
-      axios
-      .delete(apiUrl)
-      .then((response) => {
-        console.log('Profesor eliminado con éxito:', response.data);
-        setProfesores((prevProfesores) => prevProfesores.filter((prof) => prof.id !== profesorSeleccionado.id));
-        setShowConfirmation(false);
-        setProfesorSeleccionado('');
-        toast.dismiss();
-        toast.success(`Profesor ${profesorSeleccionado.name} eliminado con éxito`, {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 3000, // 3 segundos
+    const confirmar = window.confirm(`¿Estás seguro de que deseas eliminar al profesor ${profesor.name}?`);
+    if(confirmar){
+      if(profesor){
+        const apiUrl = `http://localhost:8000/api/deleteTeacher/${profesor.id}`;
+        
+        axios
+        .delete(apiUrl)
+        .then((response) => {
+          console.log('Profesor eliminado con éxito:', response.data);
+          setProfesores((prevProfesores) => prevProfesores.filter((prof) => prof.id !== profesor.id));
+          toast.success(`Profesor ${profesor.name} eliminado con éxito`, {
+            position: toast.POSITION.TOP_CENTER,
+            autoClose: 3000, // 3 segundos
+          });
+        })
+        .catch((error) => {
+          console.error('Error al eliminar el profesor:', error);
         });
-      })
-      .catch((error) => {
-        console.error('Error al eliminar el profesor:', error);
-      });
+      }
     }
-
   };
   
   return (
@@ -117,18 +97,6 @@ function EliminarProfesor() {
           <ToastContainer />
         </div>
       </div>
-      {/* Mostrar mensaje de confirmación */}
-      {showConfirmation && (
-        <div className="confirmation">
-          <p>¿Está seguro de que desea eliminar al profesor {profesorSeleccionado?.name}?</p>
-          <button className="aplicar-button" onClick={eliminarProfesor}>
-            Eliminar
-          </button>
-          <button className="aplicar-button" onClick={cancelarEliminacion}>
-            Cancelar
-          </button>
-        </div>
-      )}
     </div>
   );
 }
