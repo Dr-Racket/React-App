@@ -25,8 +25,7 @@ function App() {
               {/* Ruta de login sin Sidebar */}
               <Route path="/login" element={<Vistas.Login />} />
 
-              {/* Rutas con Sidebar */}
-                      {/* Rutas con Sidebar */}
+                {/* Rutas con Sidebar */}
                 <Route path="/Agregarprofe" element={<PrivateRoute><Vistas.Agregarprofe/></PrivateRoute>} />
                 <Route path="/Agregarcurso" element={<PrivateRoute><Vistas.Agregarcurso /> </PrivateRoute>} />
                 <Route path="/Modificarprofe" element={<PrivateRoute><Vistas.ModificarProfe /></PrivateRoute>} />
@@ -34,8 +33,8 @@ function App() {
                 <Route path="/Eliminarprofe" element={<PrivateRoute><Vistas.EliminarProfesor /></PrivateRoute>} />
                 <Route path="/Eliminarcurso" element={<PrivateRoute><Vistas.EliminarCurso /></PrivateRoute>} />
                 {/* Otras rutas con Sidebar */}
-                <Route path="/EditarprefC" element={<PrivateRoute><Vistas.Editarprefcurso /></PrivateRoute>} />
-                <Route path="/EditarprefP" element={<PrivateRoute><Vistas.Editarprefprofe /></PrivateRoute>} />
+              <Route path="/EditarprefC/:curso" element={<PrivateRoute><Vistas.Editarprefcurso /></PrivateRoute>} />
+              <Route path="/EditarprefP/:nombre" element={<PrivateRoute><Vistas.Editarprefprofe /></PrivateRoute>} />
                 {/*Rutas administrador*/}
                 <Route path="/postProfesor" element={<PrivateRoute><Vistas.AgregarProfeAdmin /></PrivateRoute>}/>
                 <Route path="/postCurso" element={<PrivateRoute><Vistas.AgregarCursoAdmin /></PrivateRoute>}/>
