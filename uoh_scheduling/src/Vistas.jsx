@@ -24,6 +24,8 @@ import AgregarCursoAdmin from "./Views/agregar/Agregarcursoadmin.jsx"
 import ModificarCursoAdmin from "./Views/modificar/Modificarcursoadmin.jsx"
 import ModificarProfeAdmin from "./Views/modificar/Modificarprofeadmin.jsx"
 
+import MostrarCursoAdmin from "./Views/Mostrar/MostrarCursosAdmin.jsx"
+
 export default {
     Navbar,
     Sidebar,
@@ -41,5 +43,6 @@ export default {
     AgregarCursoAdmin,
     ModificarCursoAdmin,
     ModificarProfeAdmin,
+    MostrarCursoAdmin,
 }
 
