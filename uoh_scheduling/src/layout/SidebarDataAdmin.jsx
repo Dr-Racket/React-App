@@ -6,7 +6,6 @@ export const SidebarDataAdmin = [
 		link: "/Administrarcursos",
 		options: [
 			{ title: "Agregar", link: "/postCurso" },
-			{ title: "Editar", link: "/Modificarcurso" },
 			{ title: "Eliminar", link: "/Eliminarcurso" }
 		]
 	},
@@ -15,16 +14,7 @@ export const SidebarDataAdmin = [
 		link: "/Administrarprofesores",
 		options: [
 			{ title: "Agregar", link: "/postProfesor" },
-			{ title: "Editar", link: "/Modificarprofe" },
 			{ title: "Eliminar", link: "/Eliminarprofe" }
-		]
-	},
-	{
-		title: "Administrar Horarios",
-		link: "/Administrarhorarios",
-		options: [
-			{ title: "Ver Horarios", link: "" },
-			{ title: "Editar Horarios Protegidos", link: "" },
 		]
 	},
 	{
