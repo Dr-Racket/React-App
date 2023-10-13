@@ -48,9 +48,11 @@ function ModificarProfe() {
 
   const renderProfes = () => {
   return filteredProfes.map((profesor, index) => (
-       <li key={index} style={{color:'black'}}>
-           {profesor.name}
-           <div style={ {textAlign: 'right'}}>
+    <li key={index} className='render-li-profes-style'>
+           <div className='div-li-profes-name'>
+             {profesor.name}
+           </div>
+           <div className='div-li-profes-button'>
              <button className='aplicar-button' onClick={() => handleModificarClick(profesor.name)}>Modificar</button>
            </div>
        </li>
@@ -70,7 +72,7 @@ function ModificarProfe() {
         />
       </div>
       <div className="container-scroll">
-        <div className="content">
+        <div className="div-li-profes">
           <ul>
             {renderProfes()}
           </ul>

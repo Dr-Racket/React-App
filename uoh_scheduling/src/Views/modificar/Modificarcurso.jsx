@@ -47,9 +47,11 @@ function ModificarCurso() {
     // RENDERING CURSOS
     const renderCursos = () => {
       return filteredCursos.map((curso, index) => (
-           <li key={index} style={{color:'black'}}>
+           <li key={index} className='render-li-courses-style'>
+             <div className='div-li-courses-name'>
               {curso.name} {curso.code} \ semestre {curso.semester}
-               <div style={ {textAlign: 'right'}}>
+               </div>
+               <div className='div-li-courses-button'>
                  <button className='aplicar-button' onClick={() => handleModificarClick(curso.name)}>Modificar</button>
                </div>
            </li>

@@ -82,3 +82,35 @@ input[type="text"]{
     color: white;
     font-size: 20px;
 }
+
+/* For rendering courses Modificarprofes */
+.render-li-courses-style{
+
+    position:relative;
+    left: 0;
+    right: 0;
+    display: flex;
+    color: black;
+    align-items: center;
+    list-style-type: none;
+    height: 7vw;
+}
+.div-li-courses{
+
+    position: relative;
+    right: 0;
+    left: 0;
+    display: block;
+}
+
+.div-li-courses-name{
+
+    position: absolute;
+    left: 3.5vw;
+}
+
+.div-li-courses-button{
+
+    position: absolute;
+    right: 2vw;
+}
