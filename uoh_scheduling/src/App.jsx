@@ -36,11 +36,8 @@ function App() {
                 {/*Rutas administrador*/}
                 <Route path="/postProfesor" element={<PrivateRoute><Vistas.AgregarProfeAdmin /></PrivateRoute>}/>
                 <Route path="/postCurso" element={<PrivateRoute><Vistas.AgregarCursoAdmin /></PrivateRoute>}/>
-                <Route path="/Modificarprofeadmin" element={<PrivateRoute><Vistas.ModificarProfeAdmin /></PrivateRoute>} />
-                <Route path="/Modificarcursoadmin" element={<PrivateRoute><Vistas.ModificarCursoAdmin /></PrivateRoute>} />
                 <Route path="/Eliminarprofe" element={<PrivateRoute><Vistas.EliminarProfesor /></PrivateRoute>} />
                 <Route path="/Eliminarcurso" element={<PrivateRoute><Vistas.EliminarCurso /></PrivateRoute>} />
-                <Route path="/Mostrarcursoadmin" element={<PrivateRoute><Vistas.MostrarCursoAdmin /></PrivateRoute> } />
             </Routes>
           </main>
         </div>

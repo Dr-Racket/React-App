@@ -10,7 +10,6 @@ function ModificarProfe() {
 
   // Barra Busqueda Hooks
   const [search, setSearch] = useState("");
-  const [button, setButton] = useState(false);
 
   const [profesores, setProfesores] = useState([]);
 
