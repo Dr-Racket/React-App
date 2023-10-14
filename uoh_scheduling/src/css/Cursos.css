@@ -19,7 +19,9 @@
     margin: 20px auto;
     border-radius: 20px;
 }
-
+.title{
+    color:azure
+}
 input[type="text"]{
 
     margin: 11px;
