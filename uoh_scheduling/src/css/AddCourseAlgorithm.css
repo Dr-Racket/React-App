@@ -1,0 +1,11 @@
+.Container-Cursos-Search{
+    color: #000;
+    max-width: 1200px;
+    margin: 20px auto;
+    border-radius: 20px;
+    display: flex;
+    }
+.Container-Buttons{
+    display: flex;
+    flex-direction: row;
+}
