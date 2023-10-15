@@ -13,8 +13,8 @@ function deleteTeacherAlgorithm() {
 
   // Función para realizar la solicitud a la API
   useEffect(() => {
-
-    setNCursos(JSON.parse(localStorage.getItem("selectedCourses")) || [])
+    const storedCourses = localStorage.getItem("selectedCourses")
+    setNCursos((storedCourses) ? JSON.parse(storedCourses) : [])
 
   }, []); // El segundo argumento vacío [] asegura que la solicitud se realice solo una vez
   const handleEliminarCurso = (curso) => {

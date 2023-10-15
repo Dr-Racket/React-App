@@ -79,9 +79,8 @@ const renderCursos = () => {
 
 useEffect(() => {
   cargarprofes();
-  const courses = JSON.parse(localStorage.getItem("selectedCourses")) || []
-  console.log(courses)
-  setNCursos(courses)
+  const storedCourses = localStorage.getItem("selectedCourses")
+  setNCursos((storedCourses) ? JSON.parse(storedCourses) : [])
 }, []); // El segundo argumento vacío [] asegura que la solicitud se realice solo una vez
 
 const cargarprofes = () => {
