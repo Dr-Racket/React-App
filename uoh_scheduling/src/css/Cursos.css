@@ -19,9 +19,7 @@
     margin: 20px auto;
     border-radius: 20px;
 }
-.title{
-    color:azure
-}
+
 input[type="text"]{
 
     margin: 11px;
@@ -43,76 +41,95 @@ input[type="text"]{
 
 /*ScrollBar*/
 
-.Container-Scroll{
-    height: 300px;
+.Container-Scroll {
+    height: 500px;
     overflow-y: scroll;
+    background-color: #213241;
+    border-radius: 11px;
+    border-width: 10px;
+    border: 1px solid lightsteelblue;
 }
 
 .Container-Scroll::-webkit-scrollbar{
     width: 20px;
 }
 
-.Container-Scroll::-webkit-scrollbar-thumb{
+.Container-Scroll::-webkit-scrollbar-thumb {
     background-color: #007bff;
-    border-radius: 6px;
+    border-radius: 8px;
+    border: 3px solid rgba(255, 255, 255, 0.87);
 }
 
-.Container-Scroll::-webkit-scrollbar-track{
+.Container-Scroll::-webkit-scrollbar-track {
     background-color: #000;
+    border-radius: 8px;
 }
 
 .link{
     color: black;
 }
+.link:hover {
+    background-color: #eee; /* Cambia el color de fondo al pasar el cursor sobre los enlaces */
+  }
+/* Estilos personalizados para los elementos <li> que contienen enlaces */
+.curso-item {
+    font-weight: 500;
+    margin-bottom: 10px; /* Agrega espacio entre los elementos <li> */
+    padding: 5px; /* Agrega un poco de espacio interno a los elementos <li> */
+    list-style: none; /* Elimina el marcador de lista predeterminado */
+    padding-bottom: 10px;
+  }
+
+/* Estilos para los elementos <li> que son pares */
+.curso-item:nth-child(even) {
+    background-color: #9bc2ed;
+    border-radius: 10px;
+    margin: 0.7vw;
+}
+  
+/* Estilos para los elementos <li> que son impares */
+.curso-item:nth-child(odd) {
+    background-color: #6e9dd1;
+    border-radius: 10px;
+    margin: 0.7vw;
+} 
 
 
 /*De aca para abajo es netamente de CambiarCurso*/
 
 .container-cc{
-
-    color: white;
-    margin: 20px;
-    padding: 20px;
     width: 80vw;
-    border-radius: 5px;
-    background-color: #2d3338;
+    margin: 20px;
+	padding: 20px;
+	border: 1px solid #000000;
+	border-radius: 5px;
+	background-color: #C4B9B7;
     text-align: center;
-    font-size: 1vw;
 }
 
 .texto-mostrar{
     color: white;
     font-size: 20px;
 }
+ 
+  /* Estilos para el botón de eliminar */
+  .aplicar-button3 {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    float: right;
+  }
+  
+  .aplicar-button3 button {
 
-/* For rendering courses Modificarprofes */
-.render-li-courses-style{
-
-    position:relative;
-    left: 0;
-    right: 0;
     display: flex;
-    color: black;
     align-items: center;
-    list-style-type: none;
-    height: 7vw;
-}
-.div-li-courses{
+    justify-content: flex-start;
 
-    position: relative;
-    right: 0;
-    left: 0;
-    display: block;
-}
-
-.div-li-courses-name{
-
-    position: absolute;
-    left: 3.5vw;
-}
-
-.div-li-courses-button{
-
-    position: absolute;
-    right: 2vw;
-}
+  }
+  .aplicar-button3:hover {
+    background-color: #0056b3;
+  }
