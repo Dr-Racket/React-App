@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import './component_styles.css';
 import UOHname from '../media/UOHname.png';
+import USOLA from '../media/USOLA.png';
 import { useState, useContext } from 'react';
 import AuthContext from '../AuthContext';
 
@@ -15,7 +16,7 @@ function Navbar()
 
 				{/* Carga Logo UOH en navbar */}
 				<img src={UOHname} alt="UOH_LOGO" className='UOH'/>
-
+				<img src={USOLA} alt="USOLA" className='USOLA'/>	
 				{/* Links to paths */}
 				<Link to='/' className='Link'>
 					Volver a Inicio
