@@ -47,13 +47,11 @@ function ModificarCurso() {
     // RENDERING CURSOS
     const renderCursos = () => {
       return filteredCursos.map((curso, index) => (
-           <li key={index} className='render-li-courses-style'>
-             <div className='div-li-courses-name'>
+           <li key={index} className='curso-item' style= {{color:'black'}}>
               {curso.name} {curso.code} \ semestre {curso.semester}
-               </div>
-               <div className='div-li-courses-button'>
-                 <button className='aplicar-button' onClick={() => handleModificarClick(curso.name)}>Modificar</button>
-               </div>
+               
+                 <button className='aplicar-button3' onClick={() => handleModificarClick(curso.name)}>Modificar</button>
+
            </li>
          ));
     };
