@@ -31,6 +31,7 @@ export const AuthProvider = ({children}) => {
             if(data){
             
                 localStorage.setItem('authTokens', JSON.stringify(data));
+                localStorage.setItem('authTokens', JSON.stringify(data));
                 setAuthTokens()
                 setUser(jwtDecode(data.access))
                 navigate('/')
@@ -44,6 +45,8 @@ export const AuthProvider = ({children}) => {
     let logoutUser = (e) => {
         e.preventDefault()
         localStorage.removeItem('authTokens')
+        localStorage.removeItem('selectedCourses')
+        localStorage.removeItem('selectedTeachers')
         setAuthTokens(null)
         setUser(null)
         navigate('/login')

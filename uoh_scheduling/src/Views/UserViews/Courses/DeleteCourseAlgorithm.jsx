@@ -13,8 +13,9 @@ function deleteCourseAlgorithm() {
 
   // Función para realizar la solicitud a la API
   useEffect(() => {
-    console.log(localStorage.getItem("selectedCourses"))
-    setNCursos(JSON.parse(localStorage.getItem("selectedCourses")))
+    const storedCourses = localStorage.getItem("selectedCourses")
+    console.log(storedCourses)
+   
 
   }, []); // El segundo argumento vacío [] asegura que la solicitud se realice solo una vez
   const handleEliminarCurso = (curso) => {

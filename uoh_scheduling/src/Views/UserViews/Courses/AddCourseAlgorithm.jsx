@@ -77,7 +77,7 @@ const renderCursos = () => {
     if (selectedCourses.length === 0) {
       alert('Por favor, selecciona al menos un curso para modificar');}
     else {
-      const currentCourses = JSON.parse(localStorage.getItem("selectedCourses")) || []
+      const currentCourses = JSON.parse(localStorage.getItem("selectedCourses"));
       const updatedCourses = [...storedCourses, ...uniqueCourses];
 
       // Almacena los cursos actualizados en localStorage
