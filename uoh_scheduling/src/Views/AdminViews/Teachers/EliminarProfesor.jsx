@@ -4,7 +4,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-import '../../../css/Estilosvistas.css'
+import '../../../css/Cursos.css'
 
 function EliminarProfesor() {
   // Barra Busqueda Hooks
@@ -42,17 +42,15 @@ function EliminarProfesor() {
   });
 
   const renderProfes = () => {
-      return filteredProfes.map((profesor, index) => (
-          <li key={index} style= {{color:'black'}}>
-            {profesor.name}
-            <div style={ {textAlign: 'right'} }>
-              <button className='aplicar-button' onClick={() => handleEliminarProfesor(profesor)}>
-                Eliminar
-              </button>
-            </div>
-          </li>
-        ));
-  };
+    return filteredProfes.map((profesor, index) => (
+        <li className="curso-item" key={index} style= {{color:'black'}}>
+          {profesor.name}
+            <button className='aplicar-button3' onClick={() => handleEliminarProfesor(profesor)}>
+              Eliminar
+            </button>
+        </li>
+      ));
+};
 
 
   const handleEliminarProfesor = (profesor) => {
@@ -79,9 +77,9 @@ function EliminarProfesor() {
   };
   
   return (
-    <div className="container-mprofe">
+    <div className="Container-Cursos">
       <h2>Eliminar Profesores</h2>
-      <div className="container-search">
+      <div className="Container-Cursos-Search">
         <input
           type="text"
           placeholder="Buscar"
@@ -89,7 +87,7 @@ function EliminarProfesor() {
           onChange={(e) => setSearch(e.target.value)}
         />
       </div>
-      <div className="container-scroll">
+      <div className="Container-Scroll">
         <div className="content">
           <ul>
             {renderProfes()}

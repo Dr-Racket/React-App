@@ -48,22 +48,22 @@ function ModificarProfe() {
 
   const renderProfes = () => {
   return filteredProfes.map((profesor, index) => (
-    <li key={index} className='render-li-profes-style'>
-           <div className='div-li-profes-name'>
+    <li key={index} className='curso-item'style= {{color:'black'}}>
+           
              {profesor.name}
-           </div>
-           <div className='div-li-profes-button'>
-             <button className='aplicar-button' onClick={() => handleModificarClick(profesor.name)}>Modificar</button>
-           </div>
+           
+           
+             <button className='aplicar-button3' onClick={() => handleModificarClick(profesor.name)}>Modificar</button>
+           
        </li>
      ));
   };
 
   
   return (
-    <div className="container-mprofe">
+    <div className="Container-Cursos">
       <h2>Modificar Profesores</h2>
-      <div className="container-search">
+      <div className="Container-Cursos-Search">
         <input
           type="text"
           placeholder="Buscar"
@@ -71,8 +71,8 @@ function ModificarProfe() {
           onChange={(e) => setSearch(e.target.value)}
         />
       </div>
-      <div className="container-scroll">
-        <div className="div-li-profes">
+      <div className="Container-Scroll">
+        <div className="Content-Cursos">
           <ul>
             {renderProfes()}
           </ul>
