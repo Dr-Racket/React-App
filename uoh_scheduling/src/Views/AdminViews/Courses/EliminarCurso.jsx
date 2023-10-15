@@ -37,18 +37,16 @@ function EliminarCurso() {
     }else{ return curso.name }
     });
   
-  const renderCursos = () => {
-    return filteredCursos.map((curso, index) => (
-      <li key={index} style= {{color:'black'}}>
-        {curso.name} {curso.code} \ semestre {curso.semester}
-        <div style={ {textAlign: 'right'}}>
-          <button className='aplicar-button' onClick={() => handleEliminarCurso(curso)}>
-            Eliminar
-          </button>
-        </div>
-      </li>
-    ));
-  };
+    const renderCursos = () => {
+      return filteredCursos.map((curso, index) => (
+        <li className="curso-item" key={index} style= {{color:'black'}}>       
+             {curso.name} {curso.code} \ semestre {curso.semester} 
+            <button className='aplicar-button3' onClick={() => handleEliminarCurso(curso)}>
+              Eliminar
+            </button>
+        </li>
+      ));
+    };
 
   const handleEliminarCurso = (curso) => {
     const confirmar = window.confirm(`¿Estás seguro de que deseas eliminar el curso ${curso.name}?`);
