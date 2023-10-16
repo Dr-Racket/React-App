@@ -32,7 +32,7 @@ export const SidebarDataAdmin = [
 		options: [
 			{ title: "Agregar", link: "/AddTeacherAlgorithm" },
 			{ title: "Editar", link: "/Modificarprofe" },
-			{ title: "Eliminar", link: "/Eliminarprofe" }
+			{ title: "Eliminar", link: "/DeleteTeacherAlgorithm" }
 		]
 	},
 	{

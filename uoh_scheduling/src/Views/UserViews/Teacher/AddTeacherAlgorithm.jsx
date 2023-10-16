@@ -134,6 +134,13 @@ function obtainTrueIndex(matriz) {
   return trueidx;
 }
   const aplicarCambios = () => {
+
+    const positions = obtainTrueIndex(horario);
+
+    const storedTeachers = JSON.parse(localStorage.getItem('selectedTeachers')) || [];
+
+    console.log(localStorage.getItem("selectedTeachers"))
+
     if (!selectedTeacher && !selectedCourses) {
       // Si no se proporciona nombre o curso, muestra el mensaje de error
       setMensaje('Por favor, ingrese un nombre y un curso');
@@ -149,13 +156,24 @@ function obtainTrueIndex(matriz) {
     else {
       // Aquí puedes agregar la lógica para aplicar los cambios al profesor
       // Por ahora, simplemente establecemos el mensaje de éxito
+      const currentCourses = JSON.parse(localStorage.getItem("selectedTeachers"));
+
+      const teacherDict= selectedCourses.map((course) => {
+        return {id: course.id, name: course.name, teacher: selectedTeacher, blocks: positions};
+      });
+
+      const updatedCourses = [...storedTeachers, ...teacherDict];
+
+      // Almacena los cursos actualizados en localStorage
+      localStorage.setItem('selectedTeachers', JSON.stringify(updatedCourses));
+      toast.success(`Cursos agregados con éxito`, {
+              position: toast.POSITION.TOP_CENTER,
+              autoClose: 3000, // 3 segundos
+            });
+
       
-      const positions = obtainTrueIndex(horario);
-    const dict = selectedCourses.map((course) =>{
-      return {id: course.id, name: course.name, teacher: selectedTeacher, blocks: positions}
-    })
     // localStorage.setItem("selectedTeachers", JSON.stringify(dict))
-    console.log(dict)
+    console.log(updatedCourses)
     
     setMensaje('Aplicado exitosamente');
       

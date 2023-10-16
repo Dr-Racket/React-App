@@ -42,13 +42,15 @@ input[type="text"]{
 /*ScrollBar*/
 
 .Container-Scroll {
-    height: 500px;
+    height: 30vw;
     overflow-y: scroll;
     background-color: #213241;
     border-radius: 11px;
     border-width: 10px;
     border: 1px solid lightsteelblue;
 }
+
+
 
 .Container-Scroll::-webkit-scrollbar{
     width: 20px;
@@ -64,6 +66,7 @@ input[type="text"]{
     background-color: #000;
     border-radius: 8px;
 }
+
 
 .link{
     color: black;
@@ -133,3 +136,17 @@ input[type="text"]{
   .aplicar-button3:hover {
     background-color: #0056b3;
   }
+
+/* Schedule Styles */
+.Container-NACU {
+
+    margin: 0 0 0 10px;
+    border: 5px solid #979797;
+}
+  
+.Container-schedule {
+
+    height: 10vw;
+    margin: 0 0 0 10px;
+    border: 5px solid #979797;
+}

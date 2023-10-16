@@ -26,6 +26,10 @@ function deleteCourseAlgorithm() {
       currentCourses.splice(index, 1)
       localStorage.setItem("selectedCourses", JSON.stringify(currentCourses))
       setNCursos(currentCourses)
+      toast.success(`${curso.name} ha sido eliminado`, {
+              position: toast.POSITION.TOP_CENTER,
+              autoClose: 3000, // 3 segundos
+      });
     }
   }
 
@@ -43,6 +47,7 @@ function deleteCourseAlgorithm() {
           <button className='aplicar-button' onClick={() => handleEliminarCurso(curso)}>
             Eliminar
           </button>
+          <ToastContainer/>
         </div>
       </li>
     ));
