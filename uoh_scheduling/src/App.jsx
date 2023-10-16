@@ -46,7 +46,7 @@ function App() {
                 <Route path="/postCurso" element={<PrivateRouteAdmin><Vistas.AgregarCursoAdmin /></PrivateRouteAdmin>}/>
                 <Route path="/Eliminarprofe" element={<PrivateRouteAdmin><Vistas.EliminarProfesor /></PrivateRouteAdmin>} />
                 <Route path="/Eliminarcurso" element={<PrivateRouteAdmin><Vistas.EliminarCurso /></PrivateRouteAdmin>} />
-                <Route path="/404" element={<Vistas.view404/>} />
+                <Route path="/404" element={<PrivateRoute><Vistas.view404/></PrivateRoute>} />
 
             </Routes>
           </main>
