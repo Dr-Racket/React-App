@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios"
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import '../../../css/AddCourseAlgorithm.css'
 function addCourseAlgorithm() {
@@ -75,14 +77,21 @@ const renderCursos = () => {
       return !storedCourses.some((storedCourse) => storedCourse.id === course.id);
     });
     if (selectedCourses.length === 0) {
-      alert('Por favor, selecciona al menos un curso para modificar');}
+      toast.error(`Por favor, selecciona al menos un curso para agregar al algoritmo`, {
+              position: toast.POSITION.TOP_CENTER,
+              autoClose: 3000, // 3 segundos
+            });
+    }
     else {
       const currentCourses = JSON.parse(localStorage.getItem("selectedCourses"));
       const updatedCourses = [...storedCourses, ...uniqueCourses];
 
       // Almacena los cursos actualizados en localStorage
       localStorage.setItem('selectedCourses', JSON.stringify(updatedCourses));
-      
+      toast.success(`Cursos agregados con éxito`, {
+              position: toast.POSITION.TOP_CENTER,
+              autoClose: 3000, // 3 segundos
+            });
     }
     
     console.log(localStorage.getItem("selectedCourses"))
@@ -114,6 +123,9 @@ const renderCursos = () => {
         <button className="aplicar-button" onClick={aplicarCambios}>
           Añadir al algoritmo
         </button>
+        <>
+          <ToastContainer />
+        </>
       </div>
     </div>
     
