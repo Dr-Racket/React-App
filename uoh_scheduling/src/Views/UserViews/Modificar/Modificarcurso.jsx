@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
-import '../../css/Cursos.css'
+import '../../../css/Cursos.css'
 
 
 function ModificarCurso() {

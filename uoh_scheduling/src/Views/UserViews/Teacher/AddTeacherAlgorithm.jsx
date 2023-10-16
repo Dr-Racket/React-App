@@ -1,9 +1,9 @@
 import React, { useState ,useEffect} from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import axios from 'axios'
-import '../../css/Estilosvistas.css'
+import '../../../css/Estilosvistas.css'
 
-function Agregarprofe() {
+function AddTeacherAlgorithm() {
   const [horario, setHorario] = useState([
     [false, false, false, false, false],
     [false, false, false, false, false],
@@ -154,7 +154,7 @@ function obtainTrueIndex(matriz) {
     const dict = selectedCourses.map((course) =>{
       return {id: course.id, name: course.name, teacher: selectedTeacher, blocks: positions}
     })
-    //localStorage.setItem("selectedTeachers", JSON.stringify(currentCourses))
+    // localStorage.setItem("selectedTeachers", JSON.stringify(dict))
     console.log(dict)
     
     setMensaje('Aplicado exitosamente');
@@ -261,4 +261,4 @@ function obtainTrueIndex(matriz) {
   );
 }
 
-export default Agregarprofe;
+export default AddTeacherAlgorithm;

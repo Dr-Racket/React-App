@@ -30,7 +30,7 @@ export const SidebarDataAdmin = [
 		title: "Profesores",
 		link: "/profesores",
 		options: [
-			{ title: "Agregar", link: "/Agregarprofe" },
+			{ title: "Agregar", link: "/AddTeacherAlgorithm" },
 			{ title: "Editar", link: "/Modificarprofe" },
 			{ title: "Eliminar", link: "/Eliminarprofe" }
 		]

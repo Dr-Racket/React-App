@@ -1,16 +1,12 @@
 /*Archivo que contiene todas las rutas de las vistas creadas*/
 
+import view404 from "./Views/404/404.jsx"
+
 import Navbar from "./layout/Navbar.jsx"
 import Sidebar from './layout/Sidebar.jsx'
 
 import Home from './Views/Home.jsx'
 import Login from "./Views/Login.jsx"
-
-import Agregarprofe from "./Views/agregar/Agregarprofe.jsx"
-import Agregarcurso from "./Views/UserViews/Courses/AddCourseAlgorithm.jsx"
-
-import ModificarProfe from "./Views/modificar/Modificarprofe.jsx"
-import ModificarCurso from "./Views/modificar/Modificarcurso.jsx"
 
 import EliminarCurso from "./Views/AdminViews/Courses/EliminarCurso.jsx"
 import EliminarProfesor from "./Views/AdminViews/Teachers/EliminarProfesor.jsx"
@@ -25,15 +21,20 @@ import AgregarCursoAdmin from "./Views/AdminViews/Courses/Agregarcursoadmin.jsx"
 import addCourseAlgorithm from "./Views/UserViews/Courses/AddCourseAlgorithm.jsx"
 import deleteCourseAlgorithm from "./Views/UserViews/Courses/DeleteCourseAlgorithm.jsx"
 
+import AddTeacherAlgorithm from "./Views/UserViews/Teacher/AddTeacherAlgorithm.jsx"
+import DeleteTeachersAlgorithm from "./Views/UserViews/Teacher/DeleteTeacherAlgorithm.jsx"
+
+import ModificarProfe from "./Views/UserViews/Modificar/Modificarprofe.jsx"
+import ModificarCurso from "./Views/UserViews/Modificar/Modificarcurso.jsx"
 
 export default {
+
+    view404,
     Navbar,
     Sidebar,
     Home,
     Login,
     addCourseAlgorithm,
-    Agregarprofe,
-    Agregarcurso,
     ModificarProfe,
     ModificarCurso,
     Editarprefprofe,
@@ -43,5 +44,7 @@ export default {
     AgregarProfeAdmin,
     AgregarCursoAdmin,
     deleteCourseAlgorithm,
+    AddTeacherAlgorithm,
+    DeleteTeachersAlgorithm
 }
 

@@ -7,38 +7,39 @@ import '../../../css/DeleteCourseAlgorithm.css'
 
 
 
-function deleteTeacherAlgorithm() {
+function DeleteTeacherAlgorithm() {
     const [search, setSearch] = useState("");
-    const [NCursos, setNCursos] = useState([]);
+    const [NProfes, setNProfes] = useState([]);
 
   // Función para realizar la solicitud a la API
   useEffect(() => {
-    const storedCourses = localStorage.getItem("selectedCourses")
-    setNCursos((storedCourses) ? JSON.parse(storedCourses) : [])
+    const storedTeachers= localStorage.getItem("selectedTeachers")
+    setNProfes((storedTeachers) ? JSON.parse(storedTeachers) : [])
 
   }, []); // El segundo argumento vacío [] asegura que la solicitud se realice solo una vez
-  const handleEliminarCurso = (curso) => {
-    const currentCourses = JSON.parse(localStorage.getItem("selectedCourses")) || []
-    const index = currentCourses.findIndex(cur => cur.id === curso.id)
+  const handleEliminarProfe = (profesor) => {
+
+    const currentTeacher = JSON.parse(localStorage.getItem("selectedCourses")) || []
+    const index = currentTeacher.findIndex(pro => pro.id === profesor.id)
     if (index !==-1){
-      currentCourses.splice(index, 1)
-      localStorage.setItem("selectedCourses", JSON.stringify(currentCourses))
-      setNCursos(currentCourses)
+      currentTeacher.splice(index, 1)
+      localStorage.setItem("selectedTeachers", JSON.stringify(currentTeacher))
+      setNProfes(currentTeacher)
     }
   }
 
-  const filteredCursos = NCursos.filter((curso, index) => {
+  const filteredTeachers= NProfes.filter((profes, index) => {
     if(search){
-      return curso.name.toLowerCase().includes(String(search).toLowerCase());
-    }else{ return curso.name }
+      return profes.name.toLowerCase().includes(String(search).toLowerCase());
+    }else{ return profes.name }
     });
   
-  const renderCursos = () => {
-    return filteredCursos.map((curso, index) => (
+  const renderProfes= () => {
+    return filteredTeachers.map((profes, index) => (
       <li key={index} style= {{color:'black'}}>
-        {curso.name} {curso.code} \ semestre {curso.semester}
+        {profes.name}
         <div style={ {textAlign: 'right'}}>
-          <button className='aplicar-button' onClick={() => handleEliminarCurso(curso)}>
+          <button className='aplicar-button' onClick={() => handleEliminarTeacher(profes)}>
             Eliminar
           </button>
         </div>
@@ -50,7 +51,7 @@ function deleteTeacherAlgorithm() {
 
   return(
     <div className="Container-Cursos">
-      <h2 className='title'>Elimina cursos del algoritmo</h2>
+      <h2 className='title'>Elimina Profesores del algoritmo</h2>
         <div className="Container-Cursos-Search">
           <input
             type='text'
@@ -62,7 +63,7 @@ function deleteTeacherAlgorithm() {
             <div className="Container-Scroll">
                 <div className="Content-Cursos">
                     <ul>
-                        {renderCursos()}
+                        {renderProfes()}
                     </ul>
                     <ToastContainer />
                 </div>
@@ -73,5 +74,5 @@ function deleteTeacherAlgorithm() {
 }
 
 
-export default deleteCourseAlgorithm;
+export default DeleteTeacherAlgorithm;
 

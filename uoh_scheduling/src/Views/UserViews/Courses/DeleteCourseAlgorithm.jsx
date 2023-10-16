@@ -18,9 +18,11 @@ function deleteCourseAlgorithm() {
 
   }, []); // El segundo argumento vacío [] asegura que la solicitud se realice solo una vez
   const handleEliminarCurso = (curso) => {
+    const confirmar = window.confirm(`¿Estás seguro de que deseas eliminar el curso ${curso.name}?`);
+
     const currentCourses = JSON.parse(localStorage.getItem("selectedCourses")) || []
     const index = currentCourses.findIndex(cur => cur.id === curso.id)
-    if (index !==-1){
+    if (index !==-1 && confirmar){
       currentCourses.splice(index, 1)
       localStorage.setItem("selectedCourses", JSON.stringify(currentCourses))
       setNCursos(currentCourses)

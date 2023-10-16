@@ -14,9 +14,9 @@ export const SidebarData = [
 		title: "Profesores",
 		link: "/profesores",
 		options: [
-			{ title: "Agregar", link: "/Agregarprofe" },
+			{ title: "Agregar", link: "/AddTeacherAlgorithm" },
 			{ title: "Editar", link: "/Modificarprofe" },
-			{ title: "Eliminar", link: "/Eliminarprofe" }
+			{ title: "Eliminar", link: "/deleteTeacherAlgorithm" }
 		]
 	},
 	{
