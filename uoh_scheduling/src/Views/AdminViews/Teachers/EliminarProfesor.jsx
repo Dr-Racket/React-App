@@ -77,7 +77,7 @@ function EliminarProfesor() {
   };
   
   return (
-    <div className="Container-Cursos">
+    <div className="agregar-estilo-container">
       <h2>Eliminar Profesores</h2>
       <div className="Container-Cursos-Search">
         <input
@@ -88,7 +88,7 @@ function EliminarProfesor() {
         />
       </div>
       <div className="Container-Scroll">
-        <div className="content">
+        <div className="Content-Cursos">
           <ul>
             {renderProfes()}
           </ul>

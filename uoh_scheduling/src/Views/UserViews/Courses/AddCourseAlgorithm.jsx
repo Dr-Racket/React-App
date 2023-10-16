@@ -54,11 +54,11 @@ function addCourseAlgorithm() {
 const renderCursos = () => {
   
   return filteredCursos.map((curso, index) => (
-    <li key={index} className='render-li-courses-style'>
-      <div className='div-li-courses-name'>
+    <li key={index} className='render-li-style'>
+      <div className='div-li-name'>
         {curso.name} {curso.code} \ semestre {curso.semester}
       </div>
-      <div className='div-li-courses-button'>
+      <div className='div-li-button'>
         <input
           type='checkbox'
           onChange={() => handleCheckboxChange(curso)}
@@ -98,7 +98,7 @@ const renderCursos = () => {
   };
 
   return (
-    <div className="Container-Cursos">
+    <div className="agregar-estilo-container">
     <h2 className='title'>Agrega Cursos al Algoritmo</h2>
     <div className="Container-Cursos-Search">
         <input

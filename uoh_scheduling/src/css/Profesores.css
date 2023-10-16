@@ -5,7 +5,6 @@
 .container-mprofe{
 
     background-color: #2d3338;
-    width: 80vw;
     margin: 20px;
     padding: 20px;
     border-radius: 5px;
@@ -30,12 +29,6 @@
     background-color: black;
 }
 
-.content{
-    width: 100%;
-    height: 800px;
-    text-align: left;
-
-}
 /*Barra busqueda*/
 .container-search{
 	margin-bottom: 0px;
@@ -43,6 +36,13 @@
     max-width: 1200px;
     margin: 20px auto;
     border-radius: 20px;
+}
+
+/*Contenido listas*/
+.Content-Profesores{
+    width: 100%;
+    height: 15vw;
+    text-align: left;
 }
 
 input[type="text"]{
@@ -55,17 +55,19 @@ input[type="text"]{
 /*Lista*/
 ul{
     list-style: none;
-    padding: 0;
+    padding: 0.8;
 }
 
 /*Fondo para elementos pares*/
 li:nth-child(odd){
-    background-color: white;
+    border-radius: 10px;
+    background-color: #6e9dd1;
 }
 
 /*Fondo para elementos impares*/
 li:nth-child(even){
-    background-color: rgb(204, 200, 200);
+    border-radius: 10px;
+    background-color: #9bc2ed;
 }
 
 li::before {
@@ -134,36 +136,4 @@ li::before {
 
 .aplicar-buttonmd:hover{
     background-color: #0056b3;
-}
-
-/* For rendering profesores Modificarprofes */
-.render-li-profes-style{
-
-    position:relative;
-    left: 0;
-    right: 0;
-    display: flex;
-    color: black;
-    align-items: center;
-    list-style-type: none;
-    height: 7vw;
-}
-.div-li-profes{
-
-    position: relative;
-    right: 0;
-    left: 0;
-    display: block;
-}
-
-.div-li-profes-name{
-
-    position: absolute;
-    left: 3.5vw;
-}
-
-.div-li-profes-button{
-
-    position: absolute;
-    right: 2vw;
 }

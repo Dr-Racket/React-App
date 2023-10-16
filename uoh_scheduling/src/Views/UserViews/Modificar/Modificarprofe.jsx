@@ -61,7 +61,7 @@ function ModificarProfe() {
 
   
   return (
-    <div className="Container-Cursos">
+    <div className="agregar-estilo-container">
       <h2>Modificar Profesores</h2>
       <div className="Container-Cursos-Search">
         <input

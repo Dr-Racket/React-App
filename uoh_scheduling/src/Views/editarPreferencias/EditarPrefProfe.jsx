@@ -36,7 +36,7 @@ function Editarprefprofe() {
     ])
 
     return(
-        <div className="container-cprofe">
+        <div className="agregar-estilo-container">
             <h1>Preferencia Horario: { nombre }</h1>
             {/*Reutilizo el css de modificar profesor*/}
             <h3 className="texto-mostrar">Modificar las preferencias del profesor</h3>

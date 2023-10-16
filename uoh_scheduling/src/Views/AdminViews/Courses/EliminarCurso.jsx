@@ -74,7 +74,7 @@ function EliminarCurso() {
   };
 
   return(
-    <div className="Container-Cursos">
+    <div className="agregar-estilo-container">
       <h2>Eliminar Cursos</h2>
         <div className="Container-Cursos-Search">
           <input

@@ -56,7 +56,7 @@ function deleteCourseAlgorithm() {
 
 
   return(
-    <div className="Container-Cursos">
+    <div className="agregar-estilo-container">
       <h2 className='title'>Elimina cursos del algoritmo</h2>
         <div className="Container-Cursos-Search">
           <input

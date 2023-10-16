@@ -65,38 +65,34 @@ function DeleteTeacherAlgorithm() {
   
   const renderProfes= () => {
     return filteredTeachers.map((profes, index) => (
-      <li key={index} style= {{color:'black'}}>
-        <div style={{display: 'flex'}}>
-          <div className="Container-NACU"> 
-            <li>
-              Profesor: {profes.teacher} 
-            </li>
-            <li>
-              Curso: {profes.name} 
-            </li>
-          </div>
-          <div className="Container-schedule">
+      <div className="Container-NACU"> 
+        <div key={index} style= {{color:'black'}}>
+            <list>
+                <div>
+                  Profesor: {profes.teacher}
+                <div>
+                  Curso: {profes.name} 
+                </div>
+                </div>
               <div>
-                  <ul>
-                      {blockDisplay(profes.blocks)}
-                  </ul>
+                {blockDisplay(profes.blocks)}
               </div>
-          </div>
-        </div>
+            </list>
         <div style={ {textAlign: 'right'}}>
           <button className='aplicar-button' onClick={() => handleEliminarTeacher(profes)}>
             Eliminar
           </button>
           <ToastContainer/>
         </div>
-      </li>
+        </div>
+      </div>
     ));
   };
 
 
 
   return(
-    <div className="Container-Cursos">
+    <div className="agregar-estilo-container">
       <h2 className='title'>Elimina Profesores del algoritmo</h2>
         <div className="Container-Cursos-Search">
           <input

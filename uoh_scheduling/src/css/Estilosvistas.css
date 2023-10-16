@@ -1,10 +1,25 @@
-/*Contiene los estilos de Agregar Profesores y Agregar Cursos*/
+/*Contiene el estilo del contenedor principal de TODAS LAS PAGINAS!!*/
 .agregar-estilo-container {
 
   color: white;
   margin: 20px;
   padding: 20px;
-  width: 80vw;
+  width: 100%;
+  border-radius: 5px;
+  background-color: #2d3338;
+  text-align: center;
+  font-size: 1vw;
+
+  }
+
+/*Contiene el estilo del contenedor agregar profesor a algoritmo (tiene scroll)*/
+.agregar-estilo-container-scroll {
+
+  color: white;
+  overflow-y: scroll;
+  margin: 20px;
+  padding: 20px;
+  width: 100%;
   border-radius: 5px;
   background-color: #2d3338;
   text-align: center;
@@ -36,6 +51,50 @@
     padding: 5px;
     border-radius: 12px;
     border: 1px solid rgb(133 133 133);
+
+  }
+
+  .input-container-column{
+
+    display: flex;
+    align-items: stretch;
+    width: 99%;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    background-color: #213241;
+    border-radius: 11px;
+    border: 1px solid lightsteelblue;
+
+  }
+
+  .input-container-fila{
+
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: nowrap;
+    align-items: center;
+
+  }
+
+  .input-container-fila label{
+
+    width: 15%;
+
+  }
+
+  .inputText{
+
+    width: 70%;
+    padding: 10px; 
+
+  }
+
+  .input-container input[type="text"]::placeholder {
+
+    color: #ffffff; /* Cambiar el color del placeholder a rojo (#FF0000) */
 
   }
   
@@ -184,11 +243,7 @@
     background-color: #0056b3;
 
   }
-  .input-container input[type="text"]::placeholder {
 
-    color: #ffffff; /* Cambiar el color del placeholder a rojo (#FF0000) */
-
-  }
 
   .conten-button {
 
@@ -218,35 +273,43 @@
     color: #fff;
   }
 
-  .input-container-column{
-
-    display: flex;
-    align-items: stretch;
-    width: 50vw;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: space-evenly;
-
-  }
-
-  .input-container-fila{
-
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    width: 50vw;
-    flex-wrap: nowrap;
-    align-items: center;
-
-  }
-
-  .inputText{
-    width: 80%;
-    padding: 10px; 
-  }
 /* EXTRAS */
 .someText {
 
   color: white;
   font-size: 1.5vw;
+}
+
+
+/* For rendering profesores y cursos algoritmo */
+.render-li-style{
+
+  position: relative;
+  display: flex;
+  color: black;
+  align-items: center;
+  list-style-type: none;
+  height: 3vw;
+  border-radius: 10px;
+  margin: 0.5vw;
+  padding: 0.2vw;
+}
+.div-li{
+
+  position: relative;
+  right: 0;
+  left: 0;
+  display: block;
+}
+
+.div-li-name{
+
+  position: absolute;
+  left: 3.5vw;
+}
+
+.div-li-button{
+
+  position: absolute;
+  right: 2vw;
 }

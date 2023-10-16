@@ -62,11 +62,11 @@ function AddTeacherAlgorithm() {
 
 const renderCursos = () => {
   return filteredCursos.map((curso, index) => (
-    <li key={index} className='render-li-courses-style'>
-      <div className='div-li-courses-name'>
+    <li key={index} className='render-li-style'>
+      <div className='div-li-name'>
         {curso.name} {curso.code} \ semestre {curso.semester}
       </div>
-      <div className='div-li-courses-button'>
+      <div className='div-li-button'>
         <input
           type='checkbox'
           onChange={() => handleAddCourse(curso)}
@@ -105,11 +105,11 @@ const filteredProfes = profesores.filter((profesor, index) => {
 
 const renderProfes = () => {
   return filteredProfes.map((profesor, index) => (
-    <li key={index} className='render-li-courses-style'>
-    <div className='div-li-courses-name'>
+    <li key={index} className='render-li-style'>
+    <div className='div-li-name'>
       {profesor.name} 
     </div>
-    <div className='div-li-courses-button'>
+    <div className='div-li-button'>
       <input
         type='radio'
         value = {profesor.name}
@@ -191,7 +191,7 @@ function obtainTrueIndex(matriz) {
 
   return (
     
-    <div className="agregar-estilo-container container-scroll2">
+    <div className="agregar-estilo-container-scroll">
       <h2>Agregar Profesor</h2>
       <div className="container-mprofe">
       <div className="container-search">
@@ -202,8 +202,8 @@ function obtainTrueIndex(matriz) {
           onChange={(e) => setSearchTeachers(e.target.value)}
         />
       </div>
-      <div className="container-scroll">
-        <div className="content">
+      <div className="Container-Scroll">
+        <div className="Content-Profesores">
           <ul>
             {renderProfes()}
           </ul>

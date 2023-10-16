@@ -57,7 +57,7 @@ function ModificarCurso() {
     };
 
     return(
-        <div className="Container-Cursos">
+        <div className="agregar-estilo-container">
             <h2>Modificar Cursos</h2>
             <div className="Container-Cursos-Search">
                 <input

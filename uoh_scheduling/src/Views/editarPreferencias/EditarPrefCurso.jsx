@@ -28,7 +28,7 @@ function Editarprefcurso() {
 
     return(
         <>
-        <div className="container-cc">
+        <div className="agregar-estilo-container">
             <h1>Preferencias Horario: { curso }</h1>
             {/*Reutilizo el css de modificar cursos*/}
             <h3 className="texto-mostrar">Modificar las preferencias del horario del curso</h3>

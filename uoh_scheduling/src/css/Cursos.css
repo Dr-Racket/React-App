@@ -8,6 +8,7 @@
     padding: 20px;
     border-radius: 5px;
     text-align: center;
+    font-size: 1vw;
     
 }
 
@@ -35,14 +36,16 @@ input[type="text"]{
 /*Contenido listas*/
 .Content-Cursos{
     width: 100%;
-    height: 800px;
+    height: 100%;
     text-align: left;
 }
+
 
 /*ScrollBar*/
 
 .Container-Scroll {
-    height: 30vw;
+    padding: 1vw;
+    height: 50%;
     overflow-y: scroll;
     background-color: #213241;
     border-radius: 11px;
@@ -106,7 +109,7 @@ input[type="text"]{
 	padding: 20px;
 	border: 1px solid #000000;
 	border-radius: 5px;
-	background-color: #C4B9B7;
+	background-color: #2d3338;
     text-align: center;
 }
 
@@ -137,16 +140,35 @@ input[type="text"]{
     background-color: #0056b3;
   }
 
-/* Schedule Styles */
+/* NACU Styles deleteTeacherAlgorithm*/
 .Container-NACU {
 
-    margin: 0 0 0 10px;
-    border: 5px solid #979797;
-}
-  
-.Container-schedule {
+    background-color: #375a7f;
+    border: 2px solid #b0c4de;
+    border-radius: 10px;
+    padding: 2vw;
 
-    height: 10vw;
-    margin: 0 0 0 10px;
-    border: 5px solid #979797;
+}
+
+.Container-NACU list {
+
+    display: flex;
+    width: 100%;
+    border-radius: 10px;
+    background-color: #b0c4de;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    
+}
+
+.Container-NACU div {
+
+    display: flex;
+    width: 100%;
+    border-radius: 10px;
+    background-color: #b0c4de;
+    flex-direction: column;
+    align-items: stretch;
 }
