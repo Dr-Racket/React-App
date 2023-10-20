@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 //Vista en la cuál se modifican los profes
 
@@ -9,6 +9,15 @@ function Editarprefprofe() {
     // PARAMETRO NOMBRE PROFESOR
     const { nombre } = useParams();
 
+    const [search, setSearch] = useState("");
+    const [Profe, setProfe] = useState([]);
+    const [Curso, setCurso] = useState([]);
+
+    const [Lista, setLista] = useState([]);
+
+    const [NProfes, setNProfes] = useState([]);
+    const [NCursos, setNCursos] = useState([]);
+
     const [horario, setHorario] = useState([
         [false, false, false, false, false],
         [false, false, false, false, false],
@@ -17,6 +26,15 @@ function Editarprefprofe() {
         [false, false, false, false, false],
         [false, false, false, false, false],
     ]);
+
+    var mHorario = [
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+    ];
     
     const horas = [
         '08:30 - 10:00',
@@ -27,13 +45,53 @@ function Editarprefprofe() {
         '18:00 - 19:30',
     ];
 
-    const [cursos, setCursos] = useState([
-        //agregar más de ser necesarios (tengo esos de ejemplo), cambiar url de ser necesario
-        {nombre: "Computación Gráfica", codigo:"C1", semestre:"1" , select: false},
-        {nombre: "Teoria de la Computación", codigo:"C2", semestre:"2" ,select: false},
-        {nombre: "Matematicas Discretas", codigo:"C3", semestre:"1" ,select: false},
-        {nombre: "Ciencias e Ingenieria Computacional", codigo:"C4", semestre:"4" ,select: false},
-    ])
+    useEffect(() => {
+        const storedTeachers = localStorage.getItem("selectedTeachers")
+        const storedCourses = localStorage.getItem("selectedCourses")
+
+        setNProfes((storedTeachers) ? JSON.parse(storedTeachers) : [])
+        setNCursos((storedCourses) ? JSON.parse(storedCourses) : [])
+
+        const matchingProfes = NProfes.filter((profe) => profe.teacher === nombre);
+
+        setProfe(matchingProfes); // Set the state with the filtered array
+        
+        matchingProfes.map(profe => {
+            profe.blocks.map(block => {
+                mHorario[block[0]][block[1]] = true
+            })
+        })
+
+        setHorario(mHorario)
+
+        console.log(Profe)
+
+    }, [])
+
+    const apply = () => {
+        const confirmar = window.confirm(`¿Está seguro de que desea modificar a ${Profe.teacher}?`);
+
+        if (confirmar) {
+            // You can find the index of the teacher you want to remove
+            const index = NProfes.findIndex((profe) => profe.teacher === Profe.teacher);
+
+            if (index !== -1) {
+                // Create a copy of the current teachers array and remove the teacher at the found index
+                const updatedTeachers = [...NProfes];
+                updatedTeachers.splice(index, 1);
+
+                // Update the local storage and state with the modified teacher list
+                localStorage.setItem("selectedTeachers", JSON.stringify(updatedTeachers));
+                setNProfes(updatedTeachers);
+
+                toast.success(`${Profe.teacher} ${Profe.name} ha sido modificado`, {
+                    position: toast.POSITION.TOP_CENTER,
+                    autoClose: 3000, // 3 seconds
+                });
+            }
+        }
+    }
+
 
     return(
         <div className="agregar-estilo-container">
@@ -85,9 +143,9 @@ function Editarprefprofe() {
             <div className="container-scroll-mp">
                 <div className="content">
                     <ul className="Lista">
-                        {cursos.map((elemento, index) => (
-                            <li key={index} style={{color:'black'}}>
-                                {elemento.nombre} - {elemento.codigo}-{elemento.semestre}
+                        {Profe.map((profe, index) => (
+                            <li key={index}>
+                                {profe.name}
                             </li>
                         ))}
                     </ul>
@@ -95,7 +153,7 @@ function Editarprefprofe() {
             </div>
             
             {/*BOTON*/}
-            <button type="submit" className="aplicar-buttonmd">
+            <button type="submit" className="aplicar-buttonmd" onClick={apply}>
                 Aplicar
             </button>
 
