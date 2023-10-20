@@ -3,6 +3,22 @@ import { toast, ToastContainer } from 'react-toastify';
 import axios from 'axios'
 import '../../../css/Estilosvistas.css'
 
+
+function obtainTrueIndex(matriz) {
+  const trueidx = [];
+
+  for (let fila = 0; fila < matriz.length; fila++) {
+    for (let columna = 0; columna < matriz[fila].length; columna++) {
+      if (matriz[fila][columna] === true) {
+        trueidx.push([fila, columna]);
+      }
+    }
+  }
+
+  return trueidx;
+}
+
+
 function AddTeacherAlgorithm() {
   const [horario, setHorario] = useState([
     [false, false, false, false, false],
@@ -25,9 +41,6 @@ function AddTeacherAlgorithm() {
   const [selectedCourses, setSelectedCourses] = useState([]);
   const [search_courses, setSearchCourses] = useState("");
   const [NCursos, setNCursos] = useState([]);
-
-  const [mensaje, setMensaje] = useState(''); // Estado para el mensaje
-
    
   const [search_teachers, setSearchTeachers] = useState("");
   const [profesores, setProfesores] = useState([]);
@@ -60,103 +73,108 @@ function AddTeacherAlgorithm() {
     });
   
 
-const renderCursos = () => {
-  return filteredCursos.map((curso, index) => (
-    <li key={index} className='render-li-style'>
+  const renderCursos = () => {
+    return filteredCursos.map((curso, index) => (
+      <li key={index} className='render-li-style'>
+        <div className='div-li-name'>
+          {curso.name} {curso.code} \ semestre {curso.semester}
+        </div>
+        <div className='div-li-button'>
+          <input
+            type='checkbox'
+            onChange={() => handleAddCourse(curso)}
+            checked={selectedCourses.includes(curso)}
+          />
+        </div>
+      </li>
+    ));
+  };
+
+  useEffect(() => {
+    cargarprofes();
+    const storedCourses = localStorage.getItem("selectedCourses")
+    setNCursos((storedCourses) ? JSON.parse(storedCourses) : [])
+  }, []); // El segundo argumento vacío [] asegura que la solicitud se realice solo una vez
+
+  const cargarprofes = () => {
+    // URL de la API que devuelve la lista de profesores
+    const apiUrl = 'http://localhost:8000/api/getTeachers/';
+    // Realizar la solicitud GET utilizando Axios
+    axios.get(apiUrl).then((response) => {
+        // Actualizar el estado con los datos de los profesores
+        setProfesores(response.data);
+        console.log(response)
+      }).catch((error) => {
+        // Manejar errores si la solicitud falla
+        console.error('Error al obtener la lista de profesores:', error);
+      });
+  }
+
+  const filteredProfes = profesores.filter((profesor, index) => {
+      if(search_teachers){
+          return profesor.name.toLowerCase().includes(String(search_teachers).toLowerCase());
+      }else{ return profesor.name}
+  });
+
+  const renderProfes = () => {
+    return filteredProfes.map((profesor, index) => (
+      <li key={index} className='render-li-style'>
       <div className='div-li-name'>
-        {curso.name} {curso.code} \ semestre {curso.semester}
+        {profesor.name} 
       </div>
       <div className='div-li-button'>
         <input
-          type='checkbox'
-          onChange={() => handleAddCourse(curso)}
-          checked={selectedCourses.includes(curso)}
+          type='radio'
+          value = {profesor.name}
+          onChange={() => handleAddTeacher(profesor)}
+          checked={selectedTeacher === profesor.name}
         />
       </div>
     </li>
-  ));
-};
+      ));
+  };
 
-useEffect(() => {
-  cargarprofes();
-  const storedCourses = localStorage.getItem("selectedCourses")
-  setNCursos((storedCourses) ? JSON.parse(storedCourses) : [])
-}, []); // El segundo argumento vacío [] asegura que la solicitud se realice solo una vez
-
-const cargarprofes = () => {
-  // URL de la API que devuelve la lista de profesores
-  const apiUrl = 'http://localhost:8000/api/getTeachers/';
-  // Realizar la solicitud GET utilizando Axios
-  axios.get(apiUrl).then((response) => {
-      // Actualizar el estado con los datos de los profesores
-      setProfesores(response.data);
-      console.log(response)
-    }).catch((error) => {
-      // Manejar errores si la solicitud falla
-      console.error('Error al obtener la lista de profesores:', error);
-    });
-}
-
-const filteredProfes = profesores.filter((profesor, index) => {
-    if(search_teachers){
-        return profesor.name.toLowerCase().includes(String(search_teachers).toLowerCase());
-    }else{ return profesor.name}
-});
-
-const renderProfes = () => {
-  return filteredProfes.map((profesor, index) => (
-    <li key={index} className='render-li-style'>
-    <div className='div-li-name'>
-      {profesor.name} 
-    </div>
-    <div className='div-li-button'>
-      <input
-        type='radio'
-        value = {profesor.name}
-        onChange={() => handleAddTeacher(profesor)}
-        checked={selectedTeacher === profesor.name}
-      />
-    </div>
-  </li>
-    ));
-};
-function obtainTrueIndex(matriz) {
-  const trueidx = [];
-
-  for (let fila = 0; fila < matriz.length; fila++) {
-    for (let columna = 0; columna < matriz[fila].length; columna++) {
-      if (matriz[fila][columna] === true) {
-        trueidx.push([fila, columna]);
-      }
-    }
-  }
-
-  return trueidx;
-}
   const aplicarCambios = () => {
 
+    let checkHorario = 0;
     const positions = obtainTrueIndex(horario);
-
     const storedTeachers = JSON.parse(localStorage.getItem('selectedTeachers')) || [];
 
     console.log(localStorage.getItem("selectedTeachers"))
 
-    if (!selectedTeacher && !selectedCourses) {
-      // Si no se proporciona nombre o curso, muestra el mensaje de error
-      setMensaje('Por favor, ingrese un nombre y un curso');
+    //Si desea puede implentar esto de otra forma más optima
+    horario.forEach(element => {
+      element.forEach(e => {
+        if(e){
+          checkHorario = 1
+        }
+      })
+    });
+
+    if (!selectedTeacher) {
+      // Si no se proporciona nombre , muestra el mensaje de error
+      toast.warning('Por favor, ingrese un nombre', {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 3000, // 3 segundos
+      });
     }
-    else if (!selectedCourses) {
-      // Si no se proporciona nombre o curso, muestra el mensaje de error
-      setMensaje('Por favor, ingrese un curso');
+    else if (checkHorario == 0) {
+      //Si no se proporciona preferencias, muestra el mensaje de error
+      toast.warning('Por favor, ingrese las preferencias del profesor', {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 3000, //3 segundos
+      });
     }
-    else if (!selectedTeacher) {
-      // Si no se proporciona nombre o curso, muestra el mensaje de error
-      setMensaje('Por favor, ingrese un nombre');
+    else if (selectedCourses == 0) {
+      // Si no se proporciona curso, muestra el mensaje de error
+      toast.warning('Por favor, ingrese un curso', {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 3000, // 3 segundos
+      });
     }
     else {
       // Aquí puedes agregar la lógica para aplicar los cambios al profesor
       // Por ahora, simplemente establecemos el mensaje de éxito
-      const currentCourses = JSON.parse(localStorage.getItem("selectedTeachers"));
 
       const teacherDict= selectedCourses.map((course) => {
         return {id: course.id, name: course.name, teacher: selectedTeacher, blocks: positions};
@@ -166,24 +184,34 @@ function obtainTrueIndex(matriz) {
 
       // Almacena los cursos actualizados en localStorage
       localStorage.setItem('selectedTeachers', JSON.stringify(updatedCourses));
-      toast.success(`Cursos agregados con éxito`, {
-              position: toast.POSITION.TOP_CENTER,
-              autoClose: 3000, // 3 segundos
-            });
+      toast.success(`Datos agregados con éxito`, {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 3000, // 3 segundos
+      });
+
+      console.log(updatedCourses)
+      
+      //Limpiar ventana
+      setSelectedCourses([]);
+      setSelectedTeacher('');
+      setHorario([
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+      ]);
 
       
     // localStorage.setItem("selectedTeachers", JSON.stringify(dict))
     console.log(updatedCourses)
-    
-    setMensaje('Aplicado exitosamente');
       
     }
   };
   const handleAddTeacher = (teacher) => {
     console.log(teacher.name)
-    // Copiar el estado actual de los cursos seleccionados
-   
-  
+
     // Actualizar el estado de los cursos seleccionados
     setSelectedTeacher(teacher.name);
   };
@@ -207,7 +235,6 @@ function obtainTrueIndex(matriz) {
           <ul>
             {renderProfes()}
           </ul>
-          <ToastContainer />
         </div>
       </div>
     </div>
@@ -271,7 +298,6 @@ function obtainTrueIndex(matriz) {
         <button className="aplicar-button" onClick={aplicarCambios}>
           Aplicar
         </button>
-        {mensaje && <div className="mensaje">{mensaje}</div>}
       </div>
         </div>
       
