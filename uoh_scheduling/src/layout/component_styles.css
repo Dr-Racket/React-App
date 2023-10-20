@@ -126,14 +126,15 @@
 .cerrarSesion {
 
     font-size: 0.85vw;
+    margin: 0.2vw;
     background-color: #af3621;
     color: #fff;
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
     cursor: pointer;
-    align-items: center;
     display: flex;
+    align-items: center;
 }
 
 .cerrarSesion button{

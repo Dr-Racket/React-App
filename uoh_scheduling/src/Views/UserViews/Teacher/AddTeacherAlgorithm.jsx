@@ -76,12 +76,13 @@ function AddTeacherAlgorithm() {
   const renderCursos = () => {
     return filteredCursos.map((curso, index) => (
       <li key={index} className='render-li-style'>
-        <div className='div-li-name'>
+        <label htmlFor={`checkbox-${index}`} className='div-li-name'>
           {curso.name} {curso.code} \ semestre {curso.semester}
-        </div>
+        </label>
         <div className='div-li-button'>
           <input
             type='checkbox'
+            id={`checkbox-${index}`}
             onChange={() => handleAddCourse(curso)}
             checked={selectedCourses.includes(curso)}
           />
@@ -119,13 +120,14 @@ function AddTeacherAlgorithm() {
   const renderProfes = () => {
     return filteredProfes.map((profesor, index) => (
       <li key={index} className='render-li-style'>
-      <div className='div-li-name'>
+      <label htmlFor={`radio-${index}`} className='div-li-name'>
         {profesor.name} 
-      </div>
+      </label>
       <div className='div-li-button'>
         <input
           type='radio'
           value = {profesor.name}
+          id={`radio-${index}`}
           onChange={() => handleAddTeacher(profesor)}
           checked={selectedTeacher === profesor.name}
         />
@@ -139,6 +141,11 @@ function AddTeacherAlgorithm() {
     let checkHorario = 0;
     const positions = obtainTrueIndex(horario);
     const storedTeachers = JSON.parse(localStorage.getItem('selectedTeachers')) || [];
+    const isDuplicate = storedTeachers.some(
+      (teacher) =>
+        teacher.teacher === selectedTeacher &&
+        selectedCourses.some((course) => course.id === teacher.id)
+    );
 
     console.log(localStorage.getItem("selectedTeachers"))
 
@@ -151,23 +158,31 @@ function AddTeacherAlgorithm() {
       })
     });
 
-    if (!selectedTeacher) {
+
+    if (isDuplicate) {
+      // Muestra una alerta de que ya existe un profesor con el mismo horario y curso
+      toast.warning('Ya existe un profesor con el mismo curso.', {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 3000,
+      });    
+    }
+    else if (!selectedTeacher) {
       // Si no se proporciona nombre , muestra el mensaje de error
-      toast.warning('Por favor, ingrese un nombre', {
+      toast.warning('Por favor, seleccione a un profesor.', {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 3000, // 3 segundos
       });
     }
     else if (checkHorario == 0) {
       //Si no se proporciona preferencias, muestra el mensaje de error
-      toast.warning('Por favor, ingrese las preferencias del profesor', {
+      toast.warning('Por favor, ingrese las preferencias del profesor.', {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 3000, //3 segundos
       });
     }
     else if (selectedCourses == 0) {
       // Si no se proporciona curso, muestra el mensaje de error
-      toast.warning('Por favor, ingrese un curso', {
+      toast.warning('Por favor, seleccione por lo menos un curso.', {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 3000, // 3 segundos
       });
@@ -221,6 +236,7 @@ function AddTeacherAlgorithm() {
     
     <div className="agregar-estilo-container-scroll">
       <h2>Agregar Profesor</h2>
+
       <div className="container-mprofe">
       <div className="container-search">
         <input
@@ -238,6 +254,27 @@ function AddTeacherAlgorithm() {
         </div>
       </div>
     </div>
+
+    <div className="container-mprofe">
+        <div className="container-search">
+          <input
+            type='text'
+            placeholder='Buscar'
+            value={search_courses}
+            onChange={(e) => setSearchCourses(e.target.value)}
+          />
+          </div>
+            <div className="Container-Scroll">
+                <div className="Content-Cursos">
+                    <ul>
+                        {renderCursos()}
+                    </ul>
+                    <ToastContainer />
+                </div>
+            </div>
+     </div>
+            
+
       <div className="horario-container">
         <h2>Seleccione las Preferencias de los horarios del profesor:</h2>
         <div className="horario-wrapper">
@@ -278,27 +315,13 @@ function AddTeacherAlgorithm() {
           </table>
         </div>
       </div>
-        <div className="Container-Cursos-Search">
-          <input
-            type='text'
-            placeholder='Buscar'
-            value={search_courses}
-            onChange={(e) => setSearchCourses(e.target.value)}
-          />
-          </div>
-            <div className="Container-Scroll">
-                <div className="Content-Cursos">
-                    <ul>
-                        {renderCursos()}
-                    </ul>
-                    <ToastContainer />
-                </div>
-            </div>
-            <div className='conten-button'>
+
+      <div className='conten-button'>
         <button className="aplicar-button" onClick={aplicarCambios}>
           Aplicar
         </button>
       </div>
+
         </div>
       
 

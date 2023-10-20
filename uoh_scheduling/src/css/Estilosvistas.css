@@ -131,7 +131,7 @@
   
   .horario-container {
 
-    margin-bottom: 20px;
+    margin: 2vw;
     color: white;
 
   }
@@ -302,6 +302,7 @@
 
 .div-li-name{
 
+  cursor: pointer; 
   position: absolute;
   left: 3.5vw;
 }

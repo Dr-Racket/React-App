@@ -41,17 +41,14 @@ function deleteCourseAlgorithm() {
   
   const renderCursos = () => {
     return filteredCursos.map((curso, index) => (
-      <li key={index} style= {{color:'black'}}>
+      <li className="curso-item" key={index} style= {{color:'black'}}>
         {curso.name} {curso.code} \ semestre {curso.semester}
-        <div style={ {textAlign: 'right'}}>
-          <button className='aplicar-button' onClick={() => handleEliminarCurso(curso)}>
+          <button className='aplicar-button3' onClick={() => handleEliminarCurso(curso)}>
             Eliminar
-          </button>
-          <ToastContainer/>
-        </div>
-      </li>
+           </button>
+       </li>
     ));
-  };
+   };
 
 
 

@@ -55,12 +55,13 @@ const renderCursos = () => {
   
   return filteredCursos.map((curso, index) => (
     <li key={index} className='render-li-style'>
-      <div className='div-li-name'>
+      <label htmlFor={`checkbox-${index}`} className='div-li-name'>
         {curso.name} {curso.code} \ semestre {curso.semester}
-      </div>
+      </label>
       <div className='div-li-button'>
         <input
           type='checkbox'
+          id={`checkbox-${index}`}
           onChange={() => handleCheckboxChange(curso)}
           checked={selectedCourses.includes(curso)}
         />
