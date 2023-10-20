@@ -219,9 +219,7 @@
   }
 
   .aplicar-button {
-    margin-left: 1vw;
-    margin-right: 1vw;
-    margin-bottom: 2vw;
+    margin: 10px;
     background-color: #007bff;
     color: #fff;
     border: none;

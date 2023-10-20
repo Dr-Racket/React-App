@@ -89,14 +89,12 @@ input[type="text"]{
 /* Estilos para los elementos <li> que son pares */
 .curso-item:nth-child(even) {
     background-color: #9bc2ed;
-    border-radius: 10px;
     margin: 0.7vw;
 }
   
 /* Estilos para los elementos <li> que son impares */
 .curso-item:nth-child(odd) {
     background-color: #6e9dd1;
-    border-radius: 10px;
     margin: 0.7vw;
 } 
 
@@ -143,32 +141,40 @@ input[type="text"]{
 /* NACU Styles deleteTeacherAlgorithm*/
 .Container-NACU {
 
+    display: flex;
     background-color: #375a7f;
     border: 2px solid #b0c4de;
     border-radius: 10px;
-    padding: 2vw;
-
-}
-
-.Container-NACU list {
-
-    display: flex;
-    width: 100%;
-    border-radius: 10px;
-    background-color: #b0c4de;
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: nowrap;
-    justify-content: space-evenly;
-    
-}
-
-.Container-NACU div {
-
-    display: flex;
-    width: 100%;
-    border-radius: 10px;
-    background-color: #b0c4de;
+    padding: 1vw;
     flex-direction: column;
     align-items: stretch;
+    justify-content: space-around;
+}
+
+.Container-cursoprofe{
+
+    background-color: #deeeff;
+    border-radius: 9px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: stretch;
+}
+
+.Container-profe-algoritmo{
+    display: flex;
+    padding: 1vw;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: stretch;
+
+}
+
+.Container-curso-algoritmo{
+    margin: 1vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: stretch;
+
 }
