@@ -5,8 +5,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import '../../../css/AddCourseAlgorithm.css'
 function addCourseAlgorithm() {
-  const [curso, setCurso] = useState('');   // Estado para el curso
-  const [mensaje, setMensaje] = useState(''); // Estado para el mensaje
   const [fetched_courses, fetchCourses] = useState([]);
   const [search, setSearch] = useState("");
   const [selectedCourses, setSelectedCourses] = useState([]);
@@ -20,9 +18,13 @@ function addCourseAlgorithm() {
     console.log(index)
     if (index === -1) {
       // Si no está en la lista, agrégalo
+
+      //Agregar TOAST para informar que el curso se añadio con exito
       updatedSelectedCourses.push(curso);
     } else {
       // Si ya está en la lista, quítalo
+
+      //Agregar TOAST para informar que el curso ya existe
       updatedSelectedCourses.splice(index, 1);
     }
   
@@ -84,7 +86,6 @@ const renderCursos = () => {
             });
     }
     else {
-      const currentCourses = JSON.parse(localStorage.getItem("selectedCourses"));
       const updatedCourses = [...storedCourses, ...uniqueCourses];
 
       // Almacena los cursos actualizados en localStorage

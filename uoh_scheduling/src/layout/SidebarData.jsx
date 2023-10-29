@@ -24,7 +24,7 @@ export const SidebarData = [
 		link: "/horarios",
 		options: [
 			{ title: "Ver Horarios", link: "/404" },
-			{ title: "Editar Horarios Protegidos", link: "/404" },
+			{ title: "Editar Horarios Protegidos", link: "/sethorariosp" },
 		]
 	}
 ];

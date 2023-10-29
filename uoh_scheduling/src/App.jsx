@@ -48,6 +48,8 @@ function App() {
                 <Route path="/Eliminarcurso" element={<PrivateRouteAdmin><Vistas.EliminarCurso /></PrivateRouteAdmin>} />
                 <Route path="/404" element={<PrivateRoute><Vistas.view404/></PrivateRoute>} />
 
+                <Route path="/sethorariosp" element={<PrivateRoute><Vistas.setHorariosProtegidos/></PrivateRoute>} />
+
             </Routes>
           </main>
         </div>
