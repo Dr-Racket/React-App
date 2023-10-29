@@ -82,7 +82,6 @@ function DeleteTeacherAlgorithm() {
           <button className='aplicar-button' onClick={() => handleEliminarTeacher(profes)}>
             Eliminar
           </button>
-          <ToastContainer/>
         </div>
         </div>
       </div>

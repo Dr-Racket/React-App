@@ -27,6 +27,8 @@ import DeleteTeachersAlgorithm from "./Views/UserViews/Teacher/DeleteTeacherAlgo
 import ModificarProfe from "./Views/UserViews/Modificar/Modificarprofe.jsx"
 import ModificarCurso from "./Views/UserViews/Modificar/Modificarcurso.jsx"
 
+import setHorariosProtegidos from "./Views/Generacion_Horarios/horariosprotegidos.jsx"
+
 export default {
 
     view404,
@@ -45,6 +47,7 @@ export default {
     AgregarCursoAdmin,
     deleteCourseAlgorithm,
     AddTeacherAlgorithm,
-    DeleteTeachersAlgorithm
+    DeleteTeachersAlgorithm,
+    setHorariosProtegidos
 }
 

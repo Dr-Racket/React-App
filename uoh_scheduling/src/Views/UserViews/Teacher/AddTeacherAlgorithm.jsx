@@ -57,9 +57,13 @@ function AddTeacherAlgorithm() {
     console.log(index)
     if (index === -1) {
       // Si no está en la lista, agrégalo
+
+      //Agregar Toast con mensaje de confirmacion
       updatedSelectedCourses.push(curso);
     } else {
       // Si ya está en la lista, quítalo
+
+      //Agregar Toast con mensaje de confirmacion
       updatedSelectedCourses.splice(index, 1);
     }
   
