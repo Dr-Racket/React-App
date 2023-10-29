@@ -44,7 +44,7 @@ function EliminarProfesor() {
   const renderProfes = () => {
     return filteredProfes.map((profesor, index) => (
         <li className="curso-item" key={index} style= {{color:'black'}}>
-          {profesor.name}
+          {profesor.name} | {profesor.type}
             <button className='aplicar-button3' onClick={() => handleEliminarProfesor(profesor)}>
               Eliminar
             </button>

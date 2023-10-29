@@ -10,12 +10,14 @@ function AgregarCursoAdmin() {
   const [nombre, setNombre] = useState(''); // Estado para el nombre
   const [codigo, setCodigo] = useState(''); // Estado para el codigo
   const [semestre, setSemestre] = useState(''); // Estado para el semestre
+  const [semestrecareer, setSemestrecareer] = useState(''); //Estado para el semestre de la carrera
   const [catedra, setCatedra] = useState(''); // Estado para la catedra
   const [ayudantia, setAyudantia] = useState(''); // Estado para la ayudantia
   const [errores, setErrores] = useState({ //Estado para los errores
     nombre: '',
     codigo: '',
     semestre: '',
+    semestrecareer: '',
     catedra: '',
     ayudantia: '',
   }); 
@@ -27,6 +29,7 @@ function AgregarCursoAdmin() {
       nombre: '',
       codigo: '',
       semestre: '',
+      semestrecareer: '',
       catedra: '',
       ayudantia: '',
     });
@@ -51,6 +54,13 @@ function AgregarCursoAdmin() {
       }));
       return;
     }
+    else if (!semestrecareer.trim() ||isNaN(semestrecareer) || semestrecareer < 1 || semestrecareer > 10){
+      setErrores((prevState) => ({
+        ...prevState,
+        semestrecareer: 'El semestre debe estar entre 1 y 10'
+      }));
+      return;
+    }
     else if (!catedra.trim() || isNaN(catedra)) {
       setErrores((prevState) => ({
         ...prevState,
@@ -71,6 +81,7 @@ function AgregarCursoAdmin() {
         name: nombre,
         code: codigo,
         semester: semestre,
+        semesterincareer: semestrecareer,
         catedras: catedra,
         ayudantias: ayudantia,
       };
@@ -89,6 +100,7 @@ function AgregarCursoAdmin() {
           setNombre('');
           setCodigo('');
           setSemestre('');
+          setSemestrecareer('');
           setCatedra('');
           setAyudantia('');
 
@@ -152,6 +164,19 @@ function AgregarCursoAdmin() {
             />
           </div>
           {errores.semestre && <div className="error">{errores.semestre}</div>}
+        </div>
+        <div className="input-container-fila">
+          <label htmlFor="semestrec">Semestre en la carrera:</label>
+          <div className="inputText">
+            <input
+              id="semestrec"
+              type="text"
+              placeholder="Introduce el semestre de acuerdo a la malla: "
+              value={semestrecareer}
+              onChange={(e) => setSemestrecareer(e.target.value)}
+            />
+          </div>
+          {errores.semestrecareer && <div className="error">{errores.semestrecareer}</div>}
         </div>
         <div className="input-container-fila">
           <label htmlFor="catedras">Cátedras:</label>

@@ -40,7 +40,7 @@ function EliminarCurso() {
     const renderCursos = () => {
       return filteredCursos.map((curso, index) => (
         <li className="curso-item" key={index} style= {{color:'black'}}>       
-             {curso.name} {curso.code} \ semestre {curso.semester} 
+             {curso.name} {curso.code} \ semestre {curso.semester}  \ semestre en la carrera {curso.semesterincareer} 
             <button className='aplicar-button3' onClick={() => handleEliminarCurso(curso)}>
               Eliminar
             </button>
