@@ -37,6 +37,9 @@ function App() {
                 <Route path="/addTeacherAlgorithm" element={<PrivateRoute><Vistas.AddTeacherAlgorithm/></PrivateRoute>} />
                 <Route path="/deleteTeacherAlgorithm" element={<PrivateRoute><Vistas.DeleteTeachersAlgorithm /></PrivateRoute>} />
 
+                {/* rutas horarios */}
+                <Route path="/HorarioGenerado" element={<PrivateRoute><Vistas.HorarioGenerado /></PrivateRoute>} />
+
                 {/* Otras rutas con Sidebar */}
                 <Route path="/EditarprefC/:curso" element={<PrivateRoute><Vistas.Editarprefcurso /></PrivateRoute>} />
                 <Route path="/EditarprefP/:nombre" element={<PrivateRoute><Vistas.Editarprefprofe /></PrivateRoute>} />

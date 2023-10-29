@@ -5,16 +5,16 @@ export const SidebarDataAdmin = [
 		title: "Administrar Cursos",
 		link: "/Administrarcursos",
 		options: [
-			{ title: "Agregar", link: "/postCurso" },
-			{ title: "Eliminar", link: "/Eliminarcurso" }
+			{ title: "Agregar a la base de datos", link: "/postCurso" },
+			{ title: "Eliminar de la base de datos", link: "/Eliminarcurso" }
 		]
 	},
 	{
 		title: "Administrar Profesores",
 		link: "/Administrarprofesores",
 		options: [
-			{ title: "Agregar", link: "/postProfesor" },
-			{ title: "Eliminar", link: "/Eliminarprofe" }
+			{ title: "Agregar a la base de datos", link: "/postProfesor" },
+			{ title: "Eliminar de la base de datos", link: "/Eliminarprofe" }
 		]
 	},
 	{
@@ -39,7 +39,7 @@ export const SidebarDataAdmin = [
 		title: "Horarios",
 		link: "/horarios",
 		options: [
-			{ title: "Ver Horarios", link: "/404" },
+			{ title: "Ver Horarios", link: "/HorarioGenerado" },
 			{ title: "Editar Horarios Protegidos", link: "/sethorariosp" },
 		]
 	}

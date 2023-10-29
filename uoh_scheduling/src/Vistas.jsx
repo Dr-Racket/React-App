@@ -27,6 +27,8 @@ import DeleteTeachersAlgorithm from "./Views/UserViews/Teacher/DeleteTeacherAlgo
 import ModificarProfe from "./Views/UserViews/Modificar/Modificarprofe.jsx"
 import ModificarCurso from "./Views/UserViews/Modificar/Modificarcurso.jsx"
 
+//Algorithm -> Api
+import HorarioGenerado from "./Views/Generacion_Horarios/HorarioGenerado.jsx"
 import setHorariosProtegidos from "./Views/Generacion_Horarios/horariosprotegidos.jsx"
 
 export default {
@@ -35,6 +37,7 @@ export default {
     Navbar,
     Sidebar,
     Home,
+    HorarioGenerado,
     Login,
     addCourseAlgorithm,
     ModificarProfe,
