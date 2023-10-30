@@ -53,6 +53,8 @@ function App() {
 
                 <Route path="/sethorariosp" element={<PrivateRoute><Vistas.setHorariosProtegidos/></PrivateRoute>} />
 
+                <Route path="/testeo" element={<Vistas.vistaTemp/>} />
+
             </Routes>
           </main>
         </div>

@@ -80,6 +80,7 @@ input[type="text"]{
   }
 /* Estilos personalizados para los elementos <li> que contienen enlaces */
 .curso-item {
+    color: #000;
     font-weight: 500;
     margin-bottom: 10px; /* Agrega espacio entre los elementos <li> */
     padding: 5px; /* Agrega un poco de espacio interno a los elementos <li> */

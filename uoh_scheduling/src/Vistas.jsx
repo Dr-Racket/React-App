@@ -31,6 +31,10 @@ import ModificarCurso from "./Views/UserViews/Modificar/Modificarcurso.jsx"
 import HorarioGenerado from "./Views/Generacion_Horarios/HorarioGenerado.jsx"
 import setHorariosProtegidos from "./Views/Generacion_Horarios/horariosprotegidos.jsx"
 
+
+//test
+import vistaTemp from "./Views/vistaTemp.jsx"
+
 export default {
 
     view404,
@@ -51,6 +55,7 @@ export default {
     deleteCourseAlgorithm,
     AddTeacherAlgorithm,
     DeleteTeachersAlgorithm,
-    setHorariosProtegidos
+    setHorariosProtegidos,
+    vistaTemp
 }
 

@@ -68,20 +68,31 @@
 
   }
 
+  .input-container-column2{
+
+    display: flex;
+    align-items: stretch;
+    width: 99%;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+
+  }
+
   .input-container-fila{
 
     display: flex;
-    justify-content: flex-start;
     flex-direction: row;
     width: 100%;
     flex-wrap: nowrap;
     align-items: center;
+    justify-content: space-around;
 
   }
 
   .input-container-fila label{
 
-    width: 15%;
+    width: 35%;
 
   }
 

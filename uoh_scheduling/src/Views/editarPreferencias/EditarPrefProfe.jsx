@@ -27,14 +27,7 @@ function Editarprefprofe() {
         [false, false, false, false, false],
     ]);
 
-    var mHorario = [
-        [false, false, false, false, false],
-        [false, false, false, false, false],
-        [false, false, false, false, false],
-        [false, false, false, false, false],
-        [false, false, false, false, false],
-        [false, false, false, false, false],
-    ];
+    
     
     const horas = [
         '08:30 - 10:00',
@@ -46,6 +39,15 @@ function Editarprefprofe() {
     ];
 
     useEffect(() => {
+        var mHorario = [
+            [false, false, false, false, false],
+            [false, false, false, false, false],
+            [false, false, false, false, false],
+            [false, false, false, false, false],
+            [false, false, false, false, false],
+            [false, false, false, false, false],
+        ];
+
         const storedTeachers = localStorage.getItem("selectedTeachers")
         const storedCourses = localStorage.getItem("selectedCourses")
 
