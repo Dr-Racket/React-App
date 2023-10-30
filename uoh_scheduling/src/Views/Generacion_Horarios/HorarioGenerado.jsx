@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from "axios"
 import { useParams } from 'react-router-dom';
 
 function HorarioGenerado() {
@@ -15,8 +16,9 @@ function HorarioGenerado() {
         };
     
         // Realizar una solicitud POST a la API para enviar los datos
+        console.log(selectedTeachers)
         axios
-          .post('http://127.0.0.1:8000/api//postAlgorithm', dataToSend)
+          .post('http://127.0.0.1:8000/api/postAlgorithm', selectedTeachers)
           .then((response) => {
             // Manejar la respuesta de la API si es necesario
             console.log('Datos enviados con éxito:', response.data);
