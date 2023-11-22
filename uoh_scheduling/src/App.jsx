@@ -33,6 +33,7 @@ function App() {
 
                 <Route path="/addCourseAlgorithm" element={<PrivateRoute><Vistas.addCourseAlgorithm/> </PrivateRoute>} />
                 <Route path="/deleteCourseAlgorithm" element={<PrivateRoute><Vistas.deleteCourseAlgorithm /></PrivateRoute>} />
+                <Route path="/viewCourseAlgorithm" element={<PrivateRoute><Vistas.viewcoursesAlgorithm /></PrivateRoute>} />
 
                 <Route path="/addTeacherAlgorithm" element={<PrivateRoute><Vistas.AddTeacherAlgorithm/></PrivateRoute>} />
                 <Route path="/deleteTeacherAlgorithm" element={<PrivateRoute><Vistas.DeleteTeachersAlgorithm /></PrivateRoute>} />

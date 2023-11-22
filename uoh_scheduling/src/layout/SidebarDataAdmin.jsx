@@ -21,25 +21,25 @@ export const SidebarDataAdmin = [
 		title: "Cursos",
 		link: "/cursos",
 		options: [
-			{ title: "Agregar", link: "/addCourseAlgorithm" },
-			{ title: "Editar", link: "Modificarcurso" },
-			{ title: "Eliminar", link: "/deleteCourseAlgorithm" }
+			{ title: "Agregar cursos al algoritmo", link: "/addCourseAlgorithm" },
+			{ title: "Mostrar cursos en el algoritmo", link: "/viewCourseAlgorithm" },
+			{ title: "Eliminar cursos del algoritmo", link: "/deleteCourseAlgorithm" }
 		]
 	},
 	{
 		title: "Profesores",
 		link: "/profesores",
 		options: [
-			{ title: "Agregar", link: "/AddTeacherAlgorithm" },
-			{ title: "Editar", link: "/Modificarprofe" },
-			{ title: "Eliminar", link: "/DeleteTeacherAlgorithm" }
+			{ title: "Agregar profesores al algoritmo", link: "/AddTeacherAlgorithm" },
+			{ title: "Editar preferencias de profesores", link: "/Modificarprofe" },
+			{ title: "Eliminar profesores del algoritmo", link: "/deleteTeacherAlgorithm" }
 		]
 	},
 	{
 		title: "Horarios",
 		link: "/horarios",
 		options: [
-			{ title: "Ver Horarios", link: "/HorarioGenerado" },
+			{ title: "Generar Horarios", link: "/HorarioGenerado" },
 			{ title: "Editar Horarios Protegidos", link: "/sethorariosp" },
 		]
 	}

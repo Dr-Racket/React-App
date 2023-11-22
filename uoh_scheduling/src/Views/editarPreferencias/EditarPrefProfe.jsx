@@ -56,7 +56,7 @@ function Editarprefprofe() {
 
         const matchingProfes = NProfes.filter((profe) => profe.teacher === nombre);
 
-        setProfe(matchingProfes); // Set the state with the filtered array
+        setProfe(matchingProfes); // Seteamos el estado con el array filtrado
         
         matchingProfes.map(profe => {
             profe.blocks.map(block => {
@@ -71,7 +71,7 @@ function Editarprefprofe() {
     }, [])
 
     const apply = () => {
-        const confirmar = window.confirm(`¿Está seguro de que desea modificar a ${Profe.teacher}?`);
+        const confirmar = window.confirm(`¿Está seguro de que desea modificar a ${Profe.name}?`);
 
         if (confirmar) {
             // You can find the index of the teacher you want to remove

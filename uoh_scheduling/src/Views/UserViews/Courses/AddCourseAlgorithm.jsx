@@ -58,7 +58,7 @@ const renderCursos = () => {
   return filteredCursos.map((curso, index) => (
     <li key={index} className='render-li-style'>
       <label htmlFor={`checkbox-${index}`} className='div-li-name'>
-        {curso.name} {curso.code} \ semestre {curso.semester}
+        {curso.name} {curso.code} \ semestre {curso.semester} \ semestre en la carrera {curso.semesterincareer} 
       </label>
       <div className='div-li-button'>
         <input

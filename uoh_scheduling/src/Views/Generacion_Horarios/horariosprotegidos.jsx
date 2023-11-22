@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useStatem, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 
 function obtainTrueIndex(matriz) {
@@ -16,6 +17,7 @@ function obtainTrueIndex(matriz) {
 }
 
 function setHorariosProtegidos() {
+  const navigate = useNavigate()
   const [horario, setHorario] = useState([
     [false, false, false, false, false],
     [false, false, false, false, false],
@@ -42,10 +44,23 @@ function setHorariosProtegidos() {
   const [selectedCourse, setSelectedCourse] = useState(''); //Estado para el curso seleccionado
   const [showHorario, setShowHorario] = useState(false); //Estado para ver el bloque de los horarios protegidos semestrales 
 
+  const [ultimoHorarioGlobal, setUltimoHorarioGlobal] = useState([]);
+
+  useEffect(() => {
+    const ultimoHorario = JSON.parse(localStorage.getItem('HorariosProtegidosGlobales')) || [];
+    setUltimoHorarioGlobal(ultimoHorario);
+  }, []);
+
   //Manejo de las opciones de Horario Protegido Global o Semestral
   const handleOpcionChange = (event) => {
     const nuevaOpcion = event.target.value;
     setOpcionSeleccionada(nuevaOpcion);
+  };
+
+
+  const handleAgregarCursosClick = () => {
+    // Redirigir a la ruta de agregar cursos
+    navigate('/addCourseAlgorithm');
   };
 
   //Obtención y filtrado de los cursos del localStorage (si requiere lo pueden cambiar por una consulta a la base de datos en vez del LocalStorage)
@@ -61,6 +76,9 @@ function setHorariosProtegidos() {
       return <div>
         <h2>Cursos {semestreSeleccionado}</h2>
         No hay cursos ingresados para el semestre seleccionado.
+        <button onClick={handleAgregarCursosClick}>
+            Agregar Cursos
+        </button>
         </div>;
     }
   
@@ -114,8 +132,14 @@ function setHorariosProtegidos() {
             autoClose: 3000, // 3 segundos
         });
 
+
+        // Actualizamos el estado de ultimoHorarioGlobal
+        setUltimoHorarioGlobal(positions);
+
         //Limpiar ventana
 
+
+        
         setHorario([
             [false, false, false, false, false],
             [false, false, false, false, false],
@@ -308,6 +332,51 @@ function setHorariosProtegidos() {
       </div>
       )}
 
+{ultimoHorarioGlobal.length > 0 && (
+  <div className="horario-container">
+    <h2>Último horario global asignado</h2>
+    <div className="horario-wrapper">
+      <div className="horario-horas">
+        {horas.map((hora, index) => (
+          <div key={index} className="hora-nombre">
+            {hora}
+          </div>
+        ))}
+      </div>
+      <table className="horario-table">
+        <thead>
+          <tr>
+            <th>Lunes</th>
+            <th>Martes</th>
+            <th>Miércoles</th>
+            <th>Jueves</th>
+            <th>Viernes</th>
+          </tr>
+        </thead>
+        <tbody>
+          {horario.map((fila, filaIndex) => (
+            <tr key={filaIndex}>
+              {fila.map((casilla, casillaIndex) => {
+                const casillaMarcada = ultimoHorarioGlobal.some(([fila, columna]) => fila === filaIndex && columna === casillaIndex);
+                return (
+                  <td
+                    key={casillaIndex}
+                    className={casillaMarcada ? 'seleccionado' : ''}
+                    onClick={() => {
+                      const nuevoHorario = [...horario];
+                      nuevoHorario[filaIndex][casillaIndex] = !casilla;
+                      setHorario(nuevoHorario);
+                    }}
+                  ></td>
+                );
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+)}
       <ToastContainer />
     </div>
   );
