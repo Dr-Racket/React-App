@@ -127,7 +127,7 @@ function AgregarCursoAdmin() {
       <h2>Agregar Curso</h2>
       <div className="input-container-column">
         <div className="input-container-fila">
-          <label htmlFor="nombre">Nombre:</label>
+          <label style={{ fontSize: '1.3vw' }}  htmlFor="nombre">Nombre:</label>
           <div className="inputText">
             <input
               id="nombre"
@@ -140,7 +140,7 @@ function AgregarCursoAdmin() {
           {errores.nombre && <div className="error">{errores.nombre}</div>}
         </div>
         <div className="input-container-fila">
-          <label htmlFor="codigo">Código:</label>
+          <label style={{ fontSize: '1.3vw' }}  htmlFor="codigo">Código:</label>
           <div className="inputText">
             <input
               id="codigo"
@@ -153,7 +153,7 @@ function AgregarCursoAdmin() {
           {errores.codigo && <div className="error">{errores.codigo}</div>}
         </div>
         <div className="input-container-fila">
-          <label htmlFor="semestre">Semestre:</label>
+          <label style={{ fontSize: '1.3vw' }} htmlFor="semestre">Semestre:</label>
           <div className="inputText">
             <input
               id="semestre"
@@ -166,7 +166,7 @@ function AgregarCursoAdmin() {
           {errores.semestre && <div className="error">{errores.semestre}</div>}
         </div>
         <div className="input-container-fila">
-          <label htmlFor="semestrec">Semestre en la carrera:</label>
+          <label style={{ fontSize: '1.3vw' }} htmlFor="semestrec">Semestre en la carrera:</label>
           <div className="inputText">
             <input
               id="semestrec"
@@ -179,7 +179,7 @@ function AgregarCursoAdmin() {
           {errores.semestrecareer && <div className="error">{errores.semestrecareer}</div>}
         </div>
         <div className="input-container-fila">
-          <label htmlFor="catedras">Cátedras:</label>
+          <label style={{ fontSize: '1.3vw' }} htmlFor="catedras">Cátedras:</label>
           <div className="inputText">
             <input
               id="catedras"
@@ -192,7 +192,7 @@ function AgregarCursoAdmin() {
           {errores.catedra && <div className="error">{errores.catedra}</div>}
         </div>
         <div className="input-container-fila">
-          <label htmlFor="ayudantias">Ayudantías:</label>
+          <label style={{ fontSize: '1.3vw' }} htmlFor="ayudantias">Ayudantías:</label>
           <div className="inputText">
             <input
               id="ayudantias"

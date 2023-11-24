@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from "axios";
 
 import '../../../css/Profesores.css'
 
@@ -8,61 +7,55 @@ function ModificarProfe() {
 
   const navigate = useNavigate();
 
-  // Barra Busqueda Hooks
+  // Barra de búsqueda Hooks
   const [search, setSearch] = useState("");
+
+  // Obtener los profesores del localStorage al cargar la página
+  useEffect(() => {
+    const storedTeachers = JSON.parse(localStorage.getItem('selectedTeachers')) || [];
+    setProfesores(storedTeachers);
+  }, []);
 
   const [profesores, setProfesores] = useState([]);
 
-  // Función para realizar la solicitud a la API
-  useEffect(() => {
-    // URL de la API que devuelve la lista de profesores
-    const apiUrl = 'http://127.0.0.1:8000/api/getTeachers/';
-
-    // Realizar la solicitud GET utilizando Axios
-    axios.get(apiUrl)
-      .then((response) => {
-        // Actualizar el estado con los datos de los profesores
-        setProfesores(response.data);
-        console.log(response)
-      })
-      .catch((error) => {
-        // Manejar errores si la solicitud falla
-        console.error('Error al obtener la lista de profesores:', error);
-      });
-  }, []); // El segundo argumento vacío [] asegura que la solicitud se realice solo una vez
-  //
   const handleModificarClick = (nombre) => {
-    // Utiliza navigate para redirigir a la página Editarprefprofe con el nombre como parámetro
     navigate(`/EditarprefP/${nombre}`);
   };
 
-
-  // To search for the profe target in searchbar
-  const filteredProfes = profesores.filter((profesor, index) => {
-      if(search){
-          return profesor.name.toLowerCase().includes(String(search).toLowerCase());
-      }else{ return profesor.name}
+  // Filtrar los profesores según la búsqueda y eliminar duplicados
+  const filteredProfes = profesores.filter((profesor) => {
+    return profesor.teacher.toLowerCase().includes(search.toLowerCase());
   });
 
-  // Function for rendering Profes as a row list
+  // Crear un mapa de profesores por nombre único
+  const teachersMap = filteredProfes.reduce((map, profesor) => {
+    const teacherName = profesor.teacher;
+    if (!map.has(teacherName)) {
+      map.set(teacherName, []);
+    }
+    map.get(teacherName).push(profesor);
+    return map;
+  }, new Map());
 
+  // Renderizar la lista de profesores únicos con un botón "Modificar" por nombre
   const renderProfes = () => {
-  return filteredProfes.map((profesor, index) => (
-    <li key={index} className='curso-item'style= {{color:'black'}}>
-           
-             {profesor.name}
-           
-           
-             <button className='aplicar-button3' onClick={() => handleModificarClick(profesor.name)}>Modificar</button>
-           
-       </li>
-     ));
+    return Array.from(teachersMap).map(([teacher, profesoresConEsteNombre], index) => (
+      <li key={index} className='curso-item' style={{ color: 'black' }}>
+        {teacher}
+        <button
+          className='aplicar-button3'
+          onClick={() => handleModificarClick(profesoresConEsteNombre[0].teacher)}
+        >
+          Modificar
+        </button>
+      </li>
+    ));
   };
 
-  
   return (
     <div className="agregar-estilo-container">
       <h2>Modificar Profesores</h2>
+      <div className="container-mprofe">
       <div className="Container-Cursos-Search">
         <input
           type="text"
@@ -77,6 +70,7 @@ function ModificarProfe() {
             {renderProfes()}
           </ul>
         </div>
+      </div>
       </div>
     </div>
   );

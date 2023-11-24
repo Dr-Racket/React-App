@@ -5,7 +5,7 @@ services:
    container_name: uoh_vite_docker_nico
    entrypoint: /bin/sh
    ports:
-     - 3000:3000
+     - 8080:8080
    working_dir: /srv/app
    volumes:
      - type: bind

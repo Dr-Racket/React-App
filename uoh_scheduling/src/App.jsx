@@ -18,6 +18,9 @@ function App() {
           <nav>
             <Vistas.Sidebar />
           </nav>
+          <low>
+            <Vistas.NoNavbar />
+          </low>
           <main>
             <Routes>
               {/* Ruta de inicio sin Sidebar */}
@@ -42,8 +45,7 @@ function App() {
                 <Route path="/HorarioGenerado" element={<PrivateRoute><Vistas.HorarioGenerado /></PrivateRoute>} />
 
                 {/* Otras rutas con Sidebar */}
-                <Route path="/EditarprefC/:curso" element={<PrivateRoute><Vistas.Editarprefcurso /></PrivateRoute>} />
-                <Route path="/EditarprefP/:nombre" element={<PrivateRoute><Vistas.Editarprefprofe /></PrivateRoute>} />
+                <Route path="/EditarprefP/:nombre" element={<PrivateRoute><Vistas.Editarpreferenciaprofe /></PrivateRoute>} />
 
                 {/*Rutas administrador*/}
                 <Route path="/postProfesor" element={<PrivateRouteAdmin><Vistas.AgregarProfeAdmin /></PrivateRouteAdmin>}/>

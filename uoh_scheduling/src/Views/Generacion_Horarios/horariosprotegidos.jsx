@@ -1,6 +1,7 @@
 import React, { useStatem, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
+import '../../css/Estilosvistas.css'
 
 function obtainTrueIndex(matriz) {
     const trueidx = [];
@@ -67,18 +68,20 @@ function setHorariosProtegidos() {
   const renderCursosPorSemestre = () => {
     const storedCourse = JSON.parse(localStorage.getItem('selectedCourses')) || [];
     if (semestreSeleccionado === '') {
-      return <div>Selecciona un semestre para ver los cursos.</div>;
+      return <div style={{fontSize :'1.3vw',marginTop:'1.3vw'}}>Selecciona un semestre para ver los cursos.</div>;
     }
     const semestreNumero = parseInt(semestreSeleccionado.split(" ")[1]); //Pasamos el String de Semestre Número que guarda el semestreSeleccionado a solamente un número para compararlo
     const cursosFiltrados = storedCourse.filter((curso) => curso.semesterincareer === semestreNumero);
   
     if (cursosFiltrados.length === 0) {
-      return <div>
+      return <div style={{fontSize :'1.3vw',marginTop:'1.3vw'}}>
         <h2>Cursos {semestreSeleccionado}</h2>
         No hay cursos ingresados para el semestre seleccionado.
-        <button onClick={handleAgregarCursosClick}>
+        <div>
+        <button style={{backgroundColor:'#007bff', margin: '1vw'}}   onClick={handleAgregarCursosClick}>
             Agregar Cursos
         </button>
+        </div>
         </div>;
     }
   
@@ -107,11 +110,41 @@ function setHorariosProtegidos() {
     setSemestreSeleccionado(nuevoSemestre);
   };
 
+  const getHorarioCursoSeleccionado = (curso) => {
+    const horariosProtegidosSemestrales = JSON.parse(localStorage.getItem('HorariosProtegidosSemestrales')) || [];
+    const cursoHorarios = horariosProtegidosSemestrales.find(item => item.curso === curso);
+    return cursoHorarios ? cursoHorarios.horarios : [];
+  };
+
   //Boton para mostrar los horarios
   const handleAgregar = (curso) => {
     setSelectedCourse(curso);
     setShowHorario(true);
-  }
+  
+    // Obtener los horarios del curso seleccionado desde el localStorage
+    const horariosCursoSeleccionado = getHorarioCursoSeleccionado(curso);
+  
+    // Crear una matriz de horarios predeterminados
+    const horariosPredeterminados = [
+      [false, false, false, false, false],
+      [false, false, false, false, false],
+      [false, false, false, false, false],
+      [false, false, false, false, false],
+      [false, false, false, false, false],
+      [false, false, false, false, false],
+    ];
+  
+    // Actualizar el estado de los horarios para mostrarlos en la vista
+    if (horariosCursoSeleccionado.length > 0) {
+      const nuevoHorario = [...horariosPredeterminados];
+      horariosCursoSeleccionado.forEach(([fila, columna]) => {
+        nuevoHorario[fila][columna] = true;
+      });
+      setHorario(nuevoHorario);
+    } else {
+      setHorario(horariosPredeterminados);
+    }
+  };
 
   //boton para aplicar cambios de los horarios globales
   const aplicarCambios = () => {
@@ -171,7 +204,15 @@ function setHorariosProtegidos() {
         };
 
         const horariosProtegidosSemestrales = JSON.parse(localStorage.getItem('HorariosProtegidosSemestrales')) || [];
-        horariosProtegidosSemestrales.push(cursoHorarios); //Agregamos al localStorage
+        const existingIndex = horariosProtegidosSemestrales.findIndex(item => item.curso === selectedCourse);
+
+        if (existingIndex !== -1) {
+          // Si el curso ya existe, actualiza sus horarios
+          horariosProtegidosSemestrales[existingIndex].horarios = positions;
+        } else {
+          // Si es un curso nuevo, agrégalo a la lista
+          horariosProtegidosSemestrales.push(cursoHorarios);
+        }
 
         // Guardar el objeto actualizado en el localStorage
         localStorage.setItem('HorariosProtegidosSemestrales', JSON.stringify(horariosProtegidosSemestrales));
@@ -181,31 +222,34 @@ function setHorariosProtegidos() {
           autoClose: 3000, // 3 segundos
       });
 
-        //Limpiar ventana
-        setHorario([
-            [false, false, false, false, false],
-            [false, false, false, false, false],
-            [false, false, false, false, false],
-            [false, false, false, false, false],
-            [false, false, false, false, false],
-            [false, false, false, false, false],
-        ]);
         setShowHorario(false);
-    }
+
+        setHorario([
+          [false, false, false, false, false],
+          [false, false, false, false, false],
+          [false, false, false, false, false],
+          [false, false, false, false, false],
+          [false, false, false, false, false],
+          [false, false, false, false, false],
+        ]);
+      }
 
     console.log(positions)
   };
 
+
   return (
-    <div className='agregar-estilo-container-scroll'>
+    <div className='agregar-estilo-container'>
       <h1>Asignación de horarios protegidos</h1>
       <div className='input-container-column'>
-        <div className='input-container-fila' style= {{padding: "1vw"}}>
-          <label htmlFor="opcionComboBox">Selecciona una opción:</label>
-          <select
+        <div className='input-container-fila' style= {{padding: "1vw",}}>
+          <label style= {{marginRight:'13vw',fontSize: '1.3vw' }}>Selecciona una opción:</label>
+          <select 
             id="opcionComboBox"
             value={opcionSeleccionada}
             onChange={handleOpcionChange}
+            className="comboBox" 
+            
           >
             <option value="">-- Selecciona una opción --</option>
             {opciones.map((opcion, index) => (
@@ -220,12 +264,15 @@ function setHorariosProtegidos() {
 
       {opcionSeleccionada === "Horario Protegido Semestral" && (
         <div className='input-container-column2'>
-          <div className='input-container-fila' style= {{padding: "1vw"}}>
-            <label htmlFor="semestreComboBox">Selecciona un semestre:</label>
+          <div className='input-container-fila' >
+            <label style= {{marginRight:'20vw',fontSize: '1.3vw' }}> <div style= {{marginRight:'-6.5vw'}}> Selecciona un semestre:</div></label>
             <select
               id="semestreComboBox"
               value={semestreSeleccionado}
               onChange={handleSemestreChange}
+              className="comboBox"
+              
+              
             >
               <option value="">-- Selecciona un semestre --</option>
               {semestres.map((semestre, index) => (

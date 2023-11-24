@@ -84,6 +84,14 @@ button:focus-visible {
 	background-color: #fff;
 }
 
+.contentDistribution low {
+	
+	display: block;
+  position: fixed;
+  bottom: 0%;
+  width: 100%;
+}
+
 .contentDistribution main {
 
 	position: fixed;
@@ -91,6 +99,6 @@ button:focus-visible {
 	top: 2.5vw;
 	left: 18vw;
 	right: 0;
-	bottom: 0;
+	bottom: 1.5vw;
 	background-color: #222222;
 }

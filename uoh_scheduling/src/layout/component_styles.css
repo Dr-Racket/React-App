@@ -72,6 +72,21 @@
 	
 }
 
+.NoNavBar {
+
+    background-color: #375a7f;
+    max-height: 2.5vw;
+    max-width: 100vw;
+	
+}
+
+.paperFeet{
+
+    display: flex;
+    justify-content: center;
+
+}
+
 /* Extras Style */
 .img_margin {
 

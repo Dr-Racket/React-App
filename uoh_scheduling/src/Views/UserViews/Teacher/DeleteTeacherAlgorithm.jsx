@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -10,6 +11,7 @@ import '../../../css/DeleteCourseAlgorithm.css'
 function DeleteTeacherAlgorithm() {
     const [search, setSearch] = useState("");
     const [NProfes, setNProfes] = useState([]);
+    const navigate = useNavigate()
 
   // Función para realizar la solicitud a la API
   useEffect(() => {
@@ -88,28 +90,48 @@ function DeleteTeacherAlgorithm() {
     ));
   };
 
+  const handleAgregarTeacherClick = () => {
+    // Redirigir a la ruta de agregar cursos
+    navigate('/AddTeacherAlgorithm');
+  };
+
+  // Mensaje en caso de que no hayan profesores
+  const noTeacherMessage = (
+    <div style={{ textAlign: 'center'}}>
+      <p >No se han añadido profesores al algoritmo.</p>
+      <button style={{backgroundColor: '#3498db', color:'#fff'}}  onClick={handleAgregarTeacherClick}>
+        Agregar Profesores
+      </button> 
+    </div>
+  );
 
 
   return(
     <div className="agregar-estilo-container">
-      <h2 className='title'>Elimina Profesores del algoritmo</h2>
-        <div className="Container-Cursos-Search">
-          <input
-            type='text'
-            placeholder='Buscar'
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-          </div>
-            <div className="Container-Scroll">
-                <div className="Content-Cursos">
-                    <ul>
-                        {renderProfes()}
-                    </ul>
-                    <ToastContainer />
-                </div>
+      <div className="container-mprofe">
+        <h2 className='title'>Elimina Profesores del algoritmo</h2>
+          <div className="Container-Cursos-Search">
+            <input
+              type='text'
+              placeholder='Buscar'
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
             </div>
+              <div className="Container-Scroll">
+                  <div className="Content-Cursos">
+                    {NProfes.length === 0 ? (
+                       <div>{noTeacherMessage}</div>
+                      ) : (
+                      <ul>
+                        {renderProfes()}
+                      </ul>
+                    )}
+                      <ToastContainer />
+                  </div>
+              </div>
         </div>
+      </div>
 
   );
 }

@@ -4,6 +4,7 @@ import view404 from "./Views/404/404.jsx"
 
 import Navbar from "./layout/Navbar.jsx"
 import Sidebar from './layout/Sidebar.jsx'
+import NoNavbar from './layout/NoNavbar.jsx'
 
 import Home from './Views/Home.jsx'
 import Login from "./Views/Login.jsx"
@@ -11,8 +12,7 @@ import Login from "./Views/Login.jsx"
 import EliminarCurso from "./Views/AdminViews/Courses/EliminarCurso.jsx"
 import EliminarProfesor from "./Views/AdminViews/Teachers/EliminarProfesor.jsx"
 
-import Editarprefcurso from "./Views/editarPreferencias/EditarPrefCurso.jsx"
-import Editarprefprofe from "./Views/editarPreferencias/EditarPrefProfe.jsx"
+import Editarpreferenciaprofe from "./Views/editarPreferencias/EditarPrefProfe.jsx"
 
 import AgregarProfeAdmin from "./Views/AdminViews/Teachers/Agregarprofeadmin.jsx"
 import AgregarCursoAdmin from "./Views/AdminViews/Courses/Agregarcursoadmin.jsx"
@@ -48,8 +48,7 @@ export default {
     addCourseAlgorithm,
     ModificarProfe,
     ModificarCurso,
-    Editarprefprofe,
-    Editarprefcurso,
+    Editarpreferenciaprofe,
     EliminarCurso,
     EliminarProfesor,
     AgregarProfeAdmin,
@@ -59,6 +58,7 @@ export default {
     AddTeacherAlgorithm,
     DeleteTeachersAlgorithm,
     setHorariosProtegidos,
-    vistaTemp
+    vistaTemp,
+    NoNavbar
 }
 

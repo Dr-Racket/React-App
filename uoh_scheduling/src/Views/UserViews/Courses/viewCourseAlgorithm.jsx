@@ -26,7 +26,7 @@ function viewcoursesAlgorithm() {
   const renderCursos = () => {
     return filteredCursos.map((curso, index) => (
       <li className="curso-item" key={index} style= {{color:'black'}}>
-        {curso.name} {curso.code} \ semestre en la carrera {curso.semesterincareer}
+        {curso.name} {curso.code} \ Semestre en la carrera {curso.semesterincareer}
        </li>
     ));
    };
@@ -41,20 +41,21 @@ function viewcoursesAlgorithm() {
     navigate('/deleteCourseAlgorithm');
   };
 
-   const noCoursesMessage = (
-    <div>
-      <p>No se han añadido cursos al algoritmo.</p>
-      <button onClick={handleAgregarCursosClick}>
+  // Mensaje en caso de que no hayan cursos
+  const noCoursesMessage = (
+    <div style={{ textAlign: 'center'}}>
+      <p style={{ fontSize: '1.3vw' }}>No se han añadido cursos al algoritmo.</p>
+      <button style={{backgroundColor: '#3498db', color:'#fff'}}  onClick={handleAgregarCursosClick}>
         Agregar Cursos
-      </button>
+      </button> 
     </div>
   );
 
   const coursesAddedButtons = (
-    <div>
+      <div >
       <button onClick={handleAgregarCursosClick}>
         Agregar más Cursos
-      </button>
+      </button >
       <button onClick={handleEliminarCursosClick}>
         Eliminar Cursos
       </button>
@@ -64,23 +65,34 @@ function viewcoursesAlgorithm() {
   return (
     <div className="agregar-estilo-container">
       <h2 className="title">Cursos que fueron agregados al algoritmo</h2>
-      <div className="Container-Cursos-Search">
-        <input
-          type="text"
-          placeholder="Buscar"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </div>
-      <div className="Container-Scroll">
-        <div className="Content-Cursos">
-          {NCursos.length === 0 ? noCoursesMessage : coursesAddedButtons}
-          {NCursos.length === 0 ? null : (
-            <ul>
-              {renderCursos()}
-            </ul>
-          )}
-          <ToastContainer />
+      <div className="container-mprofe">
+        <div className="Container-Cursos-Search">
+          <input
+            type="text"
+            placeholder="Buscar"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
+        <div className="Container-Scroll">
+          <div className="Content-Cursos">
+            {NCursos.length === 0 ? noCoursesMessage : (
+              <>
+                <ul>
+                  {renderCursos()}
+                </ul>
+                <div>
+                  <button style={{  margin: '0 14vw',background:'#007bff'}} onClick={handleAgregarCursosClick}>
+                    Agregar más Cursos
+                  </button>
+                  <button style={{background:'#007bff'}} onClick={handleEliminarCursosClick}>
+                    Eliminar Cursos
+                  </button>
+                </div>
+              </>
+            )}
+            <ToastContainer />
+          </div>
         </div>
       </div>
     </div>

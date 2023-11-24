@@ -72,7 +72,7 @@ function AgregarProfeAdmin() {
       <h2>Agregar Profesor</h2>
       <div className="input-container-column">
         <div className="input-container-fila">
-        <label htmlFor="nombre">Nombre:</label>
+        <label style={{ fontSize: '1.3vw' }}shtmlFor="nombre">Nombre:</label>
         <div className="inputText">
           <input
             type="text"
@@ -84,9 +84,10 @@ function AgregarProfeAdmin() {
       {error.nombre && <div className="error">{error.nombre}</div>}
       </div>
       <div className="input-container-fila">
-        <label htmlFor="opcion">Tipo de profesor:</label>
+        <label style={{ fontSize: '1.3vw' }}htmlFor="opcion">Tipo de profesor:</label>
         <div className="inputText">
           <select
+            className="comboBox" 
             value={tipo}
             onChange={(e) => setTipo(e.target.value)}
           >

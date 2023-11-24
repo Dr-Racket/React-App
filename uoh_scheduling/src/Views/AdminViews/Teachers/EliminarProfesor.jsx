@@ -79,22 +79,24 @@ function EliminarProfesor() {
   return (
     <div className="agregar-estilo-container">
       <h2>Eliminar Profesores</h2>
-      <div className="Container-Cursos-Search">
-        <input
-          type="text"
-          placeholder="Buscar"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </div>
-      <div className="Container-Scroll">
-        <div className="Content-Cursos">
-          <ul>
-            {renderProfes()}
-          </ul>
-          <ToastContainer />
+      <div className="container-mprofe">
+          <div className="Container-Cursos-Search">
+            <input
+              type="text"
+              placeholder="Buscar"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </div>
+          <div className="Container-Scroll">
+            <div className="Content-Cursos">
+              <ul>
+                {renderProfes()}
+              </ul>
+              <ToastContainer />
+            </div>
+          </div>
         </div>
-      </div>
     </div>
   );
 }

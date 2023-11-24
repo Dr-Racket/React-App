@@ -58,7 +58,7 @@ const renderCursos = () => {
   return filteredCursos.map((curso, index) => (
     <li key={index} className='render-li-style'>
       <label htmlFor={`checkbox-${index}`} className='div-li-name'>
-        {curso.name} {curso.code} \ semestre {curso.semester} \ semestre en la carrera {curso.semesterincareer} 
+        {curso.name} {curso.code} \ Semestre {curso.semester} \ Semestre en la carrera {curso.semesterincareer} 
       </label>
       <div className='div-li-button'>
         <input
@@ -101,37 +101,38 @@ const renderCursos = () => {
 
   return (
     <div className="agregar-estilo-container">
-    <h2 className='title'>Agrega Cursos al Algoritmo</h2>
-    <div className="Container-Cursos-Search">
-        <input
-            type='text'
-            placeholder='Buscar'
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-        />
-    </div>
-    <div className="Container-Scroll">
-        <div className="Content-Cursos">
-            <ul>
-                {renderCursos()}
-            </ul>
+      <h2 className='title'>Agrega Cursos al Algoritmo</h2>
+      <div className="container-mprofe">
+          <div className="Container-Cursos-Search">
+                  <input
+                      type='text'
+                      placeholder='Buscar'
+                      value={search}
+                      onChange={(e) => setSearch(e.target.value)}
+                  />
+              </div>
+              <div className="Container-Scroll">
+                  <div className="Content-Cursos">
+                      <ul>
+                          {renderCursos()}
+                      </ul>
+                  </div>
+              </div>
+              <div className='Container-Buttons'>
+              <div className='conten-button'>
+
+                </div>
+                <div className='conten-button'>
+                  <button style={{ marginLeft: '56.6vw' }} className="aplicar-button" onClick={aplicarCambios}>
+                    Añadir al algoritmo
+                  </button>
+                  <>
+                    <ToastContainer />
+                  </>
+                </div>
+            </div>
         </div>
     </div>
-    <div className='Container-Buttons'>
-    <div className='conten-button'>
-
-      </div>
-      <div className='conten-button'>
-        <button className="aplicar-button" onClick={aplicarCambios}>
-          Añadir al algoritmo
-        </button>
-        <>
-          <ToastContainer />
-        </>
-      </div>
-    </div>
-    
-</div>
 
 );
 }

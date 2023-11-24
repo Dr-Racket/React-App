@@ -40,7 +40,7 @@ function EliminarCurso() {
     const renderCursos = () => {
       return filteredCursos.map((curso, index) => (
         <li className="curso-item" key={index} style= {{color:'black'}}>       
-             {curso.name} {curso.code} \ semestre {curso.semester}  \ semestre en la carrera {curso.semesterincareer} 
+             {curso.name} {curso.code} \ Semestre {curso.semester}  \ Semestre en la carrera {curso.semesterincareer} 
             <button className='aplicar-button3' onClick={() => handleEliminarCurso(curso)}>
               Eliminar
             </button>
@@ -76,23 +76,25 @@ function EliminarCurso() {
   return(
     <div className="agregar-estilo-container">
       <h2>Eliminar Cursos</h2>
-        <div className="Container-Cursos-Search">
-          <input
-            type='text'
-            placeholder='Buscar'
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-          </div>
-            <div className="Container-Scroll">
-                <div className="Content-Cursos">
-                    <ul>
-                        {renderCursos()}
-                    </ul>
-                    <ToastContainer />
-                </div>
+      <div className="container-mprofe">
+          <div className="Container-Cursos-Search">
+            <input
+              type='text'
+              placeholder='Buscar'
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
             </div>
-        </div>
+              <div className="Container-Scroll">
+                  <div className="Content-Cursos">
+                      <ul>
+                          {renderCursos()}
+                      </ul>
+                      <ToastContainer />
+                  </div>
+              </div>
+          </div>
+      </div>
 
   );
 }

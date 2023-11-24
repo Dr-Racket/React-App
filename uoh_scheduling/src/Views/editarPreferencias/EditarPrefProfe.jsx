@@ -1,23 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-//Vista en la cuál se modifican los profes
+import { toast, ToastContainer } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import '../../css/Profesores.css';
 
-import '../../css/Profesores.css'
-
-function Editarprefprofe() {
-
-    // PARAMETRO NOMBRE PROFESOR
+function Editarpreferenciaprofe() {
     const { nombre } = useParams();
-
-    const [search, setSearch] = useState("");
-    const [Profe, setProfe] = useState([]);
-    const [Curso, setCurso] = useState([]);
-
-    const [Lista, setLista] = useState([]);
-
-    const [NProfes, setNProfes] = useState([]);
-    const [NCursos, setNCursos] = useState([]);
-
+    const navigate = useNavigate();
+    const [cursosAsignados, setCursosAsignados] = useState([]);
     const [horario, setHorario] = useState([
         [false, false, false, false, false],
         [false, false, false, false, false],
@@ -27,8 +17,6 @@ function Editarprefprofe() {
         [false, false, false, false, false],
     ]);
 
-    
-    
     const horas = [
         '08:30 - 10:00',
         '10:15 - 11:45',
@@ -39,61 +27,73 @@ function Editarprefprofe() {
     ];
 
     useEffect(() => {
-        var mHorario = [
-            [false, false, false, false, false],
-            [false, false, false, false, false],
-            [false, false, false, false, false],
-            [false, false, false, false, false],
-            [false, false, false, false, false],
-            [false, false, false, false, false],
-        ];
+        // Recuperar los datos del horario guardado para el profesor desde localStorage
+        const storedTeachers = JSON.parse(localStorage.getItem('selectedTeachers')) || [];
+        const teacherSchedule = storedTeachers.find(teacher => teacher.teacher === nombre);
 
-        const storedTeachers = localStorage.getItem("selectedTeachers")
-        const storedCourses = localStorage.getItem("selectedCourses")
-
-        setNProfes((storedTeachers) ? JSON.parse(storedTeachers) : [])
-        setNCursos((storedCourses) ? JSON.parse(storedCourses) : [])
-
-        const matchingProfes = NProfes.filter((profe) => profe.teacher === nombre);
-
-        setProfe(matchingProfes); // Seteamos el estado con el array filtrado
-        
-        matchingProfes.map(profe => {
-            profe.blocks.map(block => {
-                mHorario[block[0]][block[1]] = true
-            })
-        })
-
-        setHorario(mHorario)
-
-        console.log(Profe)
-
-    }, [])
-
-    const apply = () => {
-        const confirmar = window.confirm(`¿Está seguro de que desea modificar a ${Profe.name}?`);
-
-        if (confirmar) {
-            // You can find the index of the teacher you want to remove
-            const index = NProfes.findIndex((profe) => profe.teacher === Profe.teacher);
-
-            if (index !== -1) {
-                // Create a copy of the current teachers array and remove the teacher at the found index
-                const updatedTeachers = [...NProfes];
-                updatedTeachers.splice(index, 1);
-
-                // Update the local storage and state with the modified teacher list
-                localStorage.setItem("selectedTeachers", JSON.stringify(updatedTeachers));
-                setNProfes(updatedTeachers);
-
-                toast.success(`${Profe.teacher} ${Profe.name} ha sido modificado`, {
-                    position: toast.POSITION.TOP_CENTER,
-                    autoClose: 3000, // 3 seconds
-                });
-            }
+        // Si se encuentra el horario del profesor, actualizar el estado 'horario'
+        if (teacherSchedule && teacherSchedule.blocks) {
+            const newHorario = [...horario];
+            teacherSchedule.blocks.forEach(block => {
+                const [filaIndex, casillaIndex] = block;
+                newHorario[filaIndex][casillaIndex] = true;
+            });
+            setHorario(newHorario);
         }
-    }
 
+        // Recuperar los cursos asignados al profesor
+        const teacherCourses = storedTeachers.filter(teacher => teacher.teacher === nombre);
+        console.log(teacherCourses);
+
+        // Recuperar los cursos del localStorage 'selectedCourses' por su nombre
+        const cursosGuardados = JSON.parse(localStorage.getItem('selectedCourses')) || [];
+        const cursosAsignados = teacherCourses.map(course => {
+            const cursoEnLocalStorage = cursosGuardados.find(curso => curso.name === course.name);
+            return {
+                id: course.id,
+                name: course.name,
+                code: cursoEnLocalStorage ? cursoEnLocalStorage.code : 'Sin código',
+                semesterincareer: cursoEnLocalStorage ? cursoEnLocalStorage.semesterincareer : 'Sin semestre en carrera'
+            };
+    });
+
+    // Guardar los cursos en un estado para mostrarlos en la interfaz
+    setCursosAsignados(cursosAsignados);
+
+    }, [nombre]);
+
+    const guardarHorario = () => {
+        const confirmacion = window.confirm('¿Estás seguro de modificar los horarios?');
+        if (confirmacion) {
+            // Sobrescribir el horario solo si el usuario confirma
+            const storedTeachers = JSON.parse(localStorage.getItem('selectedTeachers')) || [];
+            const updatedTeachers = storedTeachers.map(teacher => {
+                if (teacher.teacher === nombre) {
+                    return { ...teacher, blocks: obtenerBloquesActualizados() };
+                }
+                return teacher;
+            });
+            localStorage.setItem('selectedTeachers', JSON.stringify(updatedTeachers));
+
+            // Mensaje de confirmación
+            toast.success(`Datos modificados con éxito`, {
+                position: toast.POSITION.TOP_CENTER,
+                autoClose: 3000, // 3 segundos
+            });
+        }
+    };
+
+    const obtenerBloquesActualizados = () => {
+        const bloques = [];
+        horario.forEach((fila, filaIndex) => {
+            fila.forEach((casilla, casillaIndex) => {
+                if (casilla) {
+                    bloques.push([filaIndex, casillaIndex]);
+                }
+            });
+        });
+        return bloques;
+    };
 
     return(
         <div className="agregar-estilo-container">
@@ -140,28 +140,31 @@ function Editarprefprofe() {
                 </div>
             </div>
             {/*SCROLL BAR */}
-            
-            <h2>Cursos a impartir</h2>
-            <div className="container-scroll-mp">
-                <div className="content">
-                    <ul className="Lista">
-                        {Profe.map((profe, index) => (
-                            <li key={index}>
-                                {profe.name}
-                            </li>
-                        ))}
-                    </ul>
+            {/* Aquí renderizamos la lista de cursos asignados */}
+            <div className='container-mprofe' >  
+                <div className="cursos-asignados">
+                    <h3>Cursos Asignados</h3>
+                        <div className="Content-Cursos">
+                            <ul>
+                                {cursosAsignados.map(curso => (
+                                <li className = "curso-item" key={curso.id} style= {{color:'black'}}>
+                                    {curso.name}-{curso.code} / Semestre en la carrera {curso.semesterincareer}
+                                </li>
+                                ))}
+                            </ul>
+                        </div>
                 </div>
             </div>
-            
+        
             {/*BOTON*/}
-            <button type="submit" className="aplicar-buttonmd" onClick={apply}>
+            <button type="submit" className="aplicar-buttonmd" onClick={guardarHorario}>
                 Aplicar
             </button>
+            <ToastContainer />
 
         </div>
 
     );
 }
 
-export default Editarprefprofe;
+export default Editarpreferenciaprofe;

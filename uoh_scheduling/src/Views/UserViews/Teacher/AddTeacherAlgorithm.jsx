@@ -1,5 +1,6 @@
 import React, { useState ,useEffect} from 'react';
 import { toast, ToastContainer } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import '../../../css/Estilosvistas.css'
 
@@ -41,7 +42,9 @@ function AddTeacherAlgorithm() {
   const [selectedCourses, setSelectedCourses] = useState([]);
   const [search_courses, setSearchCourses] = useState("");
   const [NCursos, setNCursos] = useState([]);
-   
+
+  const navigate = useNavigate();
+  
   const [search_teachers, setSearchTeachers] = useState("");
   const [profesores, setProfesores] = useState([]);
   const [selectedTeacher, setSelectedTeacher] = useState('');
@@ -123,7 +126,7 @@ function AddTeacherAlgorithm() {
 
   const renderProfes = () => {
     return filteredProfes.map((profesor, index) => (
-      <li key={index} className='render-li-style'>
+      <li key={index} className='render-li-style' >
       <label htmlFor={`radio-${index}`} className='div-li-name'>
         {profesor.name} 
       </label>
@@ -165,7 +168,7 @@ function AddTeacherAlgorithm() {
 
     if (isDuplicate) {
       // Muestra una alerta de que ya existe un profesor con el mismo horario y curso
-      toast.warning('Ya existe un profesor con el mismo curso.', {
+      toast.warning('Ya existe el profesor con el curso seleccionado.', {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 3000,
       });    
@@ -196,7 +199,8 @@ function AddTeacherAlgorithm() {
       // Por ahora, simplemente establecemos el mensaje de éxito
 
       const teacherDict= selectedCourses.map((course) => {
-        return {id: course.id, name: course.name, teacher: selectedTeacher, blocks: positions};
+        console.log(course)
+        return {id: course.id, name: course.name, teacher: selectedTeacher, blocks: positions, global_semester: course.semesterincareer};
       });
 
       const updatedCourses = [...storedTeachers, ...teacherDict];
@@ -235,11 +239,25 @@ function AddTeacherAlgorithm() {
     setSelectedTeacher(teacher.name);
   };
 
+  const handleAgregarCursosClick = () => {
+    navigate('/addCourseAlgorithm')
+  }
+
+  // Mensaje en caso de que no hayan cursos
+  const noCoursesMessage = (
+    <div style={{ textAlign: 'center'}}>
+      <p>No se han añadido cursos al algoritmo.</p>
+      <button style={{backgroundColor: '#3498db', color:'#fff'}} onClick={handleAgregarCursosClick}>
+        Agregar Cursos
+      </button> 
+    </div>
+  );
 
   return (
     
-    <div className="agregar-estilo-container-scroll">
+    <div className="agregar-estilo-container">
       <h2>Agregar Profesor</h2>
+      <h4>Nota: Para el correcto funcionamiento del algoritmo, si elige n cursos, tiene que elegir 2*n bloques en el profesor.</h4>
 
       <div className="container-mprofe">
       <div className="container-search">
@@ -270,10 +288,14 @@ function AddTeacherAlgorithm() {
           </div>
             <div className="Container-Scroll">
                 <div className="Content-Cursos">
-                    <ul>
-                        {renderCursos()}
+                    {NCursos.length === 0 ? (
+                       <div>{noCoursesMessage}</div>
+                    ) : (
+                      <ul>
+                      {renderCursos()}
                     </ul>
-                    <ToastContainer />
+                    )}
+                  <ToastContainer />
                 </div>
             </div>
      </div>
