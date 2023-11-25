@@ -1,4 +1,4 @@
-import React, { useState ,useEffect} from 'react';
+ import React, { useState ,useEffect} from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
@@ -84,7 +84,7 @@ function AddTeacherAlgorithm() {
     return filteredCursos.map((curso, index) => (
       <li key={index} className='render-li-style'>
         <label htmlFor={`checkbox-${index}`} className='div-li-name'>
-          {curso.name} {curso.code} \ semestre {curso.semester}
+          {curso.name} {curso.code} \ Semestre {curso.semester} \ Semestre en la carrera {curso.semesterincareer} 
         </label>
         <div className='div-li-button'>
           <input
@@ -239,6 +239,12 @@ function AddTeacherAlgorithm() {
     setSelectedTeacher(teacher.name);
   };
 
+  // Marca todo el horario
+  const selectAll = () => {
+    const nuevoHorario = horario.map(fila => fila.map(() => true));
+    setHorario(nuevoHorario);
+  };
+
   const handleAgregarCursosClick = () => {
     navigate('/addCourseAlgorithm')
   }
@@ -257,7 +263,7 @@ function AddTeacherAlgorithm() {
     
     <div className="agregar-estilo-container">
       <h2>Agregar Profesor</h2>
-      <h4>Nota: Para el correcto funcionamiento del algoritmo, si elige n cursos, tiene que elegir 2*n bloques en el profesor.</h4>
+      <h4>Nota: Para el correcto funcionamiento del algoritmo, si elige n cursos, tiene que elegir el doble de bloques disponibles para los profesores.</h4>
 
       <div className="container-mprofe">
       <div className="container-search">
@@ -341,6 +347,8 @@ function AddTeacherAlgorithm() {
           </table>
         </div>
       </div>
+      <button onClick={selectAll}>Marcar todo</button>
+
 
       <div className='conten-button'>
         <button className="aplicar-button" onClick={aplicarCambios}>

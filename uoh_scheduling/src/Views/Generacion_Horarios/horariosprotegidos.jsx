@@ -1,5 +1,4 @@
 import React, { useStatem, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import '../../css/Estilosvistas.css'
 
@@ -18,7 +17,6 @@ function obtainTrueIndex(matriz) {
 }
 
 function setHorariosProtegidos() {
-  const navigate = useNavigate()
   const [horario, setHorario] = useState([
     [false, false, false, false, false],
     [false, false, false, false, false],
@@ -42,14 +40,15 @@ function setHorariosProtegidos() {
 
   const [opcionSeleccionada, setOpcionSeleccionada] = useState(''); // Estado para la opción seleccionada
   const [semestreSeleccionado, setSemestreSeleccionado] = useState(''); // Estado para el semestre seleccionado
-  const [selectedCourse, setSelectedCourse] = useState(''); //Estado para el curso seleccionado
-  const [showHorario, setShowHorario] = useState(false); //Estado para ver el bloque de los horarios protegidos semestrales 
 
   const [ultimoHorarioGlobal, setUltimoHorarioGlobal] = useState([]);
+  const [horariosPorSemestre, setHorariosPorSemestre] = useState({});
 
   useEffect(() => {
     const ultimoHorario = JSON.parse(localStorage.getItem('HorariosProtegidosGlobales')) || [];
     setUltimoHorarioGlobal(ultimoHorario);
+    const horariosGuardados = JSON.parse(localStorage.getItem('HorariosPorSemestre')) || {};
+    setHorariosPorSemestre(horariosGuardados);
   }, []);
 
   //Manejo de las opciones de Horario Protegido Global o Semestral
@@ -58,48 +57,94 @@ function setHorariosProtegidos() {
     setOpcionSeleccionada(nuevaOpcion);
   };
 
+  //boton para aplicar cambios de los horarios semestrales
+  const GuardarHorariosSemestrales = () => {
+    //Obtenemos los horarios protegidos semestrales
+    const positions = obtainTrueIndex(horario);
 
-  const handleAgregarCursosClick = () => {
-    // Redirigir a la ruta de agregar cursos
-    navigate('/addCourseAlgorithm');
+    //En el caso de que no se hayan seleccionado, mostramos mensaje de error
+    if(positions.length === 0){
+      const horariosGuardados = {
+        ...horariosPorSemestre,
+        [semestreSeleccionado]: [],
+      };
+      localStorage.setItem('HorariosPorSemestre', JSON.stringify(horariosGuardados));
+      setHorariosPorSemestre(horariosGuardados);
+      toast.success(`Horario protegido agregado con éxito`, {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 3000, // 3 segundos
+      });
+      // Actualizamos el estado de HorariosPorSemestre
+      setHorariosPorSemestre(horariosGuardados);
+    }else{
+
+      const horariosGuardados = {
+        ...horariosPorSemestre,
+        [semestreSeleccionado]: positions,
+      };
+      //En el caso contrario guardamos en el localstorage
+      localStorage.setItem('HorariosPorSemestre', JSON.stringify(horariosGuardados));
+      toast.success(`Horario protegido agregado con éxito`, {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 3000, // 3 segundos
+      });
+
+
+      // Actualizamos el estado de HorariosPorSemestre
+      setHorariosPorSemestre(horariosGuardados);
+    }
+    console.log(positions)
   };
 
-  //Obtención y filtrado de los cursos del localStorage (si requiere lo pueden cambiar por una consulta a la base de datos en vez del LocalStorage)
-  const renderCursosPorSemestre = () => {
-    const storedCourse = JSON.parse(localStorage.getItem('selectedCourses')) || [];
-    if (semestreSeleccionado === '') {
-      return <div style={{fontSize :'1.3vw',marginTop:'1.3vw'}}>Selecciona un semestre para ver los cursos.</div>;
-    }
-    const semestreNumero = parseInt(semestreSeleccionado.split(" ")[1]); //Pasamos el String de Semestre Número que guarda el semestreSeleccionado a solamente un número para compararlo
-    const cursosFiltrados = storedCourse.filter((curso) => curso.semesterincareer === semestreNumero);
   
-    if (cursosFiltrados.length === 0) {
-      return <div style={{fontSize :'1.3vw',marginTop:'1.3vw'}}>
-        <h2>Cursos {semestreSeleccionado}</h2>
-        No hay cursos ingresados para el semestre seleccionado.
-        <div>
-        <button style={{backgroundColor:'#007bff', margin: '1vw'}}   onClick={handleAgregarCursosClick}>
-            Agregar Cursos
-        </button>
-        </div>
-        </div>;
+  const renderCursosPorSemestre = () => {
+    if (semestreSeleccionado === '') {
+      return <div style={{fontSize :'1.3vw',marginTop:'1.3vw'}}>Selecciona un semestre para asignar un horario protido semestral.</div>;
     }
   
     return (
-      <div>
-        <h2>Cursos {semestreSeleccionado}</h2>
-          <div className='Container-Scroll'>
-            <div className='Content-Cursos'>
-              {cursosFiltrados.map((curso, index) => (
-                <li className='curso-item' key={index}>
-                  {curso.name}
-                  <button className='aplicar-button3' onClick={() => handleAgregar(curso.name)}>
-                    Añadir
-                  </button>
-                </li>
-              ))}
-            </div>
+      <div className="horario-container">
+        <h2>Seleccione los horarios protegidos semestrales: {semestreSeleccionado}</h2>
+        <div className="horario-wrapper">
+          <div className="horario-horas">
+            {horas.map((hora, index) => (
+              <div key={index} className="hora-nombre">
+                {hora}
+              </div>
+            ))}
           </div>
+          <table className="horario-table">
+            <thead>
+              <tr>
+                <th>Lunes</th>
+                <th>Martes</th>
+                <th>Miércoles</th>
+                <th>Jueves</th>
+                <th>Viernes</th>
+              </tr>
+            </thead>
+            <tbody>
+              {horario.map((fila, filaIndex) => (
+                <tr key={filaIndex}>
+                  {fila.map((casilla, casillaIndex) => (
+                    <td
+                      key={casillaIndex}
+                      className={casilla ? 'seleccionado' : ''}
+                      onClick={() => {
+                        const nuevoHorario = [...horario];
+                        nuevoHorario[filaIndex][casillaIndex] = !casilla;
+                        setHorario(nuevoHorario);
+                      }}
+                    ></td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+            <button className="aplicar-button" onClick={GuardarHorariosSemestrales}>
+            Aplicar
+            </button>
       </div>
     );
   };
@@ -108,46 +153,45 @@ function setHorariosProtegidos() {
   const handleSemestreChange = (event) => {
     const nuevoSemestre = event.target.value;
     setSemestreSeleccionado(nuevoSemestre);
-  };
 
-  const getHorarioCursoSeleccionado = (curso) => {
-    const horariosProtegidosSemestrales = JSON.parse(localStorage.getItem('HorariosProtegidosSemestrales')) || [];
-    const cursoHorarios = horariosProtegidosSemestrales.find(item => item.curso === curso);
-    return cursoHorarios ? cursoHorarios.horarios : [];
-  };
+    // Verifica si hay un horario guardado para el semestre seleccionado
+    const horarioGuardado = horariosPorSemestre[nuevoSemestre] || null;
 
-  //Boton para mostrar los horarios
-  const handleAgregar = (curso) => {
-    setSelectedCourse(curso);
-    setShowHorario(true);
-  
-    // Obtener los horarios del curso seleccionado desde el localStorage
-    const horariosCursoSeleccionado = getHorarioCursoSeleccionado(curso);
-  
-    // Crear una matriz de horarios predeterminados
-    const horariosPredeterminados = [
-      [false, false, false, false, false],
-      [false, false, false, false, false],
-      [false, false, false, false, false],
-      [false, false, false, false, false],
-      [false, false, false, false, false],
-      [false, false, false, false, false],
-    ];
-  
-    // Actualizar el estado de los horarios para mostrarlos en la vista
-    if (horariosCursoSeleccionado.length > 0) {
-      const nuevoHorario = [...horariosPredeterminados];
-      horariosCursoSeleccionado.forEach(([fila, columna]) => {
-        nuevoHorario[fila][columna] = true;
+
+    if (horarioGuardado) {
+      // Actualiza el estado del horario para reflejar el horario guardado
+      const horarioActualizado = [
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+      ];
+
+      // Marca las celdas del horario guardado en el estado del horario
+      horarioGuardado.forEach(([fila, columna]) => {
+        horarioActualizado[fila][columna] = true;
       });
-      setHorario(nuevoHorario);
+
+      // Actualiza el estado del horario para mostrar el horario guardado
+      setHorario(horarioActualizado);
     } else {
-      setHorario(horariosPredeterminados);
+      // Si no hay un horario guardado para el semestre seleccionado, mostrar un horario vacío
+      setHorario([
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+      ]);
     }
   };
 
+
   //boton para aplicar cambios de los horarios globales
-  const aplicarCambios = () => {
+  const GuardarHorariosGlobales = () => {
     //Obtenemos los horarios protegidos globales
     const positions = obtainTrueIndex(horario);
 
@@ -182,57 +226,6 @@ function setHorariosProtegidos() {
             [false, false, false, false, false],
         ]);
     }
-
-    console.log(positions)
-  };
-
-  //Boton para aplicar cambios semestrales
-  const aplicarCambios2 = () => {
-    const positions = obtainTrueIndex(horario);
-
-    //En el caso de que no se hayan seleccionado, mostramos mensaje de error
-    if(positions.length === 0){
-        toast.error(`Por favor, selecciona al menos un bloque protegido.`, {
-            position: toast.POSITION.TOP_CENTER,
-            autoClose: 3000, // 3 segundos
-          });
-    }else{
-        //ACA GUARDAR LOS CURSOS Y SUS PREFERENCIAS EN EL LOCALSTORAGE
-        const cursoHorarios = {
-          curso: selectedCourse,
-          horarios: positions,
-        };
-
-        const horariosProtegidosSemestrales = JSON.parse(localStorage.getItem('HorariosProtegidosSemestrales')) || [];
-        const existingIndex = horariosProtegidosSemestrales.findIndex(item => item.curso === selectedCourse);
-
-        if (existingIndex !== -1) {
-          // Si el curso ya existe, actualiza sus horarios
-          horariosProtegidosSemestrales[existingIndex].horarios = positions;
-        } else {
-          // Si es un curso nuevo, agrégalo a la lista
-          horariosProtegidosSemestrales.push(cursoHorarios);
-        }
-
-        // Guardar el objeto actualizado en el localStorage
-        localStorage.setItem('HorariosProtegidosSemestrales', JSON.stringify(horariosProtegidosSemestrales));
-
-        toast.success(`Horarios protegidos del ramo ${selectedCourse} agregados con éxito`, {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 3000, // 3 segundos
-      });
-
-        setShowHorario(false);
-
-        setHorario([
-          [false, false, false, false, false],
-          [false, false, false, false, false],
-          [false, false, false, false, false],
-          [false, false, false, false, false],
-          [false, false, false, false, false],
-          [false, false, false, false, false],
-        ]);
-      }
 
     console.log(positions)
   };
@@ -327,53 +320,7 @@ function setHorariosProtegidos() {
             </tbody>
           </table>
         </div>
-            <button className="aplicar-button" onClick={aplicarCambios}>
-            Aplicar
-            </button>
-      </div>
-      )}
-
-      {showHorario && (
-        <div className="horario-container">
-        <h2>Seleccione los horarios protegidos del ramo {selectedCourse}:</h2>
-        <div className="horario-wrapper">
-          <div className="horario-horas">
-            {horas.map((hora, index) => (
-              <div key={index} className="hora-nombre">
-                {hora}
-              </div>
-            ))}
-          </div>
-          <table className="horario-table">
-            <thead>
-              <tr>
-                <th>Lunes</th>
-                <th>Martes</th>
-                <th>Miércoles</th>
-                <th>Jueves</th>
-                <th>Viernes</th>
-              </tr>
-            </thead>
-            <tbody>
-              {horario.map((fila, filaIndex) => (
-                <tr key={filaIndex}>
-                  {fila.map((casilla, casillaIndex) => (
-                    <td
-                      key={casillaIndex}
-                      className={casilla ? 'seleccionado' : ''}
-                      onClick={() => {
-                        const nuevoHorario = [...horario];
-                        nuevoHorario[filaIndex][casillaIndex] = !casilla;
-                        setHorario(nuevoHorario);
-                      }}
-                    ></td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-            <button className="aplicar-button" onClick={aplicarCambios2}>
+            <button className="aplicar-button" onClick={GuardarHorariosGlobales}>
             Aplicar
             </button>
       </div>
