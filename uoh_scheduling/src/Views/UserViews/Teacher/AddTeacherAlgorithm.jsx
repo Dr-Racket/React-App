@@ -347,7 +347,7 @@ function AddTeacherAlgorithm() {
           </table>
         </div>
       </div>
-      <button onClick={selectAll}>Marcar todo</button>
+      <button style={{backgroundColor: 'rgb(0 123 255)'}} onClick={selectAll}>Marcar todo</button>
 
 
       <div className='conten-button'>
