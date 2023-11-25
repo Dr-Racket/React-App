@@ -131,8 +131,8 @@ const blockDisplay = (profe) => {
   
   const renderProfes= () => {
     return filteredTeachers.map((profe, index) => (
-      <div className="Container-NACU"> 
-        <div key={index} style= {{color:'black'}}>
+      <div className="Container-NACU" key={index}> 
+        <div  style= {{color:'black'}}>
           <div className='Container-cursoprofe'>
             <div className='Container-profe-algoritmo'>
               <div>
