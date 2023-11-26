@@ -11,7 +11,7 @@ function NoNavbar()
 		<>
 			<div className='NoNavBar'>
                 <div className='paperFeet'>
-					<a class="Link" href="https://linktr.ee/DrRacket" target="_blank">Developed by Dr.Racket UOH</a>
+					<a className="Link" href="https://linktr.ee/DrRacket" target="_blank">Developed by Dr.Racket UOH</a>
                 </div>
 			</div>
 		</>

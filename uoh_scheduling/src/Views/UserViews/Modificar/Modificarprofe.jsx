@@ -83,7 +83,7 @@ function ModificarProfe() {
         <div className="Content-Cursos">
             {profesores.length === 0 ? noCoursesMessage : (
                 <ul>
-                  {renderCursos()}
+                  {renderProfes()}
                 </ul>
             )}
         </div>
