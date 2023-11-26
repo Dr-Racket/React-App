@@ -3,11 +3,14 @@ import axios from "axios";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import generarCSV from './generarCSV';
+import { useNavigate } from 'react-router-dom';
 
 import '../../css/DeleteCourseAlgorithm.css'
 
 
 function HorarioGenerado() {
+  const navigate = useNavigate()
+
   const [search, setSearch] = useState("");
   const [NProfes, setNProfes] = useState([]);
   const [NCursos, setNCursos] = useState([]);
@@ -52,6 +55,20 @@ function HorarioGenerado() {
     'Jueves',
     'Viernes'
   ]
+  const handleAgregarCursosClick = () => {
+    // Redirigir a la ruta de agregar cursos
+    navigate('/addTeacherAlgorithm');
+  };
+
+  // Mensaje en caso de que no hayan cursos
+  const noCoursesMessage = (
+    <div style={{ textAlign: 'center'}}>
+      <p style={{ fontSize: '1.3vw' }}>No se han creado horarios para el algoritmo.</p>
+      <button style={{backgroundColor: '#3498db', color:'#fff'}}  onClick={handleAgregarCursosClick}>
+        Agregar Horarios
+      </button> 
+    </div>
+  );
 
   const buttons = () => {
 
@@ -163,6 +180,7 @@ const blockDisplay = (profe) => {
               </div>
             </div>
             <div className='Container-curso-algoritmo'>
+
               {blockDisplay(profe)}
             </div>
           </div>
@@ -187,16 +205,19 @@ const blockDisplay = (profe) => {
             </div>
               <div className="Container-Scroll" style={{position:'relative',height:'20vw', top:'-2vw'}}>
                   <div className="Content-Cursos">
-                      <ul>
-                          {renderProfes()}
-                      </ul>
+                      {NProfes.length === 0 ? noCoursesMessage : (
+                        <ul>
+                          {renderCursos()}
+                        </ul>
+                      )}
                       <ToastContainer />
                   </div>
             </div>
-            <>
-             {buttons()} 
-            </>
-
+            {NProfes.length === 0 ? <></> : (
+                <>
+                  {buttons()} 
+                </>
+              )}
       </div>
     </div>
 
