@@ -18,9 +18,7 @@ function Navbar()
 				<img src={UOHname} alt="UOH_LOGO" className='UOH'/>
 				<img src={USOLA} alt="USOLA" className='USOLA'/>	
 				{/* Links to paths */}
-				<Link to='/' className='Link'>
-					Volver a Inicio
-				</Link>
+				{user && <Link to='/' className='Link'>Volver a Inicio</Link>}
 				{user && <p className='username-display'>Bienvenido/a, {user.username}!</p>}
 				<div className='sep'/>
 				{user ? (

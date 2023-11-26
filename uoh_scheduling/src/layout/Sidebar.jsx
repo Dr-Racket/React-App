@@ -9,6 +9,15 @@ function Sidebar() {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
 
+  if (!user) {
+    return (
+      <div className='Sidebar' style={{ backgroundColor: '#222222' }}>
+        <ul className='SidebarList'>
+        </ul>
+      </div>
+    );
+  }
+
   const toLink = (Link) => {
     navigate(Link);
   }
