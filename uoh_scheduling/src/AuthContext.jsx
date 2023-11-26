@@ -47,6 +47,7 @@ export const AuthProvider = ({children}) => {
         localStorage.removeItem('authTokens')
         localStorage.removeItem('selectedCourses')
         localStorage.removeItem('selectedTeachers')
+        localStorage.removeItem('HorariosPorSemestre')
         setAuthTokens(null)
         setUser(null)
         navigate('/login')

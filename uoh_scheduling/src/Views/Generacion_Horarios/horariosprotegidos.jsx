@@ -194,7 +194,7 @@ function setHorariosProtegidos() {
   const GuardarHorariosGlobales = () => {
     //Obtenemos los horarios protegidos globales
     const positions = obtainTrueIndex(horario);
-
+    console.log(ultimoHorarioGlobal)
     //En el caso de que no se hayan seleccionado, mostramos mensaje de error
     if(positions.length === 0){
         toast.error(`Por favor, selecciona al menos un bloque protegido.`, {
@@ -228,6 +228,7 @@ function setHorariosProtegidos() {
     }
 
     console.log(positions)
+    console.log(horariosPorSemestre)
   };
 
 

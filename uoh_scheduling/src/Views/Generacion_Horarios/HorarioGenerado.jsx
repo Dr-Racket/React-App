@@ -9,13 +9,17 @@ import '../../css/DeleteCourseAlgorithm.css'
 function HorarioGenerado() {
   const [search, setSearch] = useState("");
   const [NProfes, setNProfes] = useState([]);
+  const [NBlockSemester, setNBlockSemesters] = useState([])
   const [NCursos, setNCursos] = useState([]);
   const [sentData, setSentData] = useState([]);
 
   // Función para realizar la solicitud a la API
   useEffect(() => {
     const storedTeachers = localStorage.getItem("selectedTeachers")
+    const storedProtectedBlocks = localStorage.getItem("HorariosPorSemestre")
     setNProfes((storedTeachers) ? JSON.parse(storedTeachers) : [])
+    setNBlockSemesters((storedProtectedBlocks) ? JSON.parse(storedProtectedBlocks) : [])
+
   }, []); // El segundo argumento vacío [] asegura que la solicitud se realice solo una vez
   
 
@@ -55,16 +59,22 @@ function HorarioGenerado() {
     // Obtener los datos del localStorage que deseas enviar
     const selectedTeachers = JSON.parse(localStorage.getItem('selectedTeachers'));
     const selectedCourses = JSON.parse(localStorage.getItem('selectedCourses'));
-
+    const selectedblockeds = JSON.parse(localStorage.getItem('HorariosPorSemestre'));
+    const selectedBlockedsGlobal = JSON.parse(localStorage.getItem("HorariosProtegidosGlobales"))
+    console.log(selectedblockeds)
+    console.log("Holaa")
+    console.log("XDDD")
     // Crear un objeto con los datos a enviar
     const dataToSend = {
       selectedTeachers,
-      selectedCourses,
+      selectedblockeds,
+      selectedBlockedsGlobal,
     };
+    console.log(dataToSend)
 
     // Realizar una solicitud POST a la API para enviar los datos
     axios
-      .post('http://127.0.0.1:8000/api/postAlgorithm', selectedTeachers)
+      .post('http://127.0.0.1:8000/api/postAlgorithm', dataToSend)
       .then((response) => {
         // Manejar la respuesta de la API si es necesario
         console.log('Datos enviados con éxito:', response.data);

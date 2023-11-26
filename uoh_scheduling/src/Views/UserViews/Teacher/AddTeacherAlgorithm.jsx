@@ -200,7 +200,7 @@ function AddTeacherAlgorithm() {
 
       const teacherDict= selectedCourses.map((course) => {
         console.log(course)
-        return {id: course.id, name: course.name, teacher: selectedTeacher, blocks: positions, global_semester: course.semesterincareer};
+        return {id: course.id, name: course.name, teacher: selectedTeacher, blocks: positions, careerSemester: course.semesterincareer, catedras: course.catedras};
       });
 
       const updatedCourses = [...storedTeachers, ...teacherDict];
