@@ -120,7 +120,7 @@ function HorarioGenerado() {
       .catch((error) => {
         // Manejar los errores de la solicitud
         console.error('Error al enviar datos a la API:', error);
-        toast.warning('A uno o más horarios les faltan bloques.', {
+        toast.error('Algoritmo no encontró solución.', {
             position: toast.POSITION.TOP_CENTER,
             autoClose: 3000, // 3 segundos
           });
