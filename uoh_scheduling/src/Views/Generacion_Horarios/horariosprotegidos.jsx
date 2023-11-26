@@ -99,7 +99,7 @@ function setHorariosProtegidos() {
   
   const renderCursosPorSemestre = () => {
     if (semestreSeleccionado === '') {
-      return <div style={{fontSize :'1.3vw',marginTop:'1.3vw'}}>Selecciona un semestre para asignar un horario protido semestral.</div>;
+      return <div style={{fontSize :'1.3vw',marginTop:'1.3vw'}}>Selecciona un semestre para asignar un horario protegido semestral.</div>;
     }
   
     return (

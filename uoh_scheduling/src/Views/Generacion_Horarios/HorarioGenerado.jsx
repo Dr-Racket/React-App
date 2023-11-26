@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import generarCSV from './generarCSV';
 
 import '../../css/DeleteCourseAlgorithm.css'
 
@@ -11,6 +12,7 @@ function HorarioGenerado() {
   const [NProfes, setNProfes] = useState([]);
   const [NCursos, setNCursos] = useState([]);
   const [sentData, setSentData] = useState([]);
+  const [done, setDone] = useState(false);
 
   // Función para realizar la solicitud a la API
   useEffect(() => {
@@ -51,6 +53,23 @@ function HorarioGenerado() {
     'Viernes'
   ]
 
+  const buttons = () => {
+
+    if(done){
+    return (
+      <div style={{position:'relative', display:'flex',marginLeft:'53.3vw', justifyContent:'space-evenly'}}>
+        <button style={{backgroundColor: '#007bff', marginBottom: '1vw', top:'-2vw'}} onClick={() => generarCSV(NProfes)}> Descargar Datos</button>
+      </div>
+    );
+    }else{
+      return (
+        <div style={{position:'relative', display:'flex',marginLeft:'53.3vw', justifyContent:'space-evenly'}}>
+          <button style={{backgroundColor: '#007bff', marginBottom: '1vw', top:'-2vw'}} onClick={sendDataToAPI}>Enviar Datos a la API</button>
+        </div>
+      );
+    }
+  }
+
   const sendDataToAPI = () => {
     // Obtener los datos del localStorage que deseas enviar
     const selectedTeachers = JSON.parse(localStorage.getItem('selectedTeachers'));
@@ -69,6 +88,7 @@ function HorarioGenerado() {
         // Manejar la respuesta de la API si es necesario
         console.log('Datos enviados con éxito:', response.data);
         setNProfes(response.data);
+        setDone(true);
       })
       .catch((error) => {
         // Manejar los errores de la solicitud
@@ -131,8 +151,8 @@ const blockDisplay = (profe) => {
   
   const renderProfes= () => {
     return filteredTeachers.map((profe, index) => (
-      <div className="Container-NACU"> 
-        <div key={index} style= {{color:'black'}}>
+      <div className="Container-NACU" key={index}> 
+        <div  style= {{color:'black'}}>
           <div className='Container-cursoprofe'>
             <div className='Container-profe-algoritmo'>
               <div>
@@ -154,7 +174,7 @@ const blockDisplay = (profe) => {
 
 
   return(
-    <div className="agregar-estilo-container">
+    <div className="agregar-estilo-container" >
       <div className="container-mprofe" style={{height: '56%'}}>
         <h2 className='title' style={{position:'relative', top:'-2vw'}}>Vista previa de profesores creados</h2>
           <div className="Container-Cursos-Search" style={{position:'relative', top:'-2vw'}}>
@@ -173,7 +193,9 @@ const blockDisplay = (profe) => {
                       <ToastContainer />
                   </div>
             </div>
-              <button style={{ position:'relative', marginLeft: '53.3vw', backgroundColor: '#007bff', marginBottom: '1vw', top:'-2vw'}} onClick={sendDataToAPI}>Enviar Datos a la API</button>
+            <>
+             {buttons()} 
+            </>
 
       </div>
     </div>

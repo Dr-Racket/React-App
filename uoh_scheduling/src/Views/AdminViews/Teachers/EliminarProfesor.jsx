@@ -42,6 +42,7 @@ function EliminarProfesor() {
   });
 
   const renderProfes = () => {
+    console.log(profesores)
     return filteredProfes.map((profesor, index) => (
         <li className="curso-item" key={index} style= {{color:'black'}}>
           {profesor.name} | {profesor.type}

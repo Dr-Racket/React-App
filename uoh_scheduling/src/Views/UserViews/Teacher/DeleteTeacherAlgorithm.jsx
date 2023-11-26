@@ -42,6 +42,16 @@ function DeleteTeacherAlgorithm() {
     }else{ return profes.teacher}
     });
 
+  const [horario, setHorario] = useState([
+    [false, false, false, false, false],
+    [false, false, false, false, false],
+    [false, false, false, false, false],
+    [false, false, false, false, false],
+    [false, false, false, false, false],
+    [false, false, false, false, false],
+  ]);
+
+
   const horas = [
     '08:30 - 10:00',
     '10:15 - 11:45',
@@ -57,18 +67,58 @@ function DeleteTeacherAlgorithm() {
     'Jueves',
     'Viernes'
   ]
+ const showHorario = (teacher) => {
+  const currentHorario = horario.map((fila) => [...fila]);
+  teacher.blocks.map((block) => {
+    currentHorario[block[0]][block[1]] = true;
+  });
 
-  const blockDisplay = (blocks) => {
-    return blocks.map((bloque) => (
-        <li>
-         Dia: {dias[bloque[1]]} | Hora: {horas[bloque[0]]}
-        </li>
-  ))};
+  return currentHorario;
+ }
+  const blockDisplay = (profe) => {
+    return (
+      <div className="horario-container">
+        <div className="horario-wrapper">
+        <div className="horario-horas">
+            {horas.map((hora, index) => (
+            <div key={index} className="hora-nombre" style={{position:'relative', color:'black', right:'2vw', width: '9vw'}}>
+                {hora}
+            </div>
+            ))}
+        </div>
+        <table className="horario-table" >
+            <thead>
+            <tr>
+                <th style={{color:'black'}}>Lunes</th>
+                <th style={{color:'black'}}>Martes</th>
+                <th style={{color:'black'}}>Miércoles</th>
+                <th style={{color:'black'}}>Jueves</th>
+                <th style={{color:'black'}}>Viernes</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {/* MAPEO Horarios profesor */}
+            {showHorario(profe).map((fila, filaIndex) => (
+              <tr key={filaIndex}>
+                {fila.map((bloque, bloqueIndex) => (
+                  <td key={bloqueIndex}
+                  className={bloque ? 'seleccionado' : ''}
+                  >
+                  </td>
+                ))}
+              </tr>
+            ))}
+        </tbody>
+        </table>
+        </div>
+      </div>
+  );};
   
   const renderProfes= () => {
     return filteredTeachers.map((profes, index) => (
-      <div className="Container-NACU"> 
-        <div key={index} style= {{color:'black'}}>
+      <div className="Container-NACU" key={index}> 
+        <div  style= {{color:'black'}}>
           <div className='Container-cursoprofe'>
             <div className='Container-profe-algoritmo'>
               <div>
@@ -79,7 +129,7 @@ function DeleteTeacherAlgorithm() {
               </div>
             </div>
             <div className='Container-curso-algoritmo'>
-                {blockDisplay(profes.blocks)}
+                {blockDisplay(profes)}
             </div>
           </div>
         </div>

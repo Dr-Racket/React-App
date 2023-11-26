@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 uoh_scheduling/node_modules/@ampproject/remapping/dist/remapping.mjs
 uoh_scheduling/node_modules/@ampproject/remapping/dist/remapping.mjs.map
 uoh_scheduling/node_modules/@ampproject/remapping/dist/remapping.umd.js
@@ -26405,3 +26406,6 @@ uoh_scheduling/node_modules/postcss-import/node_modules/.bin/resolve.cmd
 uoh_scheduling/node_modules/postcss-import/node_modules/.bin/resolve.ps1
 uoh_scheduling/node_modules/tailwindcss/node_modules/.bin/resolve.cmd
 uoh_scheduling/node_modules/tailwindcss/node_modules/.bin/resolve.ps1
+=======
+uoh_scheduling/node_modules/**
+>>>>>>> 5c0d123bffe8dff0cfe344286ecb015804111b74

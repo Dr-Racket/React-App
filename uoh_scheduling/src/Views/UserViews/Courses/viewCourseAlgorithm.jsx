@@ -26,7 +26,7 @@ function viewcoursesAlgorithm() {
   const renderCursos = () => {
     return filteredCursos.map((curso, index) => (
       <li className="curso-item" key={index} style= {{color:'black'}}>
-        {curso.name} {curso.code} \ Semestre en la carrera {curso.semesterincareer}
+        {curso.name} {curso.code} \ Semestre {curso.semester} \ Semestre en la carrera {curso.semesterincareer}
        </li>
     ));
    };
