@@ -2,16 +2,21 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import generarCSV from './generarCSV';
+import { useNavigate } from 'react-router-dom';
 
 import '../../css/DeleteCourseAlgorithm.css'
 
 
 function HorarioGenerado() {
+  const navigate = useNavigate()
+
   const [search, setSearch] = useState("");
   const [NProfes, setNProfes] = useState([]);
   const [NBlockSemester, setNBlockSemesters] = useState([])
   const [NCursos, setNCursos] = useState([]);
   const [sentData, setSentData] = useState([]);
+  const [done, setDone] = useState(false);
 
   // Función para realizar la solicitud a la API
   useEffect(() => {
@@ -54,6 +59,37 @@ function HorarioGenerado() {
     'Jueves',
     'Viernes'
   ]
+  const handleAgregarCursosClick = () => {
+    // Redirigir a la ruta de agregar cursos
+    navigate('/addTeacherAlgorithm');
+  };
+
+  // Mensaje en caso de que no hayan cursos
+  const noCoursesMessage = (
+    <div style={{ textAlign: 'center'}}>
+      <p style={{ fontSize: '1.3vw' }}>No se han creado horarios para el algoritmo.</p>
+      <button style={{backgroundColor: '#3498db', color:'#fff'}}  onClick={handleAgregarCursosClick}>
+        Agregar Horarios
+      </button> 
+    </div>
+  );
+
+  const buttons = () => {
+
+    if(done){
+    return (
+      <div style={{position:'relative', display:'flex',marginLeft:'53.3vw', justifyContent:'space-evenly'}}>
+        <button style={{backgroundColor: '#007bff', marginBottom: '1vw', top:'-2vw'}} onClick={() => generarCSV(NProfes)}> Descargar Datos</button>
+      </div>
+    );
+    }else{
+      return (
+        <div style={{position:'relative', display:'flex',marginLeft:'53.3vw', justifyContent:'space-evenly'}}>
+          <button style={{backgroundColor: '#007bff', marginBottom: '1vw', top:'-2vw'}} onClick={sendDataToAPI}>Enviar Datos a la API</button>
+        </div>
+      );
+    }
+  }
 
   const sendDataToAPI = () => {
     // Obtener los datos del localStorage que deseas enviar
@@ -79,6 +115,7 @@ function HorarioGenerado() {
         // Manejar la respuesta de la API si es necesario
         console.log('Datos enviados con éxito:', response.data);
         setNProfes(response.data);
+        setDone(true);
       })
       .catch((error) => {
         // Manejar los errores de la solicitud
@@ -153,6 +190,7 @@ const blockDisplay = (profe) => {
               </div>
             </div>
             <div className='Container-curso-algoritmo'>
+
               {blockDisplay(profe)}
             </div>
           </div>
@@ -166,7 +204,7 @@ const blockDisplay = (profe) => {
   return(
     <div className="agregar-estilo-container" >
       <div className="container-mprofe" style={{height: '56%'}}>
-        <h2 className='title' style={{position:'relative', top:'-2vw'}}>Vista previa de profesores creados</h2>
+        <h2 className='title' style={{position:'relative', top:'-2vw'}}>Vista previa de horarios creados</h2>
           <div className="Container-Cursos-Search" style={{position:'relative', top:'-2vw'}}>
             <input
               type='text'
@@ -177,14 +215,19 @@ const blockDisplay = (profe) => {
             </div>
               <div className="Container-Scroll" style={{position:'relative',height:'20vw', top:'-2vw'}}>
                   <div className="Content-Cursos">
-                      <ul>
-                          {renderProfes()}
-                      </ul>
+                      {NProfes.length === 0 ? noCoursesMessage : (
+                        <ul>
+                          {renderCursos()}
+                        </ul>
+                      )}
                       <ToastContainer />
                   </div>
             </div>
-              <button style={{ position:'relative', marginLeft: '53.3vw', backgroundColor: '#007bff', marginBottom: '1vw', top:'-2vw'}} onClick={sendDataToAPI}>Enviar Datos a la API</button>
-
+            {NProfes.length === 0 ? <></> : (
+                <>
+                  {buttons()} 
+                </>
+              )}
       </div>
     </div>
 
