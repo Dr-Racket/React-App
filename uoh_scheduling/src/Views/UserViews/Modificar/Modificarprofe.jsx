@@ -27,6 +27,21 @@ function ModificarProfe() {
     return profesor.teacher.toLowerCase().includes(search.toLowerCase());
   });
 
+  const handleAgregarPreferenciaClick = () => {
+    // Redirigir a la ruta de agregar cursos
+    navigate('/addTeacherAlgorithm');
+  };
+
+  // Mensaje en caso de que no hayan cursos
+  const noCoursesMessage = (
+    <div style={{ textAlign: 'center'}}>
+      <p style={{ fontSize: '1.3vw' }}>No se han añadido preferencias de horario al algoritmo.</p>
+      <button style={{backgroundColor: '#3498db', color:'#fff'}}  onClick={handleAgregarPreferenciaClick}>
+        Agregar Preferencias
+      </button> 
+    </div>
+  );
+
   // Crear un mapa de profesores por nombre único
   const teachersMap = filteredProfes.reduce((map, profesor) => {
     const teacherName = profesor.teacher;
@@ -66,9 +81,11 @@ function ModificarProfe() {
       </div>
       <div className="Container-Scroll">
         <div className="Content-Cursos">
-          <ul>
-            {renderProfes()}
-          </ul>
+            {profesores.length === 0 ? noCoursesMessage : (
+                <ul>
+                  {renderCursos()}
+                </ul>
+            )}
         </div>
       </div>
       </div>
