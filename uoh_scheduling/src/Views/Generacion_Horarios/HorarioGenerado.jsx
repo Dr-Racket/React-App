@@ -110,6 +110,10 @@ function HorarioGenerado() {
       .catch((error) => {
         // Manejar los errores de la solicitud
         console.error('Error al enviar datos a la API:', error);
+        toast.warning('A uno o más horarios les faltan bloques.', {
+            position: toast.POSITION.TOP_CENTER,
+            autoClose: 3000, // 3 segundos
+          });
       });
   };
 
@@ -207,7 +211,7 @@ const blockDisplay = (profe) => {
                   <div className="Content-Cursos">
                       {NProfes.length === 0 ? noCoursesMessage : (
                         <ul>
-                          {renderCursos()}
+                          {renderProfes()}
                         </ul>
                       )}
                       <ToastContainer />
