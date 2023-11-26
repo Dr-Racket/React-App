@@ -38,26 +38,22 @@ function generarCSV (profesores) {
         'curso',
         'profesor',
         'semestre de carrera',
-        'bloques'],
+        'bloque 1',
+        'bloque 2'
+        ],
     ];
 
     const makeCSV = () => {
         profesores.map((profesor, index) => {
-            let bloques = []
             let profe = [
                 profesor.id,
                 profesor.name,
                 profesor.teacher,
-                profesor.semesterincareer
+                profesor.semesterincareer,
+                `${dias[profesor.blocks[0][1]]} - ${horas[profesor.blocks[0][0]]}`,
+                `${dias[profesor.blocks[1][1]]} - ${horas[profesor.blocks[1][0]]}`
             ]
 
-            profesor.blocks.map((bloque, index) => {
-                let hora = bloque[0];
-                let dia = bloque[1]
-
-                bloques.push(`${dias[dia]}-${horas[hora]}`);
-            })
-            profe.push(bloques.join(' | '));
             data.push(profe)
         })
     };
