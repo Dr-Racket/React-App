@@ -194,7 +194,7 @@ const blockDisplay = (profe) => {
   return(
     <div className="agregar-estilo-container" >
       <div className="container-mprofe" style={{height: '56%'}}>
-        <h2 className='title' style={{position:'relative', top:'-2vw'}}>Vista previa de profesores creados</h2>
+        <h2 className='title' style={{position:'relative', top:'-2vw'}}>Vista previa de horarios creados</h2>
           <div className="Container-Cursos-Search" style={{position:'relative', top:'-2vw'}}>
             <input
               type='text'
